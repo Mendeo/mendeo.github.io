@@ -6,60 +6,62 @@
 	<body>
 		<main class="container">
 			<section class="about">
-			<a href="{{ site.baseurl }}/"><img src="{{ "/assets/portfolio.png" | relative_url }}" alt="{{ site.plainwhite.name }}"></a>
-			<h2 id="title">
-				<a href="{{ site.baseurl }}/">{{ site.plainwhite.name }}</a>
-			</h2>
-			<p class="tagline">{{ site.plainwhite.tagline }}</p>
-			<ul class="social">
-				{%- if site.plainwhite.social_links.github -%}
-				<a href="https://github.com/{{ site.plainwhite.social_links.github }}">
-					<li>
-						<i class="icon-github-circled"></i>
-					</li>
-				</a>
-				{%- endif -%}
-				{%- if site.plainwhite.social_links.vk -%}
-				<a href="https://vk.com/{{ site.plainwhite.social_links.vk }}">
-					<li>
-						<i class="icon-vk"></i>
-					</li>
-				</a>
-				{%- endif -%}
-				{%- if site.plainwhite.social_links.facebook -%}
-				<a href="https://facebook.com/profile.php?id={{ site.plainwhite.social_links.facebook }}">
-					<li>
-						<i class="icon-facebook"></i>
-					</li>
-				</a>
-				{%- endif -%}
-			</ul>
-			{%- if site.plainwhite.navigation -%}
-				<nav class="navigation">
-				<ul>
-					{% for link in site.plainwhite.navigation %}
-					<li>
-						<a href="{{ site.baseurl }}{{ link.url }}">{{ link.title }}</a>
-					</li>
-					{% endfor %}
+				<a href="{{ site.baseurl }}/"><img src="{{ "/assets/portfolio.png" | relative_url }}" alt="{{ site.plainwhite.name }}"></a>
+				<h2 id="title">
+					<a href="{{ site.baseurl }}/">{{ site.plainwhite.name }}</a>
+				</h2>
+				<p class="tagline">{{ site.plainwhite.tagline }}</p>
+				<ul class="social">
+					{%- if site.plainwhite.social_links.github -%}
+					<a href="https://github.com/{{ site.plainwhite.social_links.github }}">
+						<li>
+							<i class="icon-github-circled"></i>
+						</li>
+					</a>
+					{%- endif -%}
+					{%- if site.plainwhite.social_links.vk -%}
+					<a href="https://vk.com/{{ site.plainwhite.social_links.vk }}">
+						<li>
+							<i class="icon-vk"></i>
+						</li>
+					</a>
+					{%- endif -%}
+					{%- if site.plainwhite.social_links.facebook -%}
+					<a href="https://facebook.com/profile.php?id={{ site.plainwhite.social_links.facebook }}">
+						<li>
+							<i class="icon-facebook"></i>
+						</li>
+					</a>
+					{%- endif -%}
 				</ul>
-				</nav>
-			{%- endif -%}
-			<p>&copy;
-				{{ "now" | date: "%Y" }}</p>
+				{%- if site.plainwhite.navigation -%}
+					<nav class="navigation">
+					<ul>
+						{% for link in site.plainwhite.navigation %}
+						<li>
+							<a href="{{ site.baseurl }}{{ link.url }}">{{ link.title }}</a>
+						</li>
+						{% endfor %}
+					</ul>
+					</nav>
+				{%- endif -%}
+				<p>
+					&copy;
+					{{ "now" | date: "%Y" }}
+				</p>
 			</section>
 			<section class="content">
-			{{ content }}
+				{{ content }}
 			</section>
 		</main>
 		{%- if site.plainwhite.analytics_id -%}
 			<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.plainwhite.analytics_id }}"></script>
 			<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag() { dataLayer.push(arguments); }
-			gtag('js', new Date());
-			gtag('config', '{{ site.plainwhite.analytics_id }}');
-		</script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag() { dataLayer.push(arguments); }
+				gtag('js', new Date());
+				gtag('config', '{{ site.plainwhite.analytics_id }}');
+			</script>
 		{%- endif -%}
 	</body>
 </html>
