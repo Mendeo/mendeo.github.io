@@ -21,8 +21,8 @@ plainwhite:
       url: "/about.html"
     - title: Научная деятельность
       url: "/scientist.html"
-    - title: Проекты Web и Node JS
-      url: "/projects_js.html"
+    - title: Мои проекты
+      url: "/projects.html"
 
   # generate social links in footer
   social_links:
