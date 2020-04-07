@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Wix.com как бесплатный backend для вашего приложения"
-date:   2019-04-05 16:44:00 +03
+date:   2020-04-05 16:44:00 +03
 categories: web wix
 tags: [wix.com, backend, web, telegram bot, github pages]
 excerpt_separator: <cut/>
