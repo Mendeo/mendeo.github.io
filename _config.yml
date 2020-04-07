@@ -1,15 +1,28 @@
-title: Aleksandr Menyaylo
-author: Mendeo
-email: thesolve@mail.ru
-description: Персональный сайт Александра Меняйло.
 show_excerpts: true # set to true to show excerpts on the homepage
+email: thesolve@mail.ru
+
+#For SEO (jekyll-seo-tag)
+description: Персональный сайт Александра Меняйло.
+title: Mendeo
+author: Александр Меняйло (Mendeo, Themen)
+social:
+  name: Александр Меняйло
+  links:
+    - https://github.com/Mendeo
+    - https://vk.com/thesolve
+#    - https://facebook.com/themen1987
+image: /assets/portfolio.png
+lang: ru-RU
+webmaster_verifications:
+  yandex: 35a778727acfd8f9
+  google: XDYxlXev4ba9l-ewOSofzypY9XsHxlIidHSCUkr8ur8
 
 # Minima date format
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
 sass:
   sass_dir: _sass
 plainwhite:
-  name: Александр Меняйло 
+  name: Александр Меняйло
   tagline: Разработчик. Учёный
   date_format: "%-d %b, %Y"
   sitemap: true # set to true to generate sitemap.xml content
