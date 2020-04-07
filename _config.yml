@@ -16,16 +16,19 @@ plainwhite:
   tagline: Разработчик. Учёный
   date_format: "%-d %b, %Y"
   sitemap: true # set to true to generate sitemap.xml content
-  navigation-title: Мои проекты
   navigation:
-    - title: Ethereum events
-      url: "https://ethereum-events.com"
+    - title: Обо мне
+      url: "/about.html"
+    - title: Научная деятельность
+      url: "/scientist.html"
+    - title: Проекты Web и Node JS
+      url: "/projects_js.html"
 
   # generate social links in footer
   social_links:
     github:  Mendeo
     vk: thesolve
-    facebook: themen1987
+    #facebook: themen1987
 
     # Mastodon instances
     # mastodon:
