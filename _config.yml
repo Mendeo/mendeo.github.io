@@ -1,6 +1,9 @@
 show_excerpts: true # set to true to show excerpts on the homepage
 email: thesolve@mail.ru
 
+#avatar: https://sun9-60.userapi.com/c849428/v849428750/96397/8SZpPmI9z_g.jpg
+avatar: /assets/avatar.jpg
+
 #For SEO (jekyll-seo-tag)
 description: Персональный сайт Александра Меняйло.
 title: Mendeo
