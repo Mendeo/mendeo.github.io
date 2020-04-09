@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
 <title>{{ page.title | default: site.title }}</title>
 {% seo %}
+
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -27,43 +28,50 @@
 		VK.init({apiId: 7313187, onlyWidgets: true});
 	</script>
 {% endif %}
-<!-- Мой скрипт для подсчёта числа посетителей и перенаправки комментариев к постам в мой телеграм -->
+<!-- Мой скрипт для подсчёта посетителей и перенаправки комментариев к постам в мой телеграм -->
 <script type="text/javascript">
-	//Подсчёт посетителей сайта.
-	const MESSAGE_SERVER = 'https://deorathemen.wixsite.com/messages/_functions/mendeo_msg';
-	setTimeout(() =>
+	(function()
 	{
-		if (!window.thisIsMySite) navigator.sendBeacon(MESSAGE_SERVER, JSON.stringify({counter: true}))
-	}, 5000); //Таймаут отсеивает роботов и позваляет успеть установить thisIsMySite.
-	
-	{% if page.layout == "post" %}
-		//Отправка оставленного комментария ко мне в телеграм.
-		VK.Observer.subscribe('widgets.comments.new_comment', (num, last_comment) =>
+		'use strict';
+		const MESSAGE_SERVER = 'https://deorathemen.wixsite.com/messages/_functions/mendeo_msg';
+		const COUNTED_COOKIE_NAME = 'counted';
+		let countedCookie = document.cookie.split(';').find(item => item.split('=')[0].trim() === COUNTED_COOKIE_NAME);
+		if (!countedCookie)
 		{
-			const error = 'Cannot resend message to telegram.'
-			const msg = 
+			let expiresDate = new Date();
+			expiresDate.setFullYear(expiresDate.getFullYear() + 30);
+			document.cookie = `${COUNTED_COOKIE_NAME}=true; expires=${expiresDate.toUTCString()}`;
+			navigator.sendBeacon(MESSAGE_SERVER, JSON.stringify({counter: true}))
+		}
+		{% if page.layout == "post" %}
+			//Отправка оставленного комментария ко мне в телеграм.
+			VK.Observer.subscribe('widgets.comments.new_comment', (num, last_comment) =>
 			{
-				text: last_comment,
-				num: num,
-				page: '{{ site.url }}{{ page.url }}',
-				vk: true
-			};
-			fetch(MESSAGE_SERVER,
-			{
-				method: 'POST',
-				headers:
+				const error = 'Cannot resend message to telegram.'
+				const msg = 
 				{
-					'Content-Type': 'text/plain' //'application/json' - not work for wix site (wix send 403 for options requests)
-				},
-				body: JSON.stringify(msg)
-			}).then((res) => 
-			{
-				if (!res.ok) console.log(error);
-			}).catch((err) =>
-			{
-				console.log(error);
-				console.log(err);
+					text: last_comment,
+					num: num,
+					page: '{{ site.url }}{{ page.url }}',
+					vk: true
+				};
+				fetch(MESSAGE_SERVER,
+				{
+					method: 'POST',
+					headers:
+					{
+						'Content-Type': 'text/plain' //'application/json' - not work for wix site (wix send 403 for options requests)
+					},
+					body: JSON.stringify(msg)
+				}).then((res) => 
+				{
+					if (!res.ok) console.log(error);
+				}).catch((err) =>
+				{
+					console.log(error);
+					console.log(err);
+				});
 			});
-		});
-	{% endif %}
+		{% endif %}
+	})();
 </script>
