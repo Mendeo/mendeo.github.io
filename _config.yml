@@ -37,6 +37,8 @@ plainwhite:
       url: "/scientist.html"
     - title: Мои проекты
       url: "/projects.html"
+    - title: Мои фотографии
+      url: "/photo.html"
 
   # generate social links in footer
   social_links:
