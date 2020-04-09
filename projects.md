@@ -18,7 +18,8 @@ linksInNewTab: true
 **Свои модели я делаю в программе [OpenScad](https://www.openscad.org)**  
 1. **Труба для отвода сифона**  
 Отвод сифона в сторону, чтобы уместить посудомоечную машину под мойку.  
-![фото](https://3dtoday.ru/cache/x480/iblock/d17/d170041a7013f7ef94bcdb530f2918fb.jpeg)  
+![изображение модели 1](/assets/images/KitchenSinkDraining1.png)
+![изображение модели 2](/assets/images/KitchenSinkDraining2.png)  
 [3dtoday](https://3dtoday.ru/3d-models/for-home/kitchen/truba_dlya_otvoda_sifona)
 
 ---
