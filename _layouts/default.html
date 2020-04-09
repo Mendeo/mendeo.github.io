@@ -15,22 +15,22 @@
 				<ul class="social">
 					{% if site.plainwhite.social_links.github %}
 					<li>
-						<a href="https://github.com/{{ site.plainwhite.social_links.github }}" class="icon-github-circled"></a>
+						<a href="https://github.com/{{ site.plainwhite.social_links.github }}" target="_blank" class="icon-github-circled"></a>
 					</li>
 					{% endif %}
 					{% if site.plainwhite.social_links.vk %}
 					<li>
-						<a href="https://vk.com/{{ site.plainwhite.social_links.vk }}" class="icon-vk"></a>
+						<a href="https://vk.com/{{ site.plainwhite.social_links.vk }}" target="_blank" class="icon-vk"></a>
 					</li>
 					{% endif %}
 					{% if site.plainwhite.social_links.facebook %}
 					<li>
-						<a href="https://facebook.com/{{ site.plainwhite.social_links.facebook }}" class="icon-facebook"></a>
+						<a href="https://facebook.com/{{ site.plainwhite.social_links.facebook }}" target="_blank" class="icon-facebook"></a>
 					</li>
 					{% endif %}
 					{% if site.plainwhite.social_links.instagram %}
 					<li>
-						<a href="https://instagram.com/{{ site.plainwhite.social_links.instagram }}" class="icon-instagram"></a>
+						<a href="https://instagram.com/{{ site.plainwhite.social_links.instagram }}" target="_blank" class="icon-instagram"></a>
 					</li>
 					{% endif %}
 				</ul>
@@ -55,14 +55,15 @@
 				{{ content }}
 			</section>
 		</main>
-		{%- if site.plainwhite.analytics_id -%}
-			<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.plainwhite.analytics_id }}"></script>
-			<script>
-				window.dataLayer = window.dataLayer || [];
-				function gtag() { dataLayer.push(arguments); }
-				gtag('js', new Date());
-				gtag('config', '{{ site.plainwhite.analytics_id }}');
+		{% if page.linksInNewTab %}
+			<!-- Открываем ссылки в новом окне -->
+			<script type="text/javascript">
+				(function ()
+				{
+					let links = document.querySelectorAll('.post a');
+					links.forEach((link) => link.target = '_blank');
+				})();
 			</script>
-		{%- endif -%}
+		{% endif %}
 	</body>
 </html>

@@ -1,5 +1,7 @@
 ---
 layout: page
+#Открытие ссылок в новом окне.
+linksInNewTab: true
 ---
 # Мои проекты
 ## Web и Node JS
