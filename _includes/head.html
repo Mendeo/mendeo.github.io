@@ -36,8 +36,8 @@
 		if (!window.thisIsMySite) navigator.sendBeacon(MESSAGE_SERVER, JSON.stringify({counter: true}))
 	}, 5000); //Таймаут отсеивает роботов и позваляет успеть установить thisIsMySite.
 	
-	//Отправка оставленного комментария ко мне в телеграм.
 	{% if page.layout == "post" %}
+		//Отправка оставленного комментария ко мне в телеграм.
 		VK.Observer.subscribe('widgets.comments.new_comment', (num, last_comment) =>
 		{
 			const error = 'Cannot resend message to telegram.'
