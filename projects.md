@@ -3,6 +3,7 @@ layout: page
 linksInNewTab: true
 ---
 # Мои проекты
+
 ## Web и Node JS
 1. **Ethereum events**  
 Веб приложение. Отслеживание событий, которые генерирует заданный смарт контракт в сети Ethereum.  
@@ -12,6 +13,11 @@ linksInNewTab: true
 Модуль для node js. Конвертирование csv файлов в массив JavaScript объектов и обратно. Может проводить группировку входных данных.  
 [npm](https://www.npmjs.com/package/csv-to-js-parser), [GitHub](https://github.com/Mendeo/csv-to-js-parser)
 
+## 3D моделирование и печать
+**Свои модели я делаю в программе [OpenScad](https://www.openscad.org)**  
+1. **Труба для отвода сифона**
+Отвод сифона в сторону, чтобы уместить посудомоечную машину под мойку.  
+[3dtoday](https://3dtoday.ru/3d-models/for-home/kitchen/truba_dlya_otvoda_sifona)
 
 ## Android
 1. **Календарь Хронос**  
