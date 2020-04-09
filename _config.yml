@@ -13,6 +13,7 @@ social:
   links:
     - https://github.com/Mendeo
     - https://vk.com/thesolve
+    - https://www.instagram.com/mendeo/
 #    - https://facebook.com/themen1987
 image: /assets/portfolio.png
 lang: ru-RU
@@ -41,6 +42,7 @@ plainwhite:
   social_links:
     github:  Mendeo
     vk: thesolve
+    instagram: Mendeo
     #facebook: themen1987
 
     # Mastodon instances

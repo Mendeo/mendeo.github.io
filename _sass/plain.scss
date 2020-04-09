@@ -117,8 +117,9 @@ main {
   margin-top: 0;
   li {
     float: left;
-    i {
+    a {
       font-size: 34px;
+      text-decoration: none;
     }
   }
 }

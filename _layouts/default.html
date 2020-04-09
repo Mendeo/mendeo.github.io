@@ -11,29 +11,30 @@
 					<a href="{{ site.baseurl }}/">{{ site.plainwhite.name }}</a>
 				</h2>
 				<p class="tagline">{{ site.plainwhite.tagline }}</p>
+				
 				<ul class="social">
-					{%- if site.plainwhite.social_links.github -%}
-					<a href="https://github.com/{{ site.plainwhite.social_links.github }}">
-						<li>
-							<i class="icon-github-circled"></i>
-						</li>
-					</a>
-					{%- endif -%}
-					{%- if site.plainwhite.social_links.vk -%}
-					<a href="https://vk.com/{{ site.plainwhite.social_links.vk }}">
-						<li>
-							<i class="icon-vk"></i>
-						</li>
-					</a>
-					{%- endif -%}
-					{%- if site.plainwhite.social_links.facebook -%}
-					<a href="https://facebook.com/profile.php?id={{ site.plainwhite.social_links.facebook }}">
-						<li>
-							<i class="icon-facebook"></i>
-						</li>
-					</a>
-					{%- endif -%}
+					{% if site.plainwhite.social_links.github %}
+					<li>
+						<a href="https://github.com/{{ site.plainwhite.social_links.github }}" class="icon-github-circled"></a>
+					</li>
+					{% endif %}
+					{% if site.plainwhite.social_links.vk %}
+					<li>
+						<a href="https://vk.com/{{ site.plainwhite.social_links.vk }}" class="icon-vk"></a>
+					</li>
+					{% endif %}
+					{% if site.plainwhite.social_links.facebook %}
+					<li>
+						<a href="https://facebook.com/{{ site.plainwhite.social_links.facebook }}" class="icon-facebook"></a>
+					</li>
+					{% endif %}
+					{% if site.plainwhite.social_links.instagram %}
+					<li>
+						<a href="https://instagram.com/{{ site.plainwhite.social_links.instagram }}" class="icon-instagram"></a>
+					</li>
+					{% endif %}
 				</ul>
+				
 				{%- if site.plainwhite.navigation -%}
 					<nav class="navigation">
 					<ul>
