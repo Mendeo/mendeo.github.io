@@ -11,7 +11,7 @@
 					<a href="{{ site.baseurl }}/">{{ site.plainwhite.name }}</a>
 				</h2>
 				<p class="tagline">{{ site.plainwhite.tagline }}</p>
-				
+
 				<ul class="social">
 					{% if site.plainwhite.social_links.github %}
 					<li>
@@ -37,15 +37,16 @@
 				
 				{%- if site.plainwhite.navigation -%}
 					<nav class="navigation">
-					<ul>
-						{% for link in site.plainwhite.navigation %}
-						<li>
-							<a href="{{ site.baseurl }}{{ link.url }}">{{ link.title }}</a>
-						</li>
-						{% endfor %}
-					</ul>
+						<ul>
+							{% for link in site.plainwhite.navigation %}
+							<li>
+								<a href="{{ site.baseurl }}{{ link.url }}">{{ link.title }}</a>
+							</li>
+							{% endfor %}
+						</ul>
 					</nav>
 				{%- endif -%}
+
 				<p>
 					&copy;
 					{{ "now" | date: "%Y" }}
