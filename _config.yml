@@ -60,7 +60,7 @@ plainwhite:
 #theme: plainwhite
 
 feed:
-  excerpt_only: true
+  excerpt_only: false
 
 plugins:
   - jekyll-seo-tag
