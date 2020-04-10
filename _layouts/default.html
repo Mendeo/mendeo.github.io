@@ -40,7 +40,7 @@
 						<ul>
 							{% for link in site.plainwhite.navigation %}
 							<li>
-								<a href="{{ site.baseurl }}{{ link.url }}">{{ link.title }}</a>
+								<a href="{{ link.url | relative_url }}">{{ link.title }}</a>
 							</li>
 							{% endfor %}
 						</ul>
@@ -50,6 +50,7 @@
 				<p>
 					&copy;
 					{{ "now" | date: "%Y" }}
+					<a href = "{{ "/feed.xml" | relative_url }}" class="icon-rss"></a>
 				</p>
 			</section>
 			<section class="content">
