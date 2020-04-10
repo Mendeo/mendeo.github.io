@@ -11,7 +11,7 @@ links_in_new_tab: true
 
 1. **csv-to-js-parser (2020 г.)**  
 Модуль для node js. Конвертирование csv файлов в массив JavaScript объектов и обратно. Может проводить группировку входных данных.  
-[npm](https://www.npmjs.com/package/csv-to-js-parser), [GitHub](https://github.com/Mendeo/csv-to-js-parser), [Блог](/posts/csv-to-js-parser.html)
+[npm](https://www.npmjs.com/package/csv-to-js-parser), [GitHub](https://github.com/Mendeo/csv-to-js-parser), [Блог]({% post_url 2020-10-04-csv-to-js-parser %})
 
 ---
 ## 3D моделирование и печать
