@@ -1,6 +1,6 @@
 ---
 layout: page
-linksInNewTab: true
+links_in_new_tab: true
 ---
 # Научная деятельность
 **Мои научные работы можно посмотреть по следующим ссылкам:**  

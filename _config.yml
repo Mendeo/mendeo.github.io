@@ -1,6 +1,10 @@
 show_excerpts: true # set to true to show excerpts on the homepage
 email: thesolve@mail.ru
 
+collections:
+  posts:
+    permalink: /posts/:title
+
 #avatar: https://sun9-60.userapi.com/c849428/v849428750/96397/8SZpPmI9z_g.jpg
 avatar: /assets/avatar.jpg
 
