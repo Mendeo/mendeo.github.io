@@ -13,36 +13,36 @@
 				<p class="tagline">{{ site.plainwhite.tagline }}</p>
 
 				<ul class="social">
-					{% if site.plainwhite.social_links.github %}
+					{%- if site.plainwhite.social_links.github -%}
 					<li>
 						<a href="https://github.com/{{ site.plainwhite.social_links.github }}" target="_blank" class="icon-github-circled"></a>
 					</li>
-					{% endif %}
-					{% if site.plainwhite.social_links.vk %}
+					{%- endif -%}
+					{%- if site.plainwhite.social_links.vk -%}
 					<li>
 						<a href="https://vk.com/{{ site.plainwhite.social_links.vk }}" target="_blank" class="icon-vk"></a>
 					</li>
-					{% endif %}
-					{% if site.plainwhite.social_links.facebook %}
+					{%- endif -%}
+					{%- if site.plainwhite.social_links.facebook -%}
 					<li>
 						<a href="https://facebook.com/{{ site.plainwhite.social_links.facebook }}" target="_blank" class="icon-facebook"></a>
 					</li>
-					{% endif %}
-					{% if site.plainwhite.social_links.instagram %}
+					{%- endif -%}
+					{%- if site.plainwhite.social_links.instagram -%}
 					<li>
 						<a href="https://instagram.com/{{ site.plainwhite.social_links.instagram }}" target="_blank" class="icon-instagram"></a>
 					</li>
-					{% endif %}
+					{%- endif -%}
 				</ul>
 				
 				{%- if site.plainwhite.navigation -%}
 					<nav class="navigation">
 						<ul>
-							{% for link in site.plainwhite.navigation %}
+							{%- for link in site.plainwhite.navigation -%}
 							<li>
 								<a href="{{ link.url | relative_url }}">{{ link.title }}</a>
 							</li>
-							{% endfor %}
+							{%- endfor -%}
 						</ul>
 					</nav>
 				{%- endif -%}
@@ -57,7 +57,7 @@
 				{{ content }}
 			</section>
 		</main>
-		{% if page.links_in_new_tab %}
+		{%- if page.links_in_new_tab -%}
 			<!-- Открываем ссылки в новом окне -->
 			<script type="text/javascript">
 				(function ()
@@ -67,6 +67,6 @@
 					links.forEach((link) => link.target = '_blank');
 				})();
 			</script>
-		{% endif %}
+		{%- endif -%}
 	</body>
 </html>
