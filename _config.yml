@@ -5,8 +5,11 @@ collections:
   posts:
     permalink: /posts/:title
 
-#avatar: https://sun9-60.userapi.com/c849428/v849428750/96397/8SZpPmI9z_g.jpg
-avatar: /assets/avatar.jpg
+#Мои настройки
+mendeo:
+  #avatar: https://sun9-60.userapi.com/c849428/v849428750/96397/8SZpPmI9z_g.jpg
+  avatar: /assets/avatar.jpg
+  feed: true
 
 #For SEO (jekyll-seo-tag)
 description: Персональный сайт Александра Меняйло.
@@ -60,7 +63,7 @@ plainwhite:
 #theme: plainwhite
 
 feed:
-  excerpt_only: false
+  excerpt_only: true
 
 plugins:
   - jekyll-seo-tag

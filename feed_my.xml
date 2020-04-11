@@ -1,0 +1,39 @@
+---
+layout: null
+---
+{% if site.mendeo.feed %}
+	<?xml version="1.0" encoding="utf-8"?>
+	<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ site.lang }}">
+		<generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator>
+		<link href="{{ site.url }}{{ page.url }}" rel="self" type="application/atom+xml" />
+		<link href="{{ site.url }}" rel="alternate" type="text/html" hreflang="{{ site.lang }}" />
+		<updated>{{ "now" | date_to_xmlschema }}</updated>
+		<id>{{ site.url }}{{ page.url }}</id>
+		<title type="html">{{ site.title }}</title>
+		<description>{{ site.description }}</description>
+		<author>
+			<name>{{ site.author }}</name>
+		</author>
+		<entry>
+			{% for post in site.posts %}
+				<title type="html">{{ post.title }}</title>
+				<link href="{{ site.url }}{{ post.url }}" rel="alternate" type="text/html" title="{{ post.title }}" />
+				<published>{{ post.date | date_to_xmlschema }}</published>
+				<updated>{{ post.modified | date_to_xmlschema }}</updated>
+				<id>{{ post.id }}</id>
+				<author>
+					<name>{{ site.author }}</name>
+				</author>
+				{% for category in post.tags %}
+					<category term="{{ category }}" />
+				{% endfor %}
+				<summary type="html">
+					<![CDATA[
+					{{ post.excerpt }}
+					<a href="{{ site.url }}{{ post.url }}#cut">Читать дальше&rarr;</a>
+					]]>
+				</summary>
+			{% endfor %}
+		</entry>
+	</feed>
+{% endif %}
