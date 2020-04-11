@@ -10,7 +10,7 @@ layout: null
 		<updated>{{ "now" | date_to_xmlschema }}</updated>
 		<id>{{ site.url }}{{ page.url }}</id>
 		<title type="html">{{ site.title }}</title>
-		<description>{{ site.description }}</description>
+		<subtitle>{{ site.description }}</subtitle>
 		<author>
 			<name>{{ site.author }}</name>
 		</author>
@@ -20,7 +20,7 @@ layout: null
 				<link href="{{ site.url }}{{ post.url }}" rel="alternate" type="text/html" title="{{ post.title }}" />
 				<published>{{ post.date | date_to_xmlschema }}</published>
 				<updated>{{ post.modified | date_to_xmlschema }}</updated>
-				<id>{{ post.id }}</id>
+				<id>{{ site.url }}{{ post.url }}</id>
 				<author>
 					<name>{{ site.author }}</name>
 				</author>
