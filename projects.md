@@ -18,13 +18,13 @@ links_in_new_tab: true
 **Свои модели я делаю в программе [OpenScad](https://www.openscad.org)**  
 1. **Труба для отвода сифона (2018 г.)**  
 Отвод сифона в сторону, чтобы уместить посудомоечную машину под мойку.  
-![изображение модели 1](/assets/images/KitchenSinkDraining1.png)
-![изображение модели 2](/assets/images/KitchenSinkDraining2.png)  
+![изображение модели 1](/assets/projects/KitchenSinkDraining1.png)
+![изображение модели 2](/assets/projects/KitchenSinkDraining2.png)  
 [3dtoday](https://3dtoday.ru/3d-models/for-home/kitchen/truba_dlya_otvoda_sifona)
 
 ---
 ## Android
 1. **Календарь Хронос (2012 - 2016 гг.)**  
 Приложения под ОС Андроид. Календарь, который показывает астрономическую информацию о Солнце и Луне, праздники России и многое другое.  
-![logo](/assets/images/chronos.jpg)  
+![logo](/assets/projects/chronos.jpg)  
 [Google Play](https://play.google.com/store/apps/details?id=ru.mendeo.chronos), [GitHub](https://github.com/Mendeo/Chronos)
