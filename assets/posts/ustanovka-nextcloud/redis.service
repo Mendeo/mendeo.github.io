@@ -1,0 +1,33 @@
+[Unit]
+Description=Advanced key-value store
+After=network.target
+Documentation=http://redis.io/documentation, man:redis-server(1)
+
+[Service]
+Type=forking
+ExecStart=/usr/local/bin/redis-server /usr/local/etc/redis.conf
+#PIDFile=/usr/local/var/pid/redis.pid
+PIDFile=/home/redis/redis.pid
+TimeoutStopSec=0
+Restart=always
+Group=staff
+User=redis
+
+ExecStop=/bin/kill -s TERM $MAINPID
+
+UMask=007
+PrivateTmp=yes
+LimitNOFILE=65535
+PrivateDevices=yes
+ReadWriteDirectories=-/usr/local/lib/redis
+ReadWriteDirectories=-/usr/local/var/log/
+ReadWriteDirectories=-/usr/local/var/redis
+CapabilityBoundingSet=~CAP_SYS_PTRACE
+
+# redis-server writes its own config file when in cluster mode so we allow
+# writing there (NB. ProtectSystem=true over ProtectSystem=full)
+ProtectSystem=true
+ReadWriteDirectories=-/usr/local/etc/
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+Description=The PHP FastCGI Process Manager
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/usr/local/var/php-fpm.pid
+ExecStart=/usr/local/sbin/php-fpm -D -g /usr/local/var/php-fpm.pid
+ExecStop=-/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /usr/local/var/nginx.pid
+TimeoutStopSec=5
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target
