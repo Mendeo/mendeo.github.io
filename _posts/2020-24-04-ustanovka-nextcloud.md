@@ -130,13 +130,14 @@ extension=imagick.so
 sudo pecl install apcu
 ```
 
-Добавил в Config.php
+Добавляем в Config.php
 
 ```php
 'memcache.local' => '\OC\Memcache\APCu',
 ```
 
-И записал его в php.ini
+И записываем его в php.ini
+
 ```bash
 extension=apcu.so
 ```
@@ -162,7 +163,7 @@ sudo pecl install redis
 sudo usermod -a -G redis nextcloud
 ```
 
-Добавить Redis в Config.php
+Добавиляем Redis в Config.php
 ```php
 'memcache.distributed' => '\OC\Memcache\Redis',
   'redis' => [
@@ -174,7 +175,7 @@ sudo usermod -a -G redis nextcloud
 'memcache.locking' => '\OC\Memcache\Redis'
 ```
 
-Записть его в php.ini
+Записываем Redis в php.ini
 ```bash
 extension=redis.so
 ```
@@ -194,4 +195,4 @@ extension=redis.so
 **redis.conf**
 * Задать пароль от Redis (поле "requirepass").
 
-Установить юниты systemd и наслаждаться работой с Nextcloud.
+Установить юниты systemd для автозагрузки и наслаждаться работой с Nextcloud.
