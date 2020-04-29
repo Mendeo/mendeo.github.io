@@ -3,7 +3,7 @@ email: thesolve@mail.ru
 
 collections:
   posts:
-    permalink: /posts/:title
+    permalink: /posts/:title:output_ext
 
 #Мои настройки
 mendeo:
