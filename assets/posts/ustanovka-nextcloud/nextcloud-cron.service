@@ -1,0 +1,6 @@
+[Unit]
+Description=Nextcloud cron.php job
+
+[Service]
+User=nextcloud
+ExecStart=/usr/local/bin/php -f /home/nextcloud/www/cron.php

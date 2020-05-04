@@ -2,7 +2,7 @@
 layout: post
 title: Чистая установка nextcloud на raspberry pi
 date: 2020-04-24 14:20:00 +03
-modified: 2020-04-24 14:20:00 +03
+modified: 2020-05-04 14:20:00 +03
 categories: linux nextcloud
 tags: [nextcloud, nginx, php, raspberry pi, linux]
 excerpt_separator: <a name="cut"></a>
@@ -28,6 +28,8 @@ links_in_new_tab: true
 [nginx.service](/assets/posts/nginx.service)  
 [php-fpm.service](/assets/posts/php-fpm.service)  
 [redis.service](/assets/posts/redis.service)  
+[nextcloud-cron.service](/assets/posts/nextcloud-cron.service)  
+[nextcloud-cron.timer](/assets/posts/nextcloud-cron.timer)  
 
 [Архив](https://download.nextcloud.com/server/releases/nextcloud-18.0.4.zip) Nextcloud был скачан с официального сайта. Под него был создан отдельный пользователь nextcloud. Файлы nextcloud были помещены в папку /home/nextcloud/www . Папка с пользовательскими данными: /home/nextcloud/data
 
@@ -196,3 +198,5 @@ extension=redis.so
 * Задать пароль от Redis (поле "requirepass").
 
 Установить юниты systemd для автозагрузки и наслаждаться работой с Nextcloud.
+Установить автозапуск cron.php каждые 5 минут в systemd (юниты приложил).
+В настройках nextcloud (через сайт) указать, что используется системный cron.
