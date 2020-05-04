@@ -71,5 +71,72 @@
 				})();
 			</script>
 		{%- endif -%}
+		<!-- Мой скрипт для увеличения картинок -->
+		<script type="text/javascript">
+			(function()
+			{
+				'use strict';
+				const imgBg = document.createElement('div');
+				document.getElementsByTagName('body')[0].appendChild(imgBg);
+
+				imgBg.style = 'background-color: rgba(48, 48, 48, 0.6); position: fixed; top: 0px; left: 0px; width: 100%; z-index: 1';
+				imgBg.hidden = true;
+				fillBg();
+				window.addEventListener('resize', fillBg);
+				function fillBg()
+				{
+					imgBg.style.height = (document.documentElement.clientHeight + 100) + 'px';
+				}
+				const bigImgageScreenFraction = 0.7;
+
+				document.querySelectorAll('img[scalable]').forEach((img) =>
+				{
+					const smallSize = img.getAttribute('scalable');
+					const defaultStyle = `max-width: ${smallSize}; max-height: ${smallSize}`;
+					img.style = defaultStyle;
+					img.addEventListener('click', () => 
+					{
+						if (img.getAttribute('is-big') === 'true')
+						{
+							img.style = defaultStyle;
+							img.setAttribute('is-big', false);
+							imgBg.hidden = true;
+						}
+						else
+						{
+							imgBg.hidden = false;
+							img.setAttribute('is-big', true);
+							doImageBig(img);
+						}
+					});
+					//Сохраняем пропорции при ресайзинге.
+					window.addEventListener('resize', () => 
+					{
+						if (img.getAttribute('is-big') === 'true') doImageBig(img);
+					});
+				});
+
+				function doImageBig(img)
+				{
+					let screenHeight = document.documentElement.clientHeight;
+					let screenWidth = document.documentElement.clientWidth;
+					let imgWidth = img.width;
+					let imgHeight = img.height;
+					let bigImgHeight = Math.round(screenHeight * bigImgageScreenFraction);
+					let bigImgWidth = Math.round(screenWidth * bigImgageScreenFraction);
+					if (imgHeight > imgWidth)
+					{
+						bigImgHeight = Math.round(bigImgWidth * imgHeight / imgWidth);
+					}
+					else
+					{
+						bigImgWidth = Math.round(bigImgHeight * imgWidth / imgHeight);
+					}
+					let left = Math.round(0.5 * (screenWidth - bigImgWidth));
+					let top = Math.round(0.5 * (screenHeight - bigImgHeight));
+					img.style = `max-width: ${bigImgWidth}px; max-height: ${bigImgHeight}px; left: ${left}px; top: ${top}px; display:block; margin: auto; position: fixed; z-index: 2`;
+				}
+			})();
+		</script>
 	</body>
 </html>
