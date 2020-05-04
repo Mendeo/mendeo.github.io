@@ -21,28 +21,28 @@ $CONFIG = array (
   'installed' => true,
   'enable_previews' => true,
   'enabledPreviewProviders' => array(
-    OC\Preview\Illustrator
-    OC\Preview\Movie
-    OC\Preview\MSOffice2003
-    OC\Preview\MSOffice2007
-    OC\Preview\MSOfficeDoc
-    OC\Preview\OpenDocument
-    OC\Preview\PDF
-    OC\Preview\Photoshop
-    OC\Preview\Postscript
-    OC\Preview\StarOffice
-    OC\Preview\SVG
-    OC\Preview\TIFF
-    OC\Preview\Font
-    OC\Preview\BMP
-    OC\Preview\GIF
-    OC\Preview\HEIC
-    OC\Preview\JPEG
-    OC\Preview\MarkDown
-    OC\Preview\MP3
-    OC\Preview\PNG
-    OC\Preview\TXT
-    OC\Preview\XBitmap
+    'OC\Preview\Illustrator',
+    'OC\Preview\Movie',
+    'OC\Preview\MSOffice2003',
+    'OC\Preview\MSOffice2007',
+    'OC\Preview\MSOfficeDoc',
+    'OC\Preview\OpenDocument',
+    'OC\Preview\PDF',
+    'OC\Preview\Photoshop',
+    'OC\Preview\Postscript',
+    'OC\Preview\StarOffice',
+    'OC\Preview\SVG',
+    'OC\Preview\TIFF',
+    'OC\Preview\Font',
+    'OC\Preview\BMP',
+    'OC\Preview\GIF',
+    'OC\Preview\HEIC',
+    'OC\Preview\JPEG',
+    'OC\Preview\MarkDown',
+    'OC\Preview\MP3',
+    'OC\Preview\PNG',
+    'OC\Preview\TXT',
+    'OC\Preview\XBitmap'
   ),
   'overwriteprotocol' => 'https',
   'default_language' => 'ru',
