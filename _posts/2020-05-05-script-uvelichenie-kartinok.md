@@ -37,17 +37,15 @@ links_in_new_tab: true
   document.querySelectorAll('img[scalable]').forEach((img) =>
   {
     const smallSize = img.getAttribute('scalable');
-    let defaultStyle = `max-width: ${smallSize}; max-height: ${smallSize}`; 
+    const defaultStyle = `max-width: ${smallSize}; max-height: ${smallSize}`;
     img.style = defaultStyle;
-    let isGoingToSmall = false;
     img.addEventListener('click', () => 
     {
       if (img.getAttribute('is-big') === 'true')
       {
-        img.style = `${defaultStyle}; position: fixed`;
+        img.style = defaultStyle;
         img.setAttribute('is-big', false);
         imgBg.hidden = true;
-        isGoingToSmall = true;
       }
       else
       {
@@ -56,14 +54,6 @@ links_in_new_tab: true
         doImageBig(img);
       }
     });
-    img.addEventListener('transitionend', () =>
-    {
-      if (isGoingToSmall)
-      {
-        img.style = defaultStyle;
-        isGoingToSmall = false;
-      }
-    }); 
     //Сохраняем пропорции при ресайзинге.
     window.addEventListener('resize', () => 
     {
@@ -80,6 +70,8 @@ links_in_new_tab: true
     let imgHeight = img.height;
     let bigImgHeight = Math.round(screenHeight * bigImgageScreenFraction);
     let bigImgWidth = Math.round(screenWidth * bigImgageScreenFraction);
+    console.log(bigImgHeight);
+    console.log(bigImgWidth);
     let ratio = imgWidth / imgHeight
     let newWidth = Math.round(bigImgHeight * ratio);
     if (newWidth < bigImgWidth)
