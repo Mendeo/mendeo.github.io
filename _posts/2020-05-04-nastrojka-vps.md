@@ -1,10 +1,10 @@
 ---
 layout: post
 title: Настройка VPS для проброса портов на домашний веб сервер
-date: 2020-05-04 14:20:00 +03
-modified: 2020-05-04 14:20:00 +03
-categories: linux vds
-tags: [vds, iptables, проброс портов, linux]
+date: 2020-05-04 18:43:00 +03
+modified: 2020-05-05 11:51:00 +03
+categories: linux vps
+tags: [vps, iptables, проброс портов, linux]
 excerpt_separator: <a name="cut"></a>
 links_in_new_tab: true
 ---
