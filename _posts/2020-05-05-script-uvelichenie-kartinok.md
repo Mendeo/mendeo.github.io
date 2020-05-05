@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Сделал простой скрипт для увеличения картинок при клике на них
+title: Сделал скрипт для увеличения картинок при клике на них
 date: 2020-05-05 11:52:00 +03
-modified: 2020-05-05 13:58:00 +03
+modified: 2020-05-05 21:20:00 +03
 categories: web javascript
 tags: [web, javascript, css]
 excerpt_separator: <a name="cut"></a>
@@ -10,7 +10,7 @@ links_in_new_tab: true
 ---
 Вчера для своего сайта сделал небольшой скрипт. Теперь, если у тега "img" есть атрибут "scalable", то на картинку можно будет кликнуть, чтобы её увеличить. В значение атрибута "scalable" нужно задать размер маленькой картинки (с единицами измерения css). Это значение пойдёт в свойства css max-width и max-height изображения.  
 Наконец можно будет заняться разделом "Мои фотографии"!  
-Не стал искать готовых решений для такой простой задачи. Осваивать JS лучше на практике.  
+Не стал искать готовых решений для такой задачи. Осваивать JS лучше на практике.  
 Под катом код javascript и css.
 
 <a name="cut"></a>
@@ -70,8 +70,6 @@ links_in_new_tab: true
     let imgHeight = img.height;
     let bigImgHeight = Math.round(screenHeight * bigImgageScreenFraction);
     let bigImgWidth = Math.round(screenWidth * bigImgageScreenFraction);
-    console.log(bigImgHeight);
-    console.log(bigImgWidth);
     let ratio = imgWidth / imgHeight
     let newWidth = Math.round(bigImgHeight * ratio);
     if (newWidth < bigImgWidth)
