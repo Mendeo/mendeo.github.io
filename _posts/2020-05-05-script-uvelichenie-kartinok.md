@@ -2,7 +2,7 @@
 layout: post
 title: Сделал простой скрипт для увеличения картинок при клике на них
 date: 2020-05-05 11:52:00 +03
-modified: 2020-05-04 11:52:00 +03
+modified: 2020-05-05 11:52:00 +03
 categories: web javascript
 tags: [web, javascript, css]
 excerpt_separator: <a name="cut"></a>
