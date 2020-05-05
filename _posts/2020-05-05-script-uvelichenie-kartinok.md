@@ -82,7 +82,6 @@ links_in_new_tab: true
 		{
 			bigImgHeight = Math.round(bigImgWidth / ratio);
 		}
-		//Ограничение для очень широких изображений
 		let left = Math.round(0.5 * (screenWidth - bigImgWidth));
 		let top = Math.round(0.5 * (screenHeight - bigImgHeight));
 		img.style = `max-width: ${bigImgWidth}px; max-height: ${bigImgHeight}px; left: ${left}px; top: ${top}px; margin: auto; position: fixed; z-index: 2`;
