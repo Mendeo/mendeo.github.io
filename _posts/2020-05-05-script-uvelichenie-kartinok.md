@@ -2,20 +2,33 @@
 layout: post
 title: Сделал скрипт для увеличения картинок при клике на них
 date: 2020-05-05 11:52:00 +03
-modified: 2020-05-05 22:59:00 +03
+modified: 2020-05-05 23:49:00 +03
 categories: web javascript
 tags: [web, javascript, css]
 excerpt_separator: <a name="cut"></a>
 links_in_new_tab: true
+has_scalable_images: true
 ---
-За вчера и сегодня для своего сайта сделал небольшой скрипт. Теперь, если у тега "img" есть атрибут "scalable", то на картинку можно будет кликнуть, чтобы её увеличить. В значение атрибута "scalable" нужно задать размер маленькой картинки (с единицами измерения css). Это значение пойдёт в свойства css max-width и max-height изображения.  
+Вчера и сегодня делал небольшой скрипт для своего сайта. Сделал. Теперь, если у тега "img" есть атрибут "scalable", то на картинку можно будет кликнуть, чтобы её увеличить. В значение атрибута "scalable" нужно задать размер маленькой картинки (с единицами измерения css). Это значение пойдёт в свойства css max-width и max-height изображения.  
 Наконец можно будет заняться разделом "Мои фотографии"!  
 Не стал искать готовых решений для такой задачи. Осваивать JS лучше на практике.  
-Под катом код javascript с комментариями и css.
+Под катом код html, javascript с комментариями и css.
 
 <a name="cut"></a>
+**Посмотреть как это работает**  
+<img alt="Фото тюльпанов" src="/assets/photos/tulpan.jpg" scalable="150px">
+<img alt="Фото цветов айвы" src="/assets/photos/ajva.jpg" scalable="150px">
+
+**html**
+
+```html
+<img alt="Фото тюльпанов" src="/assets/photos/tulpan.jpg" scalable="150px">
+<img alt="Фото цветов айвы" src="/assets/photos/ajva.jpg" scalable="150px">
+```
+
 **JavaScript**  
 Обернём в function, чтобы вставить код прямо в html моего сайта и не портить глобальную область видимости.
+
 ```javascript
 (function()
 {
@@ -27,7 +40,8 @@ links_in_new_tab: true
   imgBg.style = 'background-color: rgba(48, 48, 48, 0.6); position: fixed; top: 0px; left: 0px; width: 100%; z-index: 1';
   imgBg.hidden = true;
   fillBg(); //Функция, которая растягивает серый фон по высоте на весь экран.
-  window.addEventListener('resize', fillBg); //Перерисовываем высоту серого фона при изменении размеров окна браузера.
+  //Перерисовываем высоту серого фона при изменении размеров окна браузера.
+  window.addEventListener('resize', fillBg);
   function fillBg()
   {
     imgBg.style.height = (document.documentElement.clientHeight + 100) + 'px';
@@ -46,30 +60,38 @@ links_in_new_tab: true
     {
       if (img.getAttribute('is-big') === 'true') //Картинка большая - уменьшаем
       {
-        img.style = `${defaultStyle}; position: fixed; left: ${coords.left}px; top: ${coords.top}px`; //Возвращаем уменьшенный размер, но position: fixed, т.к. нужно, чтобы при анимации уменьшения не смещались остальные элементы страницы.
+        //Возвращаем изображению уменьшенный размер.
+        //Но position остаётся fixed, т.к. нужно, чтобы при анимации уменьшения не смещались остальные элементы страницы.
+        img.style = `${defaultStyle}; position: fixed; left: ${coords.left}px; top: ${coords.top}px`;
         img.setAttribute('is-big', false);
         imgBg.hidden = true;
-        isGoingToSmall = true; //Отслеживаем конец анимации, чтобы убрать position:fixed и вернуть картнку в поток.
+        //Указываем, что мы собираемся уменьшить картинку.
+        //Эта переменная опять станет false, когда завершится анимация уменьшения.
+        isGoingToSmall = true;
       }
       else //Картинка маленькая - увеличиваем.
       {
         imgBg.hidden = false;
         img.setAttribute('is-big', true);
-        coords = img.getBoundingClientRect(); //Запоминаем координаты картинки перед увеличением.
+        //Запоминаем координаты картинки перед увеличением.
+        coords = img.getBoundingClientRect();
         //Перед тем как увеличить картинку вставляем вместо неё заглушку.
         placeholder.hidden = false;
         placeholder.style = `width: ${img.width}px; height: ${img.height}px; background-color: rgb(200, 200, 200)`;
         img.before(placeholder);
-        doImageBig(img); //Увеличиваем картинку.
+    //Увеличиваем картинку.
+        doImageBig(img);
       }
     });
     img.addEventListener('transitionend', () =>
     {
       if (isGoingToSmall) //Отследили завершение анимации уменьшения.
       {
-        img.style = defaultStyle; //Вставляем картинку обратно в поток.
+        //Вставляем картинку обратно в поток.
+        img.style = defaultStyle;
         isGoingToSmall = false;
-        placeholder.hidden = true; //Убираем заглушку
+       //Убираем заглушку.
+        placeholder.hidden = true;
       }
     }); 
     //Сохраняем центровку увеличенной картинки при изменении размеров окна браузера.

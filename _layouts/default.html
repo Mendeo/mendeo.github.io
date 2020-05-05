@@ -71,6 +71,7 @@
 				})();
 			</script>
 		{%- endif -%}
+		{%- if page.has_scalable_images -%}
 		<!-- Мой скрипт для увеличения картинок (у img должен быть атрибут scalable с начальным размером) -->
 		<script type="text/javascript">
 			(function()
@@ -160,5 +161,6 @@
 				}
 			})();
 		</script>
+		{%- endif -%}
 	</body>
 </html>

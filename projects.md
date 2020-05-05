@@ -1,6 +1,7 @@
 ---
 layout: page
 links_in_new_tab: true
+has_scalable_images: true
 ---
 # Мои проекты
 
