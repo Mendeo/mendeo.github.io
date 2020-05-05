@@ -70,17 +70,22 @@ links_in_new_tab: true
 		let imgHeight = img.height;
 		let bigImgHeight = Math.round(screenHeight * bigImgageScreenFraction);
 		let bigImgWidth = Math.round(screenWidth * bigImgageScreenFraction);
-		if (imgHeight > imgWidth)
+		console.log(bigImgHeight);
+		console.log(bigImgWidth);
+		let ratio = imgWidth / imgHeight
+		let newWidth = Math.round(bigImgHeight * ratio);
+		if (newWidth < bigImgWidth)
 		{
-			bigImgHeight = Math.round(bigImgWidth * imgHeight / imgWidth);
+			bigImgWidth = newWidth;
 		}
 		else
 		{
-			bigImgWidth = Math.round(bigImgHeight * imgWidth / imgHeight);
+			bigImgHeight = Math.round(bigImgWidth / ratio);
 		}
+		//Ограничение для очень широких изображений
 		let left = Math.round(0.5 * (screenWidth - bigImgWidth));
 		let top = Math.round(0.5 * (screenHeight - bigImgHeight));
-		img.style = `max-width: ${bigImgWidth}px; max-height: ${bigImgHeight}px; left: ${left}px; top: ${top}px; display:block; margin: auto; position: fixed; z-index: 2`;
+		img.style = `max-width: ${bigImgWidth}px; max-height: ${bigImgHeight}px; left: ${left}px; top: ${top}px; margin: auto; position: fixed; z-index: 2`;
 	}
 })();
 ```
@@ -91,7 +96,7 @@ links_in_new_tab: true
 img[scalable]
 {
 	cursor: pointer;
-	transition-property: max-width, max-height, left, top;
+	transition-property: max-width, max-height;
 	transition-duration: 0.3s;
 }
 ```
