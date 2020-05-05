@@ -84,15 +84,16 @@
 				imgBg.style = 'background-color: rgba(48, 48, 48, 0.6); position: fixed; top: 0px; left: 0px; width: 100%; z-index: 1';
 				imgBg.hidden = true;
 				fillBg(); //Функция, которая растягивает серый фон по высоте на весь экран.
-				window.addEventListener('resize', fillBg); //Перерисовываем высоту серого фона при изменении размеров окна браузера.
+				//Перерисовываем высоту серого фона при изменении размеров окна браузера.
+				window.addEventListener('resize', fillBg);
 				function fillBg()
 				{
 					imgBg.style.height = (document.documentElement.clientHeight + 100) + 'px';
 				}
 				
 				const bigImgageScreenFraction = 0.7; //Доля от размера экрана, которую будет занимать увеличенное изображение
-				let coords;
-				let placeholder = document.createElement('img'); //Заглушка для картинки. Появляется вместо картинки на том месте откуда она увеличилась
+				//Заглушка для картинки. Появляется вместо неё на том месте откуда она увеличилась.
+				let placeholder = document.createElement('img');
 				document.querySelectorAll('img[scalable]').forEach((img) =>
 				{
 					const smallSize = img.getAttribute('scalable');
@@ -103,30 +104,38 @@
 					{
 						if (img.getAttribute('is-big') === 'true') //Картинка большая - уменьшаем
 						{
-							img.style = `${defaultStyle}; position: fixed; left: ${coords.left}px; top: ${coords.top}px`; //Возвращаем уменьшенный размер, но position: fixed, т.к. нужно, чтобы при анимации уменьшения не смещались остальные элементы страницы.
+							//Смотрим по каким координатам надо вернуть картинку на место.
+							let coords = placeholder.getBoundingClientRect();
+							//Устанавливаем для изображения уменьшенный размер.
+							//Но position остаётся fixed, т.к. нужно, чтобы при анимации уменьшения не смещались остальные элементы страницы.
+							img.style = `${defaultStyle}; position: fixed; left: ${coords.left}px; top: ${coords.top}px`;
 							img.setAttribute('is-big', false);
 							imgBg.hidden = true;
-							isGoingToSmall = true; //Отслеживаем конец анимации, чтобы убрать position:fixed и вернуть картнку в поток.
+							//Указываем, что мы собираемся уменьшить картинку.
+							//Эта переменная опять станет false, когда завершится анимация уменьшения.
+							isGoingToSmall = true;
 						}
 						else //Картинка маленькая - увеличиваем.
 						{
 							imgBg.hidden = false;
 							img.setAttribute('is-big', true);
-							coords = img.getBoundingClientRect(); //Запоминаем координаты картинки перед увеличением.
 							//Перед тем как увеличить картинку вставляем вместо неё заглушку.
 							placeholder.hidden = false;
 							placeholder.style = `width: ${img.width}px; height: ${img.height}px; background-color: rgb(200, 200, 200)`;
 							img.before(placeholder);
-							doImageBig(img); //Увеличиваем картинку.
+					//Увеличиваем картинку.
+							doImageBig(img);
 						}
 					});
 					img.addEventListener('transitionend', () =>
 					{
 						if (isGoingToSmall) //Отследили завершение анимации уменьшения.
 						{
-							img.style = defaultStyle; //Вставляем картинку обратно в поток.
+							//Вставляем картинку обратно в поток.
+							img.style = defaultStyle;
 							isGoingToSmall = false;
-							placeholder.hidden = true; //Убираем заглушку
+						 //Убираем заглушку.
+							placeholder.hidden = true;
 						}
 					}); 
 					//Сохраняем центровку увеличенной картинки при изменении размеров окна браузера.

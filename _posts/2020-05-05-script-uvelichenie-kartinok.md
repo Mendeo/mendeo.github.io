@@ -2,7 +2,7 @@
 layout: post
 title: Сделал скрипт для увеличения картинок при клике на них
 date: 2020-05-05 11:52:00 +03
-modified: 2020-05-05 23:49:00 +03
+modified: 2020-05-06 00:05:00 +03
 categories: web javascript
 tags: [web, javascript, css]
 excerpt_separator: <a name="cut"></a>
@@ -48,8 +48,8 @@ has_scalable_images: true
   }
   
   const bigImgageScreenFraction = 0.7; //Доля от размера экрана, которую будет занимать увеличенное изображение
-  let coords;
-  let placeholder = document.createElement('img'); //Заглушка для картинки. Появляется вместо картинки на том месте откуда она увеличилась
+  //Заглушка для картинки. Появляется вместо неё на том месте откуда она увеличилась.
+  let placeholder = document.createElement('img');
   document.querySelectorAll('img[scalable]').forEach((img) =>
   {
     const smallSize = img.getAttribute('scalable');
@@ -60,7 +60,9 @@ has_scalable_images: true
     {
       if (img.getAttribute('is-big') === 'true') //Картинка большая - уменьшаем
       {
-        //Возвращаем изображению уменьшенный размер.
+        //Смотрим по каким координатам надо вернуть картинку на место.
+        let coords = placeholder.getBoundingClientRect();
+        //Устанавливаем для изображения уменьшенный размер.
         //Но position остаётся fixed, т.к. нужно, чтобы при анимации уменьшения не смещались остальные элементы страницы.
         img.style = `${defaultStyle}; position: fixed; left: ${coords.left}px; top: ${coords.top}px`;
         img.setAttribute('is-big', false);
@@ -73,8 +75,6 @@ has_scalable_images: true
       {
         imgBg.hidden = false;
         img.setAttribute('is-big', true);
-        //Запоминаем координаты картинки перед увеличением.
-        coords = img.getBoundingClientRect();
         //Перед тем как увеличить картинку вставляем вместо неё заглушку.
         placeholder.hidden = false;
         placeholder.style = `width: ${img.width}px; height: ${img.height}px; background-color: rgb(200, 200, 200)`;
