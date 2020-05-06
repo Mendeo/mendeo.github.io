@@ -2,7 +2,7 @@
 layout: post
 title: Сделал скрипт для увеличения картинок при клике на них
 date: 2020-05-05 11:52:00 +03
-modified: 2020-05-06 11:25:00 +03
+modified: 2020-05-06 11:30:00 +03
 categories: web javascript
 tags: [web, javascript, css]
 excerpt_separator: <a name="cut"></a>
@@ -88,7 +88,7 @@ has_scalable_images: true
         placeholder.hidden = false;
         placeholder.style = `width: ${img.width}px; height: ${img.height}px; background-color: rgb(200, 200, 200)`;
         img.before(placeholder);
-    //Увеличиваем картинку.
+        //Увеличиваем картинку.
         doImageBig(img);
       }
     });
@@ -99,7 +99,7 @@ has_scalable_images: true
         //Вставляем картинку обратно в поток.
         img.style = defaultStyle;
         isGoingToSmall = false;
-       //Убираем заглушку.
+        //Убираем заглушку.
         placeholder.hidden = true;
       }
     }); 
