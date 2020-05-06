@@ -2,7 +2,7 @@
 layout: post
 title: Сделал скрипт для увеличения картинок при клике на них
 date: 2020-05-05 11:52:00 +03
-modified: 2020-05-06 00:05:00 +03
+modified: 2020-05-06 11:25:00 +03
 categories: web javascript
 tags: [web, javascript, css]
 excerpt_separator: <a name="cut"></a>
@@ -47,7 +47,16 @@ has_scalable_images: true
     imgBg.style.height = (document.documentElement.clientHeight + 100) + 'px';
   }
   
-  const bigImgageScreenFraction = 0.7; //Доля от размера экрана, которую будет занимать увеличенное изображение
+  //Определяем долю от размера экрана, которую будет занимать увеличенное изображение
+  let bigImgageScreenFraction;
+  if (window.matchMedia('(max-width: 1080px)').matches) //Зашли с мобильного.
+  {
+    bigImgageScreenFraction = 1.0;
+  }
+  else //Зашли с компьютера.
+  {
+    bigImgageScreenFraction = 0.7;
+  }
   //Заглушка для картинки. Появляется вместо неё на том месте откуда она увеличилась.
   let placeholder = document.createElement('img');
   document.querySelectorAll('img[scalable]').forEach((img) =>

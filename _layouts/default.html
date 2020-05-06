@@ -91,7 +91,16 @@
 					imgBg.style.height = (document.documentElement.clientHeight + 100) + 'px';
 				}
 				
-				const bigImgageScreenFraction = 0.7; //Доля от размера экрана, которую будет занимать увеличенное изображение
+				//Определяем долю от размера экрана, которую будет занимать увеличенное изображение
+				let bigImgageScreenFraction;
+				if (window.matchMedia('(max-width: 1080px)').matches) //Зашли с мобильного.
+				{
+					bigImgageScreenFraction = 1.0;
+				}
+				else //Зашли с компьютера.
+				{
+					bigImgageScreenFraction = 0.7;
+				}
 				//Заглушка для картинки. Появляется вместо неё на том месте откуда она увеличилась.
 				let placeholder = document.createElement('img');
 				document.querySelectorAll('img[scalable]').forEach((img) =>
