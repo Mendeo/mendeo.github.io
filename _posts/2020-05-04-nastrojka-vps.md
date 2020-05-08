@@ -2,7 +2,7 @@
 layout: post
 title: Настройка VPS для проброса портов на домашний веб сервер
 date: 2020-05-04 18:43:00 +03
-modified: 2020-05-05 11:51:00 +03
+modified: 2020-05-08 12:41:00 +03
 categories: linux vps
 tags: [vps, iptables, проброс портов, linux]
 excerpt_separator: <a name="cut"></a>
@@ -104,7 +104,7 @@ iptables -A FORWARD -i $IF_EXT -o $IF_INT -m conntrack --ctstate ESTABLISHED,REL
 iptables -A FORWARD -m conntrack --ctstate NEW -i $IF_INT -o $IF_EXT -j ACCEPT #Allow initiate output connections #Разрешаем перенаправление нового исходящего соединения с внутреннего интерфейса PPTP клиента в интернет.
 
 iptables -A FORWARD -i $IF_INT -o $IF_EXT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-iptables -t nat -A POSTROUTING -o $IF_EXT -p tcp -j SNAT --to-source $IP_EXT #Разрешаем перенаправление уже созданных исходящих соединений с внутреннего интерфейса PPTP клиента в интернет.
+iptables -t nat -A POSTROUTING -o $IF_EXT -j SNAT --to-source $IP_EXT #Разрешаем перенаправление уже созданных исходящих соединений с внутреннего интерфейса PPTP клиента в интернет.
 
 iptables -P FORWARD DROP #Запрещаем любое другое перенаправление трафика.
 ```
