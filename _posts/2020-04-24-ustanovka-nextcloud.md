@@ -2,7 +2,7 @@
 layout: post
 title: Чистая установка nextcloud на raspberry pi
 date: 2020-04-24 14:20:00 +03
-modified: 2020-05-04 14:20:00 +03
+modified: 2020-05-10 17:29:00 +03
 categories: linux nextcloud
 tags: [nextcloud, nginx, php, raspberry pi, linux]
 excerpt_separator: <a name="cut"></a>
@@ -18,18 +18,18 @@ links_in_new_tab: true
 Часть работы была проделана с настройками в конфигурационных файлах. Выкладываю свои конфиги сюда. Подробно описывать не буду, можно сравнить с оригинальными конфигами и посмотреть в чём отличие от моих. Также не буду здесь описывать процедуру получения SSL от Let's encrypt. Предполагается, что у вас уже есть сертификат.
 
 **Конфиги**  
-[php.ini](/assets/posts/php.ini)  
-[nginx.conf](/assets/posts/nginx.conf)  
-[php-fpm.conf](/assets/posts/php-fpm.conf)  
-[redis.conf](/assets/posts/redis.conf)  
-[config.php](/assets/posts/config.php)  
+[php.ini](/assets/posts/ustanovka-nextcloud/php.ini)  
+[nginx.conf](/assets/posts/ustanovka-nextcloud/nginx.conf)  
+[php-fpm.conf](/assets/posts/ustanovka-nextcloud/php-fpm.conf)  
+[redis.conf](/assets/posts/ustanovka-nextcloud/redis.conf)  
+[config.php](/assets/posts/ustanovka-nextcloud/config.php)  
 
 **Systemd**  
-[nginx.service](/assets/posts/nginx.service)  
-[php-fpm.service](/assets/posts/php-fpm.service)  
-[redis.service](/assets/posts/redis.service)  
-[nextcloud-cron.service](/assets/posts/nextcloud-cron.service)  
-[nextcloud-cron.timer](/assets/posts/nextcloud-cron.timer)  
+[nginx.service](/assets/posts/ustanovka-nextcloud/nginx.service)  
+[php-fpm.service](/assets/posts/ustanovka-nextcloud/php-fpm.service)  
+[redis.service](/assets/posts/ustanovka-nextcloud/redis.service)  
+[nextcloud-cron.service](/assets/posts/ustanovka-nextcloud/nextcloud-cron.service)  
+[nextcloud-cron.timer](/assets/posts/ustanovka-nextcloud/nextcloud-cron.timer)  
 
 [Архив](https://download.nextcloud.com/server/releases/nextcloud-18.0.4.zip) Nextcloud был скачан с официального сайта. Под него был создан отдельный пользователь nextcloud. Файлы nextcloud были помещены в папку /home/nextcloud/www . Папка с пользовательскими данными: /home/nextcloud/data
 
