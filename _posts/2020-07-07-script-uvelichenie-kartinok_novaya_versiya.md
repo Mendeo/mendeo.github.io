@@ -2,7 +2,7 @@
 layout: post
 title: Улучшил скрипт для увеличения картинок при клике на них
 date: 2020-07-07 15:45:00 +03
-modified: 2020-07-07 15:45:00 +03
+modified: 2020-07-07 15:51:00 +03
 categories: web javascript
 tags: [web, javascript, css]
 excerpt_separator: <a name="cut"></a>
@@ -183,6 +183,6 @@ img[src-big]
 	cursor: pointer;
 	transition-property: width, height, left, top;
 	transition-duration: 0.3s;
-	background: url('images/load.png') no-repeat center;
+	background: url('assets/load.png') no-repeat center;
 }
 ```
