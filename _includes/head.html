@@ -21,7 +21,7 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/61731532" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
-<!-- Мой скрипт для подсчёта посетителей и перенаправки комментариев к постам в мой телеграм -->
+<!-- Мой скрипт для подсчёта посетителей -->
 <script type="text/javascript">
 	(function()
 	{
@@ -37,35 +37,5 @@
 			localStorage.setItem(COUNTED_STORAGE_NAME, 'true');
 			navigator.sendBeacon(MESSAGE_SERVER, JSON.stringify({counter: true}))
 		}
-		{%- if page.layout == "post" -%}
-			//Отправка оставленного комментария ко мне в телеграм.
-			VK.Observer.subscribe('widgets.comments.new_comment', (num, last_comment) =>
-			{
-				const error = 'Cannot resend message to telegram.'
-				const msg = 
-				{
-					text: last_comment,
-					num: num,
-					page: '{{ site.url }}{{ page.url }}',
-					vk: true
-				};
-				fetch(MESSAGE_SERVER,
-				{
-					method: 'POST',
-					headers:
-					{
-						'Content-Type': 'text/plain' //'application/json' - not work for wix site (wix send 403 for options requests)
-					},
-					body: JSON.stringify(msg)
-				}).then((res) => 
-				{
-					if (!res.ok) console.log(error);
-				}).catch((err) =>
-				{
-					console.log(error);
-					console.log(err);
-				});
-			});
-		{%- endif -%}
 	})();
 </script>
