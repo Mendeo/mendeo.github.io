@@ -72,7 +72,7 @@
 			</script>
 		{%- endif -%}
 		{%- if page.has_scalable_images -%}
-		<!-- Мой скрипт для увеличения картинок (у img должен быть атрибут scalable с начальным размером) -->
+		<!-- Мой скрипт для увеличения картинок (у img должен быть атрибут src-big с путём к большому изображению) -->
 		<script type="text/javascript">
 			(function()
 			{
@@ -103,58 +103,100 @@
 				}
 				//Заглушка для картинки. Появляется вместо неё на том месте откуда она увеличилась.
 				let placeholder = document.createElement('img');
-				document.querySelectorAll('img[scalable]').forEach((img) =>
+				let imgCache = new Map();
+				document.querySelectorAll('img[src-big]').forEach((img) =>
 				{
-					const smallSize = img.getAttribute('scalable');
-					let defaultStyle = `max-width: ${smallSize}; max-height: ${smallSize}`;
-					img.style = defaultStyle;
-					let isGoingToSmall = false;
-					img.addEventListener('click', () => 
+					img.smallSrc = img.src;
+					if (img.complete)
 					{
-						if (img.getAttribute('is-big') === 'true') //Картинка большая - уменьшаем
-						{
-							//Смотрим по каким координатам надо вернуть картинку на место.
-							let coords = placeholder.getBoundingClientRect();
-							//Устанавливаем для изображения уменьшенный размер.
-							//Но position остаётся fixed, т.к. нужно, чтобы при анимации уменьшения не смещались остальные элементы страницы.
-							img.style = `${defaultStyle}; position: fixed; left: ${coords.left}px; top: ${coords.top}px`;
-							img.setAttribute('is-big', false);
-							imgBg.hidden = true;
-							//Указываем, что мы собираемся уменьшить картинку.
-							//Эта переменная опять станет false, когда завершится анимация уменьшения.
-							isGoingToSmall = true;
-						}
-						else //Картинка маленькая - увеличиваем.
-						{
-							imgBg.hidden = false;
-							img.setAttribute('is-big', true);
-							//Перед тем как увеличить картинку вставляем вместо неё заглушку.
-							placeholder.hidden = false;
-							placeholder.style = `width: ${img.width}px; height: ${img.height}px; background-color: rgb(200, 200, 200)`;
-							img.before(placeholder);
-					//Увеличиваем картинку.
-							doImageBig(img);
-						}
-					});
-					img.addEventListener('transitionend', () =>
+						onFirstLoad();
+					}
+					else
 					{
-						if (isGoingToSmall) //Отследили завершение анимации уменьшения.
-						{
-							//Вставляем картинку обратно в поток.
-							img.style = defaultStyle;
-							isGoingToSmall = false;
-						 //Убираем заглушку.
-							placeholder.hidden = true;
-						}
-					}); 
-					//Сохраняем центровку увеличенной картинки при изменении размеров окна браузера.
-					window.addEventListener('resize', () => 
+						img.addEventListener('load', onFirstLoad);
+					}
+					function onFirstLoad()
 					{
-						if (img.getAttribute('is-big') === 'true') doImageBig(img);
-					});
+						img.removeEventListener('load', onFirstLoad);
+						let defaultStyle = `width: ${img.width}px; height: ${img.height}px`; //Устанавливаем фактические размеры маленькой картинки.
+						let isGoingToSmall = false;
+						function bigImageLoading()
+						{
+							img.bigSrcStatus = 'loaded';
+							imgCache.delete(img.getAttribute('src-big'));
+							img.removeEventListener('load', bigImageLoading);
+						}
+						img.addEventListener('click', () => 
+						{
+							if (img.isBig) //Картинка большая - уменьшаем
+							{
+								if (img.bigSrcStatus === 'loading') //Если картинка не загрузилась, то мы ставим старое маленькое изображение в источник.
+								{
+									img.bigSrcStatus = 'needReload';
+									if (!navigator.userAgent.includes('Firefox')) //В Firefox менять источник не нужно, т.к. он не кэширует недозагруженные изображения и одновременно не показывает background у них.
+									{
+										img.removeEventListener('load', bigImageLoading);
+										img.src = img.smallSrc;
+										//Для всех браузеров, кроме Firefox, продолжаем загрузку картинки в фоне (когда она маленькая). Если пользователь кликает по разным изображениям, то все эти изображения будут кэшироваться в Map'е imgCache.
+										let key = img.getAttribute('src-big');
+										if (!imgCache.has(key))
+										{
+											let auxImg = document.createElement('img');
+											auxImg.src = key
+											imgCache.set(key, auxImg);
+										}
+									}
+								}
+								//Смотрим по каким координатам надо вернуть картинку на место.
+								let coords = placeholder.getBoundingClientRect();
+								//Устанавливаем для изображения уменьшенный размер.
+								//Но position остаётся fixed, т.к. нужно, чтобы при анимации уменьшения не смещались остальные элементы страницы.
+								img.style = `${defaultStyle}; position: fixed; left: ${coords.left}px; top: ${coords.top}px`;
+								img.isBig = false;
+								imgBg.hidden = true;
+								//Указываем, что мы собираемся уменьшить картинку.
+								//Эта переменная опять станет false, когда завершится анимация уменьшения.
+								isGoingToSmall = true;
+							}
+							else //Картинка маленькая - увеличиваем.
+							{
+								imgBg.hidden = false;
+								img.isBig = true;
+								//Перед тем как увеличить картинку вставляем вместо неё заглушку.
+								placeholder.hidden = false;
+								placeholder.style = `width: ${img.width}px; height: ${img.height}px; background-color: rgb(200, 200, 200)`;
+								img.before(placeholder);
+								doImageBig(img);
+								if (img.bigSrcStatus !== 'loaded') //Проверяем, загружена ли уже полноразмерная картинка.
+								{
+									//В Firefox не нужно менять источник снова, если он уже был раньше изменён на большую картинку, иначе Firefox начнёт перезагружать картинку.
+									if (!(navigator.userAgent.includes('Firefox') && img.bigSrcStatus === 'needReload')) img.src = img.getAttribute('src-big'); //Загружаем большое изображение.
+									img.bigSrcStatus = 'loading';
+									img.addEventListener('load', bigImageLoading);
+								}
+							}
+						});
+						img.addEventListener('transitionend', () =>
+						{
+							if (isGoingToSmall) //Отследили завершение анимации уменьшения.
+							{
+								//Вставляем картинку обратно в поток.
+								img.style = defaultStyle;
+								isGoingToSmall = false;
+								//Убираем заглушку.
+								placeholder.hidden = true;
+							}
+						}); 
+						//Сохраняем центровку увеличенной картинки при изменении размеров окна браузера.
+						window.addEventListener('resize', () => 
+						{
+							if (img.IsBig) doImageBig(img);
+						});
+					}
 				});
 				
 				//Эта функция расчитывает размеры увеличенного изображения и центрирует его.
+				//Принимает параметр размера маленького изображения (ширина и высота), что вычислить соотношение сторон.
 				function doImageBig(img)
 				{
 					let screenHeight = document.documentElement.clientHeight;
@@ -175,7 +217,7 @@
 					}
 					let left = Math.round(0.5 * (screenWidth - bigImgWidth));
 					let top = Math.round(0.5 * (screenHeight - bigImgHeight));
-					img.style = `max-width: ${bigImgWidth}px; max-height: ${bigImgHeight}px; left: ${left}px; top: ${top}px; position: fixed; z-index: 2`;
+					img.style = `width: ${bigImgWidth}px; height: ${bigImgHeight}px; left: ${left}px; top: ${top}px; position: fixed; z-index: 2`;
 				}
 			})();
 		</script>
