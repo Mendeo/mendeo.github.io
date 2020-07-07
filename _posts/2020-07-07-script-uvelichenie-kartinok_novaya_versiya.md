@@ -2,7 +2,7 @@
 layout: post
 title: Улучшил скрипт для увеличения картинок при клике на них
 date: 2020-07-07 15:45:00 +03
-modified: 2020-07-07 15:51:00 +03
+modified: 2020-07-07 16:03:00 +03
 categories: web javascript
 tags: [web, javascript, css]
 excerpt_separator: <a name="cut"></a>
@@ -72,6 +72,7 @@ has_scalable_images: true
 		{
 			img.removeEventListener('load', onFirstLoad);
 			let defaultStyle = `width: ${img.width}px; height: ${img.height}px`; //Устанавливаем фактические размеры маленькой картинки.
+			img.style = defaultStyle; //Чтобы анимация работала при первом клике, нужно явно задать ширину и высоту для загруженной маленькой картинки.
 			let isGoingToSmall = false;
 			function bigImageLoading()
 			{

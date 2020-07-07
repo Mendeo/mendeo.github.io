@@ -119,6 +119,7 @@
 					{
 						img.removeEventListener('load', onFirstLoad);
 						let defaultStyle = `width: ${img.width}px; height: ${img.height}px`; //Устанавливаем фактические размеры маленькой картинки.
+						img.style = defaultStyle; //Чтобы анимация работала при первом клике, нужно явно задать ширину и высоту для загруженной маленькой картинки.
 						let isGoingToSmall = false;
 						function bigImageLoading()
 						{
