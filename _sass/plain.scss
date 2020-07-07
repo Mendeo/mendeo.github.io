@@ -9,11 +9,12 @@ $bigScreenW: 1600px;
 $leftWidth: 220px;
 
 /*Моя вставка (увеличитель изображений)*/
-img[scalable]
+img[src-big]
 {
 	cursor: pointer;
-	transition-property: max-width, max-height, left, top;
+	transition-property: width, height, left, top;
 	transition-duration: 0.3s;
+	background: url('images/load.png') no-repeat center;
 }
 
 *,

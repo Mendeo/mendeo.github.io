@@ -2,7 +2,7 @@
 layout: post
 title: Сделал скрипт для увеличения картинок при клике на них
 date: 2020-05-05 11:52:00 +03
-modified: 2020-07-07 12:30:00 +03
+modified: 2020-07-07 15:41:00 +03
 categories: web javascript
 tags: [web, javascript, css]
 excerpt_separator: <a name="cut"></a>
@@ -252,3 +252,11 @@ img[scalable]
 		}
 	})();
 </script>
+<style>
+	img[scalable]
+	{
+		cursor: pointer;
+		transition-property: max-width, max-height, left, top;
+		transition-duration: 0.3s;
+	}
+</style>
