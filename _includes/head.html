@@ -23,17 +23,13 @@
 
 <!-- Мой скрипт для подсчёта посетителей -->
 <script type="text/javascript">
+	const MESSAGE_SERVER = 'https://deorathemen.wixsite.com/messages/_functions/mendeo_msg'; //Устанавливаем эту переменную глобально.
 	(function()
 	{
 		'use strict';
-		const MESSAGE_SERVER = 'https://deorathemen.wixsite.com/messages/_functions/mendeo_msg';
 		const COUNTED_STORAGE_NAME = 'counted';
-		//let countedCookie = document.cookie.split(';').find(item => item.split('=')[0].trim() === COUNTED_COOKIE_NAME);
 		if (!localStorage.getItem(COUNTED_STORAGE_NAME))
 		{
-			//let expiresDate = new Date();
-			//expiresDate.setFullYear(expiresDate.getFullYear() + 30);
-			//document.cookie = `${COUNTED_COOKIE_NAME}=true; expires=${expiresDate.toUTCString()}`;
 			localStorage.setItem(COUNTED_STORAGE_NAME, 'true');
 			navigator.sendBeacon(MESSAGE_SERVER, JSON.stringify({counter: true}))
 		}
