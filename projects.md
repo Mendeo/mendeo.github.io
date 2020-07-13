@@ -26,15 +26,13 @@ has_scalable_images: true
 
 [thread.scad](/assets/projects/futlyar-dlya-obektiva/thread.scad)  
 [model.scad](/assets/projects/futlyar-dlya-obektiva/model.scad)  
-<img alt="Крышка" src = "/assets/projects/futlyar-dlya-obektiva/Gelios44-2-up.png" scalable="150px">
-<img alt="Нижняя часть" src = "/assets/projects/futlyar-dlya-obektiva/Gelios44-2-down.png" scalable="150px">
-
-<br>
+<img alt="Крышка" src-big="/assets/projects/futlyar-dlya-obektiva/Gelios44-2-up.png" src="/assets/projects/futlyar-dlya-obektiva/Gelios44-2-up_small.png">
+<img alt="Нижняя часть" src-big="/assets/projects/futlyar-dlya-obektiva/Gelios44-2-down.png" src="/assets/projects/futlyar-dlya-obektiva/Gelios44-2-down_small.png">  
 
 **Труба для отвода сифона (2018 г.)**  
 Отвод сифона в сторону, чтобы уместить посудомоечную машину под мойку.  
-<img alt="Изображение модели ракурс 1" src = "/assets/projects/kitchen-sink-draining/KitchenSinkDraining1.png" scalable="150px">
-<img alt="Изображение модели ракурс 2" src = "/assets/projects/kitchen-sink-draining/KitchenSinkDraining2.png" scalable="150px">  
+<img alt="Изображение модели ракурс 1" src-big="/assets/projects/kitchen-sink-draining/KitchenSinkDraining1.png" src="/assets/projects/kitchen-sink-draining/KitchenSinkDraining1_small.png">
+<img alt="Изображение модели ракурс 2" src-big="/assets/projects/kitchen-sink-draining/KitchenSinkDraining2.png" src="/assets/projects/kitchen-sink-draining/KitchenSinkDraining2_small.png">  
 [3dtoday](https://3dtoday.ru/3d-models/for-home/kitchen/truba_dlya_otvoda_sifona)
 
 ---
