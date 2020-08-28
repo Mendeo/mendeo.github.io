@@ -12,7 +12,7 @@ has_scalable_images: true
 1. **csv-to-js-parser (2020 г.)**  
 Модуль для node js. Конвертирование csv файлов в массив JavaScript объектов и обратно. Может проводить группировку входных данных.  
 [npm](https://www.npmjs.com/package/csv-to-js-parser), [GitHub](https://github.com/Mendeo/csv-to-js-parser), [Блог]({%- post_url 2020-04-10-csv-to-js-parser -%})  
-1. **Увеличение и листание изображений (2020 г.)**  
+1. **Увеличение и листание изображений на веб странице (галерея) (2020 г.)**  
 Скрипт позволяет увеличивать изображение на веб странице, при клике на него и листать имеющиеся на странице изображения. Разработал для создания галереи на своём сайте.  
 Последняя версия скрипта на [GitHub](https://github.com/Mendeo/image_enlarger)  
 Статьи в моём блоге про старые версии скрипта [здесь]({%- post_url 2020-05-05-script-uvelichenie-kartinok -%}) и [здесь]({%- post_url 2020-07-07-script-uvelichenie-kartinok_novaya_versiya -%})  
