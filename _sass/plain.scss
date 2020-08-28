@@ -13,9 +13,60 @@ img[src-big]
 {
 	cursor: pointer;
 	transition-property: width, height, left, top;
-	transition-duration: 0.3s;
 	background: url('/assets/load.png') no-repeat center;
 }
+
+.image-enlager-animation-normal
+{
+	transition-duration: 0.3s;
+}
+
+.image-enlager-animation-fast
+{
+	transition-duration: 0.001s;
+}
+
+.image-enlager-arrow
+{
+	background-color: rgba(0, 0, 0, 0);
+	position: fixed;
+	top: 0px;
+	width: 30%;
+	z-index: 3;
+}
+
+.image-enlager-arrow:hover
+{
+	cursor: pointer;
+}
+
+.image-enlager-left-arrow:hover
+{
+	background: url('/assets/left-arrow.svg') no-repeat left;
+	background-color: rgba(48, 48, 48, 0.0);
+}
+
+.image-enlager-right-arrow:hover
+{
+	background: url('/assets/right-arrow.svg') no-repeat right;
+	background-color: rgba(48, 48, 48, 0.0);
+}
+
+.image-enlager-background
+{
+	background-color: rgba(48, 48, 48, 0.6);
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	z-index: 1;
+}
+
+.image-enlager-placeholder
+{
+	background-color: rgb(200, 200, 200);
+}
+/****************************************/
 
 *,
 *:before,
