@@ -151,10 +151,28 @@
 							if (img.isBig) //Картинка большая - уменьшаем
 							{
 								doImageSmall();
+								//Восстанавливаем стрелки перелистывания, если картинка уменьшилась.
+								if (img.index === 0)
+								{
+									showLeftArrow();
+								}
+								else if (img.index === imgs.length - 1)
+								{
+									showRightArrow();
+								}
 							}
 							else //Картинка маленькая - увеличиваем.
 							{
 								doImageBig();
+								//Убираем соответствующие стрелки перелистывания, если кликнули по первой или последней картинке.
+								if (img.index === 0)
+								{
+									hideLeftArrow();
+								}
+								else if (img.index === imgs.length - 1)
+								{
+									hideRightArrow();
+								}
 							}
 						});
 						img.addEventListener('transitionend', () =>
@@ -274,6 +292,11 @@
 						currentBigImg.className = 'image-enlager-animation-fast';
 						doImageSmall(); //Увеличивать новое изображение будем после уменьшения старого.
 						currentBigImg = imgs[currentBigImg.index - 1];
+						
+						//Долистали до первого изображения - убираем левую стрелку.
+						if (currentBigImg.index === 0) hideLeftArrow();
+						//Перелистнули с последнего изображения влево - возвращаем правую стрелку.
+						if (currentBigImg.index === imgs.length - 2) showRightArrow();
 					}
 				});
 				imgRightArrow.addEventListener('click', () =>
@@ -284,8 +307,30 @@
 						currentBigImg.className = 'image-enlager-animation-fast';
 						doImageSmall(); //Увеличивать новое изображение будем после уменьшения старого.
 						currentBigImg = imgs[currentBigImg.index + 1];
+
+						//Долистали до последнего изображения - убираем правую стрелку.
+						if (currentBigImg.index === imgs.length - 1) hideRightArrow();
+						//Перелестнули вправо с первого изображения - возвращаем левую стрелку.
+						if (currentBigImg.index === 1) showLeftArrow();
 					}
 				});
+				
+				function showLeftArrow()
+				{
+					imgLeftArrow.classList.remove('image-enlager-no-arrows');
+				}
+				function hideLeftArrow()
+				{
+					imgLeftArrow.classList.add('image-enlager-no-arrows');
+				}
+				function showRightArrow()
+				{
+					imgRightArrow.classList.remove('image-enlager-no-arrows');
+				}
+				function hideRightArrow()
+				{
+					imgRightArrow.classList.add('image-enlager-no-arrows');
+				}
 			})();
 		</script>
 		{%- endif -%}
