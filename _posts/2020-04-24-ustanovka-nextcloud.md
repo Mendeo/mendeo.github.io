@@ -2,7 +2,7 @@
 layout: post
 title: Чистая установка nextcloud на raspberry pi
 date: 2020-04-24 14:20:00 +03
-modified: 2020-08-31 15:21:00 +03
+modified: 2020-08-31 16:24:00 +03
 categories: linux nextcloud
 tags: [nextcloud, nginx, php, raspberry pi, linux]
 excerpt_separator: <a name="cut"></a>
@@ -55,7 +55,7 @@ sudo apt install libxslt1-dev
 Конфигурирование
 
 ```bash
-./configure --enable-bcmath --with-threads --with-http_stub_status_module --with-http_ssl_module --sbin-path=/usr/local/bin --with-http_v2_module --with-http_xslt_module --with-http_gunzip_module --with-http_gzip_static_module --with-pcre=../pcre-8.44 --with-pcre-jit --error-log-path=/usr/local/var/log/nginx-error.log --http-log-path=/usr/local/var/log/nginx-access.log --pid-path=/usr/local/var/log/nginx.pid --lock-path=/usr/local/var/log/nginx.lock
+./configure --with-threads --with-http_stub_status_module --with-http_ssl_module --sbin-path=/usr/local/bin --with-http_v2_module --with-http_xslt_module --with-http_gunzip_module --with-http_gzip_static_module --with-pcre=../pcre-8.44 --with-pcre-jit --error-log-path=/usr/local/var/log/nginx-error.log --http-log-path=/usr/local/var/log/nginx-access.log --pid-path=/usr/local/var/log/nginx.pid --lock-path=/usr/local/var/log/nginx.lock
 ```
 
 ## Сборка php
@@ -91,7 +91,7 @@ sudo apt install libonig-dev
 Конфигурирование
 
 ```bash
-./configure --enable-fpm --with-fpm-systemd --with-openssl --with-zlib --with-curl --with-bz2 --enable-exif --enable-ftp --with-openssl-dir --with-gmp --with-mhash --with-imap --with-imap-ssl --enable-intl --with-ldap --enable-mbstring --enable-pcntl --with-pdo-pgsql=/usr/local/pgsql --with-pgsql=/usr/local/pgsql --with-kerberos --with-zip --with-xsl --enable-soap --with-pear --enable-gd --with-webp --with-jpeg --with-xpm --with-freetype --enable-gd-jis-conv
+./configure --enable-bcmath --enable-fpm --with-fpm-systemd --with-openssl --with-zlib --with-curl --with-bz2 --enable-exif --enable-ftp --with-openssl-dir --with-gmp --with-mhash --with-imap --with-imap-ssl --enable-intl --with-ldap --enable-mbstring --enable-pcntl --with-pdo-pgsql=/usr/local/pgsql --with-pgsql=/usr/local/pgsql --with-kerberos --with-zip --with-xsl --enable-soap --with-pear --enable-gd --with-webp --with-jpeg --with-xpm --with-freetype --enable-gd-jis-conv
 ```
 
 **При выполнении checkinstall на установке PEAR вылетала ошибка пришлось установить вручную. Чтобы с этим не заморачиваться можно PEAR не ставить, НО тогда будет нельзя поставить сторониие модули PHP, такие как apcu и redis, которые используются для кэширования в nextcloud.**
