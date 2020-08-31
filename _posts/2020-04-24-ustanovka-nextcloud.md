@@ -2,7 +2,7 @@
 layout: post
 title: Чистая установка nextcloud на raspberry pi
 date: 2020-04-24 14:20:00 +03
-modified: 2020-05-10 18:30:00 +03
+modified: 2020-08-31 15:21:00 +03
 categories: linux nextcloud
 tags: [nextcloud, nginx, php, raspberry pi, linux]
 excerpt_separator: <a name="cut"></a>
@@ -55,7 +55,7 @@ sudo apt install libxslt1-dev
 Конфигурирование
 
 ```bash
-./configure --with-threads --with-http_stub_status_module --with-http_ssl_module --sbin-path=/usr/local/bin --with-http_v2_module --with-http_xslt_module --with-http_gunzip_module --with-http_gzip_static_module --with-pcre=../pcre-8.44 --with-pcre-jit --error-log-path=/usr/local/var/log/nginx-error.log --http-log-path=/usr/local/var/log/nginx-access.log --pid-path=/usr/local/var/log/nginx.pid --lock-path=/usr/local/var/log/nginx.lock
+./configure --enable-bcmath --with-threads --with-http_stub_status_module --with-http_ssl_module --sbin-path=/usr/local/bin --with-http_v2_module --with-http_xslt_module --with-http_gunzip_module --with-http_gzip_static_module --with-pcre=../pcre-8.44 --with-pcre-jit --error-log-path=/usr/local/var/log/nginx-error.log --http-log-path=/usr/local/var/log/nginx-access.log --pid-path=/usr/local/var/log/nginx.pid --lock-path=/usr/local/var/log/nginx.lock
 ```
 
 ## Сборка php
