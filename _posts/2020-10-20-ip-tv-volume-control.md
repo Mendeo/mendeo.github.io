@@ -2,7 +2,7 @@
 layout: post
 title: Дистанционное управление громкостью IP TV приставки при помощи Atiny13A
 date: 2020-10-20 22:44:00 +03
-modified: 2020-10-21 00:37:00 +03
+modified: 2020-10-21 00:51:00 +03
 categories: Atiny13A
 tags: [Atiny13A, C++, Ростелеком, IP TV, Громкость]
 excerpt_separator: <a name="cut"></a>
@@ -233,6 +233,8 @@ uint8_t incrementCounter() //Если паттерн получен полнос
 <img alt="Вид снизу" src-big="/assets/posts/ip-tv-volume-control/big/down.jpg" src="/assets/posts/ip-tv-volume-control/small/down.jpg">
 
 Опыта разводки и изготовления печатных плат у меня очень мало, поэтому, конечно, я накосячил и перепутал контакты ИК-приёмника. Хорошо, что GND посередине, получилось просто развернуть сам приёмник. Исходник уже поправил. И да smd резистора на 100 Ом я у себя не нашёл, решил временно поставить обычный.
+
+От изготовления корпуса для устройства пока отказался, просто покрыл плату акриловым лаком.
 
 Ну и видео работы:
 <iframe width="800" height="450" src="https://www.youtube.com/embed/SDtLFTL7X1c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
