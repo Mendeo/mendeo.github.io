@@ -111,13 +111,18 @@
 				
 				//Определяем долю от размера экрана, которую будет занимать увеличенное изображение
 				let bigImgageScreenFraction;
-				if (window.matchMedia('(max-width: 1080px)').matches) //Зашли с мобильного.
+				setImageScreenFraction();
+				window.addEventListener('resize', setImageScreenFraction);
+				function setImageScreenFraction()
 				{
-					bigImgageScreenFraction = 1.0;
-				}
-				else //Зашли с компьютера.
-				{
-					bigImgageScreenFraction = 0.7;
+					if (window.matchMedia('(max-width: 1080px)').matches) //Зашли с мобильного.
+					{
+						bigImgageScreenFraction = 1.0;
+					}
+					else //Зашли с компьютера.
+					{
+						bigImgageScreenFraction = 0.7;
+					}
 				}
 				//Заглушка для картинки. Появляется вместо неё на том месте откуда она увеличилась.
 				let placeholder = document.createElement('img');
@@ -203,7 +208,7 @@
 					if (currentBigImg.bigSrcStatus === 'loading') //Если картинка не загрузилась, то мы ставим старое маленькое изображение в источник.
 					{
 						currentBigImg.bigSrcStatus = 'needReload';
-						//В Хроме мы пока большая картинка не загрузилась, то отображается background. Поэтому если мы уменьшаем картинку, нужно вернуть источник на маленьккую картинку.
+						//В Хроме пока большая картинка не загрузилась, то отображается background. Поэтому если мы уменьшаем картинку, нужно вернуть источник на маленьккую картинку.
 						//В Firefox менять источник не нужно, т.к. он не кэширует недозагруженные изображения и одновременно не показывает background у них.
 						if (!navigator.userAgent.includes('Firefox'))
 						{
