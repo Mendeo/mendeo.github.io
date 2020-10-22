@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Дистанционное управление громкостью IP TV приставки при помощи Atiny13A
+title: Дистанционное управление громкостью IP TV приставки при помощи Attiny13A
 date: 2020-10-20 22:44:00 +03
-modified: 2020-10-22 14:31:00 +03
+modified: 2020-10-22 14:58:00 +03
 categories: Atiny13A
 tags: [Atiny13A, C++, Ростелеком, IP TV, Громкость]
 excerpt_separator: <a name="cut"></a>
