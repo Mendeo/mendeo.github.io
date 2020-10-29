@@ -15,22 +15,22 @@
 				<ul class="social">
 					{%- if site.plainwhite.social_links.github -%}
 					<li>
-						<a href="https://github.com/{{ site.plainwhite.social_links.github }}" target="_blank" class="icon-github-circled"></a>
+						<a href="https://github.com/{{ site.plainwhite.social_links.github }}" target="_blank" rel="noopener" class="icon-github-circled"></a>
 					</li>
 					{%- endif -%}
 					{%- if site.plainwhite.social_links.vk -%}
 					<li>
-						<a href="https://vk.com/{{ site.plainwhite.social_links.vk }}" target="_blank" class="icon-vk"></a>
+						<a href="https://vk.com/{{ site.plainwhite.social_links.vk }}" target="_blank" rel="noopener" class="icon-vk"></a>
 					</li>
 					{%- endif -%}
 					{%- if site.plainwhite.social_links.facebook -%}
 					<li>
-						<a href="https://facebook.com/{{ site.plainwhite.social_links.facebook }}" target="_blank" class="icon-facebook"></a>
+						<a href="https://facebook.com/{{ site.plainwhite.social_links.facebook }}" target="_blank" rel="noopener" class="icon-facebook"></a>
 					</li>
 					{%- endif -%}
 					{%- if site.plainwhite.social_links.instagram -%}
 					<li>
-						<a href="https://instagram.com/{{ site.plainwhite.social_links.instagram }}" target="_blank" class="icon-instagram"></a>
+						<a href="https://instagram.com/{{ site.plainwhite.social_links.instagram }}" target="_blank" rel="noopener" class="icon-instagram"></a>
 					</li>
 					{%- endif -%}
 				</ul>
@@ -67,7 +67,11 @@
 				{
 					'use strict';
 					let links = document.querySelectorAll('.post a');
-					links.forEach((link) => link.target = '_blank');
+					links.forEach((link) =>
+					{
+						link.target = '_blank';
+						link.rel = 'noopener';
+					});
 				})();
 			</script>
 		{%- endif -%}
