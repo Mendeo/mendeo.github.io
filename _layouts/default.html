@@ -356,6 +356,7 @@
 				d.setUTCMilliseconds(0);
 				let timer = document.createElement('span');
 				document.getElementsByTagName('body')[0].appendChild(timer);
+				timer.style = 'display: flex; justify-content: right';
 				showTime();
 				
 				function showTime()
@@ -370,27 +371,20 @@
 					let seconds = Math.floor((diff - aux) / 1000);
 					aux += seconds * 1000;
 					let millis = diff - aux;
-					timer.innerHTML = `${days} дней, ${hours} часов, ${minutes} минут, ${seconds} ${secondsName(seconds)}.`;
+					timer.innerHTML = `${days} дней, ${hours} ${name("часов", hours)}, ${minutes} ${name("минут", minutes)}, ${seconds} ${name("секунд", seconds)}`;
 					millis++;
 					//console.log(millis + ' ' + `${days} дней, ${hours} часов, ${minutes} минут, ${seconds} ${secondsName(seconds)}`);
 					setTimeout(showTime, millis);
 				}
 				
-				function prepare(n)
+				function name(start, n)
 				{
-					if (n >= 100) throw new Error('n must be lower then 100');
-					if (n >= 10) n -= Math.floor(n / 10) * 10;
-					return n;
-				}
-				
-				function secondsName(s)
-				{
-					let start = 'секунд';
 					let end = '';
-					if (!(s >= 10 && s <= 20))
+					if (!(n >= 10 && n <= 20))
 					{
-						s = prepare(s);
-						switch(s)
+						if (n >= 100) throw new Error('n must be lower then 100');
+						if (n >= 10) n -= Math.floor(n / 10) * 10;
+						switch(n)
 						{
 							case 0: case 6: case 7: case 8: case 9:
 								break;
