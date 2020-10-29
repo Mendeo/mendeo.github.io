@@ -373,7 +373,6 @@
 					let millis = diff - aux;
 					timer.innerHTML = `${days} дней, ${hours} ${name("часов", hours)}, ${minutes} ${name("минут", minutes)}, ${seconds} ${name("секунд", seconds)}`;
 					millis++;
-					//console.log(millis + ' ' + `${days} дней, ${hours} часов, ${minutes} минут, ${seconds} ${secondsName(seconds)}`);
 					setTimeout(showTime, millis);
 				}
 				
