@@ -66,31 +66,31 @@ layout: default
 				let seconds = Math.floor((diff - aux) / 1000);
 				aux += seconds * 1000;
 				let millis = diff - aux;
-				timer.innerHTML = `${days} дней, ${hours} ${name("часов", hours)}, ${minutes} ${name("минут", minutes)}, ${seconds} ${name("секунд", seconds)}`;
+				timer.innerHTML = `${days} дней, ${hours} ${name(['часов', 'час', 'часа'], hours)}, ${minutes} ${name(['минут', 'минута', 'минуты'], minutes)}, ${seconds} ${name(['секунд', 'секунда', 'секунды'], seconds)}`;
 				millis++;
 				setTimeout(showTime, millis);
 			}
 			
-			function name(start, n)
+			function name(words, n)
 			{
-				let end = '';
-				if (!(n >= 10 && n <= 20))
+				if (n >= 100) throw new Error('n must be lower then 100');
+				if (n >= 10 && n <= 20)
 				{
-					if (n >= 100) throw new Error('n must be lower then 100');
+					return words[0];
+				}
+				else
+				{
 					if (n >= 10) n -= Math.floor(n / 10) * 10;
 					switch(n)
 					{
-						case 0: case 6: case 7: case 8: case 9:
-							break;
+						case 0: case 5: case 6: case 7: case 8: case 9:
+							return words[0];
 						case 1:
-							end = 'а';
-							break;
+							return words[1];
 						case 2: case 3: case 4:
-							end = 'ы';
-							break;
+							return words[2];
 					}
 				}
-				return start + end;
 			}
 		})();
 	</script>
