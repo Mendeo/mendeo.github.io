@@ -49,9 +49,11 @@ layout: default
 			d.setUTCMinutes(34);
 			d.setUTCSeconds(38);
 			d.setUTCMilliseconds(0);
-			let timer = document.createElement('span');
-			document.getElementsByTagName('body')[0].appendChild(timer);
-			timer.style = 'display: flex; justify-content: right';
+			const container = document.createElement('div');
+			const timer = document.createElement('span');
+			container.appendChild(timer);
+			document.getElementsByTagName('body')[0].appendChild(container);
+			container.style = 'text-align:right;';
 			showTime();
 			
 			function showTime()
