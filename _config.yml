@@ -7,7 +7,6 @@ collections:
 
 #Мои настройки
 mendeo:
-  #avatar: https://sun9-60.userapi.com/c849428/v849428750/96397/8SZpPmI9z_g.jpg
   avatar: /assets/avatar.jpg
   feed: true
 
@@ -51,6 +50,8 @@ plainwhite:
       url: "/projects.html"
     - title: Мои фотографии
       url: "/photo.html"
+    - title: Список всех статей
+      url: "/contents.html"
 
   # generate social links in footer
   social_links:
