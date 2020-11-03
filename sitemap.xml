@@ -19,11 +19,6 @@ layout: null
 			<priority>1.00</priority>
 		</url>
 		{%- endfor -%}
-		<url>
-			<loc>{{ site.url }}{{"/about.html" | relative_url}}</loc>
-			<lastmod>{{ "now" | date_to_xmlschema }}</lastmod>
-			<priority>1.00</priority>
-		</url>
 		{%- for post in site.posts -%}
 			<url>
 				<loc>{{ site.url }}{{ post.url }}</loc>
