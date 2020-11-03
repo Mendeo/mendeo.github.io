@@ -193,6 +193,18 @@ main
 	padding-bottom: 1rem;
 }
 
+/*Моя вставка стиль для оглаления*/
+.post-categories-contents 
+{
+	list-style-type: none;
+	li
+	{
+		font-size: 0.8rem;
+		float: left;
+		margin-right: 2rem;
+	}
+}
+
 .post-categories
 {
 	list-style-type: none;
@@ -234,6 +246,14 @@ main
 		}
 	}
 }
+
+/*Моя вставка стиль для оглаления*/
+.post-meta-contents
+{
+	@extend .post-meta;
+	margin-bottom: 1rem;
+}
+
 .post-link
 {
 	text-decoration: none;

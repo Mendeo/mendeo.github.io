@@ -44,14 +44,19 @@ plainwhite:
   navigation:
     - title: Обо мне
       url: "/about.html"
+      modified: 2020-11-03 14:44:00 +03
     - title: Научная деятельность
       url: "/scientist.html"
+      modified: 2020-11-03 14:44:00 +03
     - title: Мои проекты
       url: "/projects.html"
+      modified: 2020-11-03 14:44:00 +03
     - title: Мои фотографии
       url: "/photo.html"
+      modified: 2020-11-03 14:44:00 +03
     - title: Список всех статей
       url: "/contents.html"
+      modified: 2020-11-03 14:44:00 +03
 
   # generate social links in footer
   social_links:
