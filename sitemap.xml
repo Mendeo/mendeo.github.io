@@ -15,17 +15,21 @@ layout: null
 		{%- for link in site.plainwhite.navigation -%}
 		<url>
 			<loc>{{ site.url }}{{link.url | relative_url}}</loc>
+			{%- if link.url == "/contents.html" -%}
+			<lastmod>{{ site.posts.first.date | date_to_xmlschema }}</lastmod>
+			{%- else -%}
 			<lastmod>{{ link.modified | date_to_xmlschema }}</lastmod>
+			{%- endif -%}
 			<priority>1.00</priority>
 		</url>
 		{%- endfor -%}
 		{%- for post in site.posts -%}
-			<url>
-				<loc>{{ site.url }}{{ post.url }}</loc>
-				<lastmod>{{ post.modified | date_to_xmlschema }}</lastmod>
-				<changefreq>weekly</changefreq>
-				<priority>0.80</priority>
-			</url>
+		<url>
+			<loc>{{ site.url }}{{ post.url }}</loc>
+			<lastmod>{{ post.modified | date_to_xmlschema }}</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.80</priority>
+		</url>
 		{%- endfor -%}
 	</urlset>
 {%- endif -%}

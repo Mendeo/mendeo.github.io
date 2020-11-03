@@ -56,7 +56,6 @@ plainwhite:
       modified: 2020-11-03 14:44:00 +03
     - title: Список всех статей
       url: "/contents.html"
-      modified: 2020-11-03 14:44:00 +03
 
   # generate social links in footer
   social_links:
