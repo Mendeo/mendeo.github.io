@@ -2,7 +2,7 @@
 layout: post
 title: Настройка VPS для проброса портов на домашний веб сервер
 date: 2020-05-04 18:43:00 +03
-modified: 2020-11-06 16:26:00 +03
+modified: 2020-11-06 16:34:00 +03
 categories: linux vps
 tags: [vps, iptables, проброс портов, linux]
 excerpt_separator: <a name="cut"></a>
@@ -71,7 +71,7 @@ mru 1420
 ifconfig $1 mtu 1420
 ```
 
-Если этого не сделать, то у меня будут постоянные обрывы соединения.
+Возможно я что-то напутал, однако после этих настроек у меня прекратились постоянные обрывы соединения.
 
 В файле /etc/ppp/chap-secrets указывается логин и пароль для подключения клиентов VPN.
 
@@ -173,7 +173,7 @@ require-mppe-128
 **/etc/ppp/peers/vps**
 
 ```bash
-pty "pptp <ip VPS> --nolaunchpppd"
+pty "pptp <ip VPS> --nolaunchpppd --timeout 0.1 --loglevel 0"
 name "<логин>"
 remotename pptp
 require-mppe-128
