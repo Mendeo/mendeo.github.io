@@ -2,7 +2,7 @@
 layout: post
 title: Дистанционное управление громкостью IP TV приставки при помощи Attiny13A
 date: 2020-10-20 22:44:00 +03
-modified: 2020-10-22 14:58:00 +03
+modified: 2020-11-11 20:36:00 +03
 categories: Atiny13A
 tags: [Atiny13A, C++, Ростелеком, IP TV, Громкость]
 excerpt_separator: <a name="cut"></a>
@@ -237,5 +237,22 @@ uint8_t incrementCounter() //Если паттерн получен полнос
 От изготовления корпуса для устройства пока отказался, просто покрыл плату акриловым лаком.
 
 Ну и видео работы:
-<iframe width="800" height="450" src="https://www.youtube.com/embed/SDtLFTL7X1c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe id="youtube_video" src="https://www.youtube.com/embed/SDtLFTL7X1c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<script type="text/javascript">
+	(function()
+	{
+		const element = document.getElementById('youtube_video');
+		let width = document.documentElement.clientWidth;
+		if (window.matchMedia('(max-width: 768px)').matches) 
+		{
+			width *= 0.85; //Зашли с телефона.
+		}
+		else
+		{
+			width *= 0.314; //Зашли с компьютера.
+		}
+		element.style.width = width + 'px';
+		element.style.height = width * 9 / 16 + 'px';
+	})();
+</script>
 
