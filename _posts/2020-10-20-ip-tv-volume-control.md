@@ -8,6 +8,7 @@ tags: [Atiny13A, C++, Ростелеком, IP TV, Громкость]
 excerpt_separator: <a name="cut"></a>
 links_in_new_tab: true
 has_scalable_images: true
+has_video: true
 ---
 
 
@@ -237,28 +238,5 @@ uint8_t incrementCounter() //Если паттерн получен полнос
 От изготовления корпуса для устройства пока отказался, просто покрыл плату акриловым лаком.
 
 Ну и видео работы:
-<iframe id="youtube_video" src="https://www.youtube.com/embed/SDtLFTL7X1c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<script type="text/javascript">
-	(function()
-	{
-		const video = document.getElementById('youtube_video');
-		const parent = video.parentNode;
-		resize();
-		window.addEventListener('resize', resize);
-		function resize()
-		{
-			let width = parent.clientWidth;
-			if (window.matchMedia('(max-width: 768px)').matches) 
-			{
-				width *= 1; //Зашли с телефона.
-			}
-			else
-			{
-				width *= 0.8; //Зашли с компьютера.
-			}
-			video.style.width = width + 'px';
-			video.style.height = width * 9 / 16 + 'px';
-		}
-	})();
-</script>
+<iframe class="video" src="https://www.youtube.com/embed/SDtLFTL7X1c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
