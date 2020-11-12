@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
-<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<link rel="stylesheet" href="{% link assets/css/style.scss %}">
 <link rel="alternate" href="{{ '/feed.xml' | absolute_url }}" type="application/atom+xml" title="Mendeo RSS">
 {% seo %}
 
@@ -22,4 +22,4 @@
 <!-- /Yandex.Metrika counter -->
 
 <!-- Мой скрипт для подсчёта посетителей -->
-<script type="text/javascript" src="/scripts/counter.js"></script>
+<script type="text/javascript" src="{% link scripts/counter.js %}"></script>

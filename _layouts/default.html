@@ -61,13 +61,13 @@
 			</section>
 		</main>
 		{%- if page.links_in_new_tab -%}
-		<script type="text/javascript" src="/scripts/linksInNewTab.js"></script>
+		<script type="text/javascript" src="{% link scripts/linksInNewTab.js %}"></script>
 		{%- endif -%}
 		{%- if page.has_scalable_images -%}
-		<script type="text/javascript" src="/scripts/imageEnlager.js"></script>
+		<script type="text/javascript" src="{% link scripts/imageEnlager.js %}"></script>
 		{%- endif -%}
 		{%- if page.has_video -%}
-		<script type="text/javascript" src="/scripts/setVideoSize.js"></script>
+		<script type="text/javascript" src="{% link scripts/setVideoSize.js %}"></script>
 		{%- endif -%}		
 	</body>
 </html>
