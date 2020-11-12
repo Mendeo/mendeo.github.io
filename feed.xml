@@ -4,7 +4,7 @@ layout: null
 {%- if site.mendeo.feed -%}
 	<?xml version="1.0" encoding="utf-8"?>
 	<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ site.lang }}">
-		<generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator>
+		<generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator>
 		<link href="{{ site.url }}{{ page.url }}" rel="self" type="application/atom+xml" />
 		<link href="{{ site.url }}" rel="alternate" type="text/html" hreflang="{{ site.lang }}" />
 		<updated>{{ "now" | date_to_xmlschema }}</updated>
