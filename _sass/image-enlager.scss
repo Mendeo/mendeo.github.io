@@ -3,7 +3,7 @@ img[src-big]
 {
 	cursor: pointer;
 	transition-property: width, height, left, top;
-	background: url('/assets/load.png') no-repeat center;
+	background: url('{% link assets/load.png %}') no-repeat center;
 }
 
 .image-enlager-animation-normal
@@ -32,12 +32,12 @@ img[src-big]
 
 .image-enlager-left-arrow:hover
 {
-	background: url('/assets/left-arrow.svg') no-repeat left;
+	background: url('{% link assets/left-arrow.svg %}') no-repeat left;
 }
 
 .image-enlager-right-arrow:hover
 {
-	background: url('/assets/right-arrow.svg') no-repeat right;
+	background: url('{% link assets/right-arrow.svg %}') no-repeat right;
 }
 
 .image-enlager-no-arrows:hover
