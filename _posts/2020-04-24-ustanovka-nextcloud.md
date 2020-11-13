@@ -18,18 +18,18 @@ links_in_new_tab: true
 Часть работы была проделана с настройками в конфигурационных файлах. Выкладываю свои конфиги сюда. Подробно описывать не буду, можно сравнить с оригинальными конфигами и посмотреть в чём отличие от моих. Также не буду здесь описывать процедуру получения SSL от Let's encrypt. Предполагается, что у вас уже есть сертификат.
 
 **Конфиги**  
-[php.ini](/assets/posts/ustanovka-nextcloud/php.ini)  
-[nginx.conf](/assets/posts/ustanovka-nextcloud/nginx.conf)  
-[php-fpm.conf](/assets/posts/ustanovka-nextcloud/php-fpm.conf)  
-[redis.conf](/assets/posts/ustanovka-nextcloud/redis.conf)  
-[config.php](/assets/posts/ustanovka-nextcloud/config.php)  
+[php.ini]({% link assets/posts/ustanovka-nextcloud/php.ini %})  
+[nginx.conf]({% link assets/posts/ustanovka-nextcloud/nginx.conf %})  
+[php-fpm.conf]({% link assets/posts/ustanovka-nextcloud/php-fpm.conf %})  
+[redis.conf]({% link assets/posts/ustanovka-nextcloud/redis.conf %})  
+[config.php]({% link assets/posts/ustanovka-nextcloud/config.php %})  
 
 **Systemd**  
-[nginx.service](/assets/posts/ustanovka-nextcloud/nginx.service)  
-[php-fpm.service](/assets/posts/ustanovka-nextcloud/php-fpm.service)  
-[redis.service](/assets/posts/ustanovka-nextcloud/redis.service)  
-[nextcloud-cron.service](/assets/posts/ustanovka-nextcloud/nextcloud-cron.service)  
-[nextcloud-cron.timer](/assets/posts/ustanovka-nextcloud/nextcloud-cron.timer)  
+[nginx.service]({% link assets/posts/ustanovka-nextcloud/nginx.service %})  
+[php-fpm.service]({% link assets/posts/ustanovka-nextcloud/php-fpm.service %})  
+[redis.service]({% link assets/posts/ustanovka-nextcloud/redis.service %})  
+[nextcloud-cron.service]({% link assets/posts/ustanovka-nextcloud/nextcloud-cron.service %})  
+[nextcloud-cron.timer]({% link assets/posts/ustanovka-nextcloud/nextcloud-cron.timer %})  
 
 [Архив](https://download.nextcloud.com/server/releases/nextcloud-18.0.4.zip) Nextcloud был скачан с официального сайта. Под него был создан отдельный пользователь nextcloud. Файлы nextcloud были помещены в папку /home/nextcloud/www . Папка с пользовательскими данными: /home/nextcloud/data
 

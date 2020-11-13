@@ -21,7 +21,7 @@ has_video: true
 
 Оказалось, что указанные выше кнопки, генерируют два вида сигнала попеременно. Сначала один вариант, при следующем нажатии другой вариант. На рисунке показан один из вариантов сигнала при нажатии кнопки "mute". Сигналы считывал при помощи логического анализатора.
 
-![График сигнала с логического анализатора](/assets/posts/ip-tv-volume-control/big/signal.png)
+![График сигнала с логического анализатора]({% link assets/posts/ip-tv-volume-control/big/signal.png %})
 
 Время между пакетами импульсов около 100 мс. Каждый пакет состоит из 24-х изменений уровня сигнала. Длительность короткого импульса (низкого и верхнего уровней) около 900 мкс, а длительность длинного импульса (также как низкого, так и верхнего уровней) около 1800 мкс. Обозначим короткий импульс нулём, а длинный единицей, тогда полученные наблюдения можно свести в таблицу:
 
@@ -220,18 +220,18 @@ uint8_t incrementCounter() //Если паттерн получен полнос
 
 Физическая реализация устройства была выполнена на печатной плате (см рисунок), изготовленной при помощи ЛУТ на однослойном текстолите. 
 
-<img alt="Печатная плата" src-big="/assets/posts/ip-tv-volume-control/big/pcb.jpg" src="/assets/posts/ip-tv-volume-control/small/pcb.jpg">
+<img alt="Печатная плата" src-big="{% link assets/posts/ip-tv-volume-control/big/pcb.jpg %}" src="{% link assets/posts/ip-tv-volume-control/small/pcb.jpg %}">
 
 Внутри колонок производится питание 9 вольт, что много для нашего микроконтроллера, поэтому снизим напряжение при помощи линейного преобразователя 78L05.
 
 Всего к устройству подводится от колонок 8 проводов: 3 на один потенциометр, 3 на другой и два для питания. Очень удобно для этих целей использовать сетевой UTP кабель, в котором как раз 8 проводников. Теперь, вместо ручки громкости из колонок будет выходить сетевой кабель с нашим устройством на конце.
 
-<img alt="Плата колонки" src-big="/assets/posts/ip-tv-volume-control/big/speaker.jpg" src="/assets/posts/ip-tv-volume-control/small/speaker.jpg">
+<img alt="Плата колонки" src-big="{% link assets/posts/ip-tv-volume-control/big/speaker.jpg %}" src="{% link assets/posts/ip-tv-volume-control/small/speaker.jpg %}">
 
 Фото готового устройства:
 
-<img alt="Вид сверху" src-big="/assets/posts/ip-tv-volume-control/big/up.jpg" src="/assets/posts/ip-tv-volume-control/small/up.jpg">
-<img alt="Вид снизу" src-big="/assets/posts/ip-tv-volume-control/big/down.jpg" src="/assets/posts/ip-tv-volume-control/small/down.jpg">
+<img alt="Вид сверху" src-big="{% link assets/posts/ip-tv-volume-control/big/up.jpg %}" src="{% link assets/posts/ip-tv-volume-control/small/up.jpg %}">
+<img alt="Вид снизу" src-big="{% link assets/posts/ip-tv-volume-control/big/down.jpg %}" src="{% link assets/posts/ip-tv-volume-control/small/down.jpg %}">
 
 Опыта разводки и изготовления печатных плат у меня очень мало, поэтому, конечно, я накосячил и перепутал контакты ИК-приёмника. Хорошо, что GND посередине, получилось просто развернуть сам приёмник. Исходник уже поправил. И да, smd резистора на 100 Ом я у себя не нашёл, решил временно поставить обычный.
 
