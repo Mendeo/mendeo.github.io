@@ -46,7 +46,7 @@
 						</ul>
 					</nav>
 				{%- endif -%}
-
+				<button id="themeChangeButton">Тёмная тема</button>
 				<p>
 					<span id='copyright'>&copy;{{ "now" | date: "%Y" }}</span>
 					<a href = "{{ site.url }}{% link feed.xml %}" class="icon-rss" style="text-decoration: none" rel="alternate" type="application/atom+xml"></a>
@@ -67,6 +67,7 @@
 		{%- endif -%}
 		{%- if page.has_video -%}
 		<script type="text/javascript" src="{% link scripts/setVideoSize.js %}"></script>
-		{%- endif -%}		
+		{%- endif -%}
+		<script type="text/javascript" src="{% link scripts/themeChanger.js %}"></script>
 	</body>
 </html>
