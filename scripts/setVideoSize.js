@@ -1,6 +1,7 @@
 // Скрипт для задания размеров видео блоков
 (function()
 {
+	'use strict';
 	const videos = document.querySelectorAll('.video');
 	videos.forEach(v =>
 	{

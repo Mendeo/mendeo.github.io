@@ -1,14 +1,4 @@
 @import 'ext/solarized-dark';
 
-.highlight {
-	background-color: #272727;
-}
-
-div.highlight {
-	padding: 5px 20px;
-}
-pre.highlight, code {
-	font-family: 'Consolas', Menlo, monospace;
-	line-height: 1.4em;
-	tab-size: 4;
-}
+$backgroundColor: #272727;
+@import 'syntax';

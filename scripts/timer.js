@@ -1,5 +1,6 @@
 (function()
 {
+	'use strict';
 	let d = new Date();
 	d.setUTCDate(4);
 	d.setUTCMonth(11);
