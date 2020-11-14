@@ -48,8 +48,7 @@
 				{%- endif -%}
 
 				<p>
-					&copy;
-					{{ "now" | date: "%Y" }}
+					<span id='copyright'>&copy;{{ "now" | date: "%Y" }}</span>
 					<a href = "{{ site.url }}{% link feed.xml %}" class="icon-rss" style="text-decoration: none" rel="alternate" type="application/atom+xml"></a>
 					<a href = "https://t.me/mendeo_blog" target="_blank" rel="noopener" style="text-decoration: none">
 						<img src="{% link assets/images/telegram.svg %}" style="vertical-align: text-bottom" alt = "Иконка телеграм">
