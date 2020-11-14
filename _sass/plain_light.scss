@@ -2,7 +2,7 @@
 
 $linkColor: #0a59b0;
 $headerColor:  #000;
-$backgroundColor: #FFFFFF;
+$backgroundColor: #fff;
 $h2Color:#222222;
 $whoAmIcolor: #aaa;
 $borderBottomColor: #ececec;
@@ -12,5 +12,9 @@ $postBackgroundColor:  #222;
 $postsLabelBorderBottomColor: #eee;
 $postsLabelColor: #777;
 $tableBorderColor: #000;
+$changeThemeButtonTextColor: #d4d4d4;
+$changeThemeButtonBackgroundColor: #1e1e1e;
+$changeThemeButtonHoverTextColor:#000;
+$changeThemeButtonHoverBackgroundColor: #787878;
 
 @import "plain";

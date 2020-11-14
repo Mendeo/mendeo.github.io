@@ -6,7 +6,7 @@
 {
 	'use strict';
 	const styleTag = document.getElementById('mainStyle');
-	const button = document.getElementById('themeChangeButton');
+	const button = document.getElementById('changeThemeButton');
 
 	let isDark = false;
 	const THEME_STORAGE_NAME = 'themeSelected';
