@@ -7,7 +7,7 @@ $linkColor: #787878;
 $headerColor:  #C8C8C8;
 $backgroundColor: #1E1E1E;
 $h2Color:#3C3C3C;
-$tagLineColor: #aaa;
+$whoAmIcolor: #787878;
 $borderBottomColor: #ececec;
 $postCategoriesBackgroundColor:  #e3e3e3;
 $postDateBackgroundColor: #D4D4D4;
@@ -137,7 +137,7 @@ main
 		{
 			font-size: 22px;
 			margin-top: 17px;
-			color: $tagLineColor;
+			color: $whoAmIcolor;
 			white-space: pre-wrap;
 			line-height: normal;
 		}
