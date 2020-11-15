@@ -5,11 +5,6 @@ collections:
   posts:
     permalink: /posts/:title:output_ext
 
-#Мои настройки
-mendeo:
-  avatar: /assets/avatar.jpg
-  feed: true
-
 #For SEO (jekyll-seo-tag)
 description: Персональный сайт Александра Меняйло.
 title: Mendeo
