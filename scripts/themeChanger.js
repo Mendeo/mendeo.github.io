@@ -48,7 +48,7 @@
 	}
 
 	changeTheme(isDark);
-	button.addEventListener('click', () => 
+	button.addEventListener('click', function() 
 	{
 		isDark = !isDark;
 		changeTheme(isDark);
