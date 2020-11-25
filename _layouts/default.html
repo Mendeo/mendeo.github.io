@@ -15,27 +15,27 @@
 				<ul class="social">
 					{%- if site.plainwhite.social_links.github -%}
 					<li>
-						<a href="https://github.com/{{ site.plainwhite.social_links.github }}" target="_blank" rel="noopener" class="icon-github-circled"></a>
+						<a aria-label="GitHub" href="https://github.com/{{ site.plainwhite.social_links.github }}" target="_blank" rel="noopener" class="icon-github-circled"></a>
 					</li>
 					{%- endif -%}
 					{%- if site.plainwhite.social_links.vk -%}
 					<li>
-						<a href="https://vk.com/{{ site.plainwhite.social_links.vk }}" target="_blank" rel="noopener" class="icon-vk"></a>
+						<a aria-label="Вконтакте" href="https://vk.com/{{ site.plainwhite.social_links.vk }}" target="_blank" rel="noopener" class="icon-vk"></a>
 					</li>
 					{%- endif -%}
 					{%- if site.plainwhite.social_links.facebook -%}
 					<li>
-						<a href="https://facebook.com/{{ site.plainwhite.social_links.facebook }}" target="_blank" rel="noopener" class="icon-facebook"></a>
+						<a aria-label="Facebook" href="https://facebook.com/{{ site.plainwhite.social_links.facebook }}" target="_blank" rel="noopener" class="icon-facebook"></a>
 					</li>
 					{%- endif -%}
 					{%- if site.plainwhite.social_links.instagram -%}
 					<li>
-						<a href="https://instagram.com/{{ site.plainwhite.social_links.instagram }}" target="_blank" rel="noopener" class="icon-instagram"></a>
+						<a aria-label="Instagram" href="https://instagram.com/{{ site.plainwhite.social_links.instagram }}" target="_blank" rel="noopener" class="icon-instagram"></a>
 					</li>
 					{%- endif -%}
 					{%- if site.plainwhite.social_links.email -%}
 					<li>
-						<a href="mailto:{{ site.plainwhite.social_links.email }}" target="_blank" rel="noopener" class="icon-email"></a>
+						<a aria-label="E-mail" href="mailto:{{ site.plainwhite.social_links.email }}" target="_blank" rel="noopener" class="icon-email"></a>
 					</li>
 					{%- endif -%}
 				</ul>
@@ -55,8 +55,8 @@
 				<script type="text/javascript" src="{% link scripts/themeChanger.js %}"></script>
 				<p>
 					<span id='copyright'>&copy;{{ "now" | date: "%Y" }}</span>
-					<a href = "{{ site.url }}{% link feed.xml %}" class="icon-rss" style="text-decoration: none" rel="alternate" type="application/atom+xml"></a>
-					<a href = "https://t.me/mendeo_blog" target="_blank" class="icon-telegram" rel="noopener" style="text-decoration: none"></a>
+					<a aria-label="RSS-лента" href = "{{ site.url }}{% link feed.xml %}" class="icon-rss" style="text-decoration: none" rel="alternate" type="application/atom+xml"></a>
+					<a aria-label="Канал в телеграм" href = "https://t.me/mendeo_blog" target="_blank" class="icon-telegram" rel="noopener" style="text-decoration: none"></a>
 				</p>
 			</section>
 			<section class="content">
