@@ -39,6 +39,12 @@ $leftWidth: 220px;
 	border-color: $changeThemeButtonBackgroundColor;
 }
 
+#changeThemeButton:focus
+{
+	box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+	outline: none;
+}
+
 #changeThemeButton:hover
 {
 	color: $changeThemeButtonHoverTextColor;
