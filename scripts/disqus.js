@@ -26,7 +26,7 @@ var disqus_config = function ()
 				'Content-Type': 'text/plain' //'application/json' - not work for wix site (wix send 403 for options requests)
 			},
 			body: JSON.stringify(msg)
-		}).then(function(res) 
+		}).then(function(res)
 		{
 			if (!res.ok) console.log(error);
 		}).catch(function(err)
