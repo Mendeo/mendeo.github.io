@@ -3,9 +3,9 @@
 {
 	'use strict';
 	let links = document.querySelectorAll('.post a');
-	links.forEach((link) =>
+	for (let i = 0; i < links.length; i++)
 	{
-		link.target = '_blank';
-		link.rel = 'noopener';
-	});
+		links[i].target = '_blank';
+		links[i].rel = 'noopener';
+	}
 })();
