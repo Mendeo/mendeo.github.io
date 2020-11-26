@@ -6,6 +6,11 @@ $smallMobileW: 480px;
 $bigScreenW: 1600px;
 $leftWidth: 220px;
 
+.svg-text //Код для изменения цвета svg изображений в соответствии с цветом текста.
+{
+	fill: $postBackgroundColor;
+}
+
 *,
 *:before,
 *:after
