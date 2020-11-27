@@ -31,6 +31,7 @@ webmaster_verifications:
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
 sass:
   sass_dir: _sass
+  style: :compressed
 plainwhite:
   name: Александр Меняйло
   tagline: Разработчик. Учёный
