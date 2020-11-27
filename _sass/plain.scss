@@ -20,14 +20,18 @@ $leftWidth: 220px;
 	
 	figure
 	{
-		border: red 1px solid;
+		//border: red 1px solid;
 		margin: 0px;
 
 		figcaption
 		{
-			color: red;
+			//color: red;
 			border: green 1px solid;
-			text-align: center;
+			text-align: justify;
+			overflow-y: auto;
+			height: calc(33.3333333% - 0.5rem);
+			font-size: 14px;
+			line-height: normal;
 		}
 	}
 
