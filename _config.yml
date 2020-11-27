@@ -52,7 +52,7 @@ plainwhite:
       url: "/projects.html"
       modified: 2020-11-03 14:44:00 +03
     - title: Мои фотографии
-      url: "/photo.html"
+      url: "/my_photos.html"
       modified: 2020-11-03 14:44:00 +03
     - title: Список всех статей
       url: "/contents.html"
