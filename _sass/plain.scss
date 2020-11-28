@@ -8,28 +8,26 @@ $smallMobileW: 480px;
 $bigScreenW: 1600px;
 $leftWidth: 220px;
 
-
 .galery
 {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, 540px);
-	grid-auto-rows: 540px;
+	grid-template-columns: repeat(auto-fit, minmax(350px, 540px));
+	grid-auto-rows: auto;
 	grid-row-gap: 1rem;
 	grid-column-gap: 1rem;
 	justify-items: center;
+	justify-content: center;
 	
 	figure
 	{
-		//border: red 1px solid;
+		border: red 1px solid;
 		margin: 0px;
-
 		figcaption
 		{
-			//color: red;
 			border: green 1px solid;
 			text-align: justify;
 			overflow-y: auto;
-			height: calc(33.3333333% - 0.5rem);
+			max-height: calc(540px / 3 - 0.5rem);
 			font-size: 14px;
 			line-height: normal;
 		}
