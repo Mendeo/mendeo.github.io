@@ -15,14 +15,14 @@ links_in_new_tab: false
 
 <a name="cut"></a>
 **Посмотреть как это работает**  
-<img alt="Фото тюльпанов" src="{% link assets/photos/big/tulpan.jpg %}" scalable="150px">
-<img alt="Фото цветов айвы" src="{% link assets/photos/big/ajva.jpg %}" scalable="150px">
+<img alt="Фото тюльпанов" src="{% link assets/posts/script-uvelichenie-kartinok/big/tulpan.jpg %}" scalable="150px">
+<img alt="Фото цветов айвы" src="{% link assets/posts/script-uvelichenie-kartinok/big/ajva.jpg %}" scalable="150px">
 
 **html**
 
 ```html
-<img alt="Фото тюльпанов" src="{% link assets/photos/big/tulpan.jpg %}" scalable="150px">
-<img alt="Фото цветов айвы" src="{% link assets/photos/big/ajva.jpg %}" scalable="150px">
+<img alt="Фото тюльпанов" src="{% link assets/posts/script-uvelichenie-kartinok/big/tulpan.jpg %}" scalable="150px">
+<img alt="Фото цветов айвы" src="{% link assets/posts/script-uvelichenie-kartinok/big/ajva.jpg %}" scalable="150px">
 ```
 
 **JavaScript**  
