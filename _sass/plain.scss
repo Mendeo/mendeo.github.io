@@ -13,18 +13,18 @@ $leftWidth: 220px;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(350px, 540px));
 	grid-auto-rows: auto;
-	grid-row-gap: 1rem;
+	grid-row-gap: 2rem;
 	grid-column-gap: 1rem;
 	justify-items: center;
 	justify-content: center;
 	
 	figure
 	{
-		border: red 1px solid;
+		//border: red 1px solid;
 		margin: 0px;
 		figcaption
 		{
-			border: green 1px solid;
+			//border: green 1px solid;
 			text-align: justify;
 			overflow-y: auto;
 			max-height: calc(540px / 3 - 0.5rem);
