@@ -11,7 +11,7 @@ has_scalable_images: true
 	{%- for photo in site.gallery -%}
 		{%- if photo.theme == theme -%}
 			<figure>
-				<img src-big="{%- link {{ photo.big }} -%}" src="{%- link {{ photo.small }} -%}" alt="{{ photo.alt }}">
+				<img src-big="{{ photo.url_big }}" src="{{ photo.url_small }}" alt="{{ photo.alt }}">
 				<figcaption>
 					{{ photo.content }}
 				</figcaption>
