@@ -184,7 +184,7 @@ img[src-big]
 	cursor: pointer;
 	transition-property: width, height, left, top;
 	transition-duration: 0.3s;
-	background: url('assets/load.png') no-repeat center;
+	background: url('{%- link assets/posts/script-uvelichenie-kartinok/load.png -%}') no-repeat center;
 }
 ```
 <script type="text/javascript">
@@ -342,6 +342,6 @@ img[src-big]
 		cursor: pointer;
 		transition-property: width, height, left, top;
 		transition-duration: 0.3s;
-		background: url('assets/load.png') no-repeat center;
+		background: url('{%- link assets/posts/script-uvelichenie-kartinok/load.png -%}') no-repeat center;
 	}
 </style>
