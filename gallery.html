@@ -3,13 +3,20 @@ layout: page
 links_in_new_tab: true
 has_scalable_images: true
 ---
-<div class="gallery">
+
+{%- assign themes = site.gallery | map: "theme" | uniq -%}
+{%- for theme in themes -%}
+	<h2>{{ theme }}</h2>
+	<div class="gallery">
 	{%- for photo in site.gallery -%}
-	<figure>
-		<img src-big="{%- link {{ photo.big }} -%}" src="{%- link {{ photo.small }} -%}" alt="{{ photo.alt }}">
-		<figcaption>
-			{{ photo.content }}
-		</figcaption>
-	</figure>
+		{%- if photo.theme == theme -%}
+			<figure>
+				<img src-big="{%- link {{ photo.big }} -%}" src="{%- link {{ photo.small }} -%}" alt="{{ photo.alt }}">
+				<figcaption>
+					{{ photo.content }}
+				</figcaption>
+			</figure>
+		{%-endif-%}
 	{%- endfor -%}
-</div>
+	</div>
+{%- endfor -%}
