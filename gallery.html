@@ -1,0 +1,15 @@
+---
+layout: page
+links_in_new_tab: true
+has_scalable_images: true
+---
+<div class="gallery">
+	{%- for photo in site.gallery -%}
+	<figure>
+		<img src-big="{%- link {{ photo.small }} -%}" src="{%- link {{ photo.big }} -%}" alt="{{ photo.alt }}">
+		<figcaption>
+			{{ photo.content }}
+		</figcaption>
+	</figure>
+	{%- endfor -%}
+</div>
