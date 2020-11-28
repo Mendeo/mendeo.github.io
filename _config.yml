@@ -4,6 +4,9 @@ email: thesolve@mail.ru
 collections:
   posts:
     permalink: /posts/:title:output_ext
+  galery:
+    output: true
+
 
 #Мои настройки
 mendeo:
@@ -52,7 +55,7 @@ plainwhite:
       url: "/projects.html"
       modified: 2020-11-03 14:44:00 +03
     - title: Мои фотографии
-      url: "/my_photos.html"
+      url: "/galery.html"
       modified: 2020-11-03 14:44:00 +03
     - title: Список всех статей
       url: "/contents.html"
