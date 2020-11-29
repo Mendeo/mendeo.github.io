@@ -3,7 +3,7 @@ layout: post
 title:  "Немного о Jekyll"
 date:   2020-11-29
 modified: 2020-11-29
-categories: jekyll Liquid web
+categories: Jekyll Liquid web
 tags: [Jekyll, Liquid, web]
 excerpt_separator: <a name="cut"></a>
 links_in_new_tab: true
