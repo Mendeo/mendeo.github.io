@@ -1,0 +1,22 @@
+{%- assign intactTags = "script pre" | split: " " -%}
+
+{%- assign noTagParts = "q w" | split: " " -%}
+{%- assign tagParts = "q w" | split: " " -%}
+{%- assign tagName = "script" -%}
+{%- for i in (1 .. 100) -%}
+	{%- assign contentArray = content | split: tagName -%}
+	{%- if contentArray.size > 1 -%}
+		{%- assign aux = contentArray | slice: 0 -%}
+		{%- assign noTagParts = noTagParts | concat: aux -%}
+		{%- assign contentArray2 = contentArray[1] | split: tagName -%}
+		{%- assign aux = contentArray2 | slice: 0 -%}
+		{%- assign tagParts = tagParts | concat: aux -%}
+		{%- assign content = contentArray2[1] -%}
+		{{noTagParts}}
+	{%- else -%}
+		{%- break -%}
+	{%- endif -%}
+{%- endfor -%}
+
+
+{{ tagParts | join: "~!~" }}
