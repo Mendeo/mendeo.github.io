@@ -17,12 +17,10 @@ layout: null
 			<loc>{{ site.url }}{{link.url | relative_url}}</loc>
 			{%- if link.url == "/contents.html" -%}
 			<lastmod>{{ site.posts.first.date | date_to_xmlschema }}</lastmod>
+			{%- elsif link.url == "/gallery.html" -%}
+				<lastmod>{{ site.gallery.last.date | date_to_xmlschema }}</lastmod>
 			{%- else -%}
-				{%- if link.url == "/gallery.html" -%}
-					<lastmod>{{ site.gallery.last.date | date_to_xmlschema }}</lastmod>
-				{%- else -%}
-					<lastmod>{{ link.modified | date_to_xmlschema }}</lastmod>
-				{%- endif -%}
+				<lastmod>{{ link.modified | date_to_xmlschema }}</lastmod>
 			{%- endif -%}
 			<priority>1.00</priority>
 		</url>
