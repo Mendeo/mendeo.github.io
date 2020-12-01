@@ -16,7 +16,6 @@ links_in_new_tab: false
 <a name="cut"></a>
 **Посмотреть как это работает**  
 <img alt="Фото тюльпанов" src="{% link assets/posts/script-uvelichenie-kartinok/big/tulpan.jpg %}" scalable="150px">
-<span> </span>
 <img alt="Фото цветов айвы" src="{% link assets/posts/script-uvelichenie-kartinok/big/ajva.jpg %}" scalable="150px">
 
 **html**
