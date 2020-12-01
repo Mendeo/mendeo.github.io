@@ -15,6 +15,7 @@ has_scalable_images: false
 <a name="cut"></a>
 **Посмотреть как это работает**  
 <img alt="Фото тюльпанов" src-big1="{% link assets/posts/script-uvelichenie-kartinok/big/tulpan.jpg %}" src="{% link assets/posts/script-uvelichenie-kartinok/small/tulpan.jpg %}">
+<span> </span>
 <img alt="Фото цветов айвы" src-big1="{% link assets/posts/script-uvelichenie-kartinok/big/ajva.jpg %}" src="{% link assets/posts/script-uvelichenie-kartinok/small/ajva.jpg %}">
 
 **html**  
