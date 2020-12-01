@@ -1,22 +1,54 @@
 {%- assign intactTags = "script pre" | split: " " -%}
-
-{%- assign noTagParts = "q w" | split: " " -%}
-{%- assign tagParts = "q w" | split: " " -%}
-{%- assign tagName = "script" -%}
-{%- for i in (1 .. 100) -%}
-	{%- assign contentArray = content | split: tagName -%}
-	{%- if contentArray.size > 1 -%}
-		{%- assign aux = contentArray | slice: 0 -%}
-		{%- assign noTagParts = noTagParts | concat: aux -%}
-		{%- assign contentArray2 = contentArray[1] | split: tagName -%}
-		{%- assign aux = contentArray2 | slice: 0 -%}
-		{%- assign tagParts = tagParts | concat: aux -%}
-		{%- assign content = contentArray2[1] -%}
-		{{noTagParts}}
-	{%- else -%}
-		{%- break -%}
-	{%- endif -%}
+{%- comment -%}
+Интактные теги должны начинатсься с новой строки и оканчиваться новой строкой
+{%- endcomment -%}
+{%- for tag in intactTags -%}
+	{%- assign what = "<" | append: tag -%}
+	{%- assign how = what | prepend: "
+"-%}
+	{%- assign content = content | replace: what, how -%}
+	{%- assign what = "</" | append: tag | append: ">" -%}
+	{%- assign how = what | append: "
+"-%}
+	{%- assign content = content | replace: what, how -%}
 {%- endfor -%}
 
-
-{{ tagParts | join: "~!~" }}
+{%- comment -%}
+Ищем строки, в которых есть интактные теги и ничего там не делаем, а делаем в остальных местах
+{%- endcomment -%}
+{%- assign contentArray = content | split: "
+" -%}
+{%- assign content = "" -%}
+{%- assign excludedTag = "" -%}
+{%- for part in contentArray -%}
+	{%- if excludedTag == "" -%}
+		{%- for tag in intactTags -%}
+			{%- assign what = "<" | append: tag -%}
+			{%- assign aux = part | split: what | size -%}
+			{%- if aux > 0 -%}
+				{%- assign excludedTag = tag -%}
+				{%- break -%}
+			{%- endif -%}
+		{%- endfor -%}
+		{%- if excludedTag == "" -%}
+			{%- assign aux = part | strip -%}
+			{%- assign content = content | append: aux -%}
+		{%- else -%}
+			{%- assign aux = part | lstrip -%}
+			{%- assign content = content | append: aux -%}
+		{%- endif -%}
+	{%- else -%}
+		{%- assign what = "</" | append: excludedTag | append: ">" -%}
+		{%- assign aux = part | split: what | size -%}
+		{%- if aux > 0 -%}
+			{%- assign excludedTag = "" -%}
+		{%- endif -%}
+		{%- if excludedTag == "" -%}
+			{%- assign aux = part | rstrip -%}
+			{%- assign content = content | append: aux -%}
+		{%- else -%}
+			{%- assign content = content | append: part -%}
+		{%- endif -%}
+	{%- endif -%}
+{%- endfor -%}
+{{ content }}
