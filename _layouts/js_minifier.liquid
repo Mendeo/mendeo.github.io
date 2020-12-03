@@ -25,8 +25,15 @@
 		{%- assign content = content | append: part -%}
 	{%- endif -%}
 {%- endfor -%}
+{%- comment -%} Обрабатываем экранированные символы, обозначающие строки в JS {%- endcomment -%}
+{%- assign strMasks = "dWf4Ay83kQ34n8r0 EM9145U330jDswtN G414z30q4068XB00" | split: " " -%}
+{%- for mask in strMasks -%}
+	{%- assign content = content | replace: "\'", mask -%}
+	{%- assign content = content | replace: '\"', mask -%}
+	{%- assign content = content | replace: "\`", mask -%}
+{%- endfor -%}
 {%- comment -%} Маркируем участки, кода со строками {%- endcomment -%}
-{%- assign marker = "~" -%}
+{%- assign marker = "2e57la4G82XMQr9K" -%}
 {%- assign aux = marker | append: '"' -%}
 {%- assign content = content | replace: '"', aux -%}
 {%- assign aux = marker | append: "'" -%}
@@ -36,7 +43,7 @@
 
 {%- assign contentArray = content | split: marker -%}
 {%- assign content = "" -%}
-{%- assign simbols = "= + - / * , % > < : ; ( ) { }" | split: " " -%} {%- comment -%} Удаляем пробелы вокруг этих символов {%- endcomment -%}
+{%- assign simbols = "= + - / * , % > < : ; ( ) { } [ ]" | split: " " -%} {%- comment -%} Удаляем пробелы вокруг этих символов {%- endcomment -%}
 {%- for part in contentArray -%}
 	{%- assign mod = forloop.index | modulo: 2 -%}
 	{%- if mod == 1 -%}
@@ -64,5 +71,10 @@
 	{%- else -%}
 		{%- assign content = content | append: part -%}
 	{%- endif -%}
+{%- endfor -%}
+{%- for mask in strMasks -%}
+	{%- assign content = content | replace: mask, "'" -%}
+	{%- assign content = content | replace: mask, '"' -%}
+	{%- assign content = content | replace: mask, "`" -%}
 {%- endfor -%}
 {{ content }}
