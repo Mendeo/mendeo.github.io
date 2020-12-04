@@ -6,7 +6,8 @@ layout: js_minifier
 var disqus_config = function ()
 {
 	this.page.url = location.href;
-	this.page.identifier = location.pathname;
+	this.page.identifier = DISQUS_PAGE_ID || location.href;
+	//console.log(this.page.identifier);
 	//Отправка оставленного комментария ко мне в телеграм.
 	this.callbacks.onNewComment = [function(comment)
 	{

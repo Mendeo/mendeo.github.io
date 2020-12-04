@@ -7,6 +7,7 @@ categories: web javascript
 tags: [web, javascript, css]
 excerpt_separator: <a name="cut"></a>
 links_in_new_tab: false
+disqus_page_id: 769780B7f26Lr492jCOdPQZLIMdf3dK7O7574Ckg2q219vF644j4483319B759T6
 ---
 Вчера и сегодня делал небольшой скрипт для своего сайта. Сделал. Теперь, если у тега "img" есть атрибут "scalable", то на картинку можно будет кликнуть, чтобы её увеличить. В значение атрибута "scalable" нужно задать размер маленькой картинки (с единицами измерения css).  
 Наконец можно будет заняться разделом "Мои фотографии"!  

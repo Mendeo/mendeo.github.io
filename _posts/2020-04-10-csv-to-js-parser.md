@@ -7,6 +7,7 @@ categories: nodejs npm
 tags: [nodejs, npm, csv, javaScript]
 excerpt_separator: <a name="cut"></a>
 links_in_new_tab: true
+disqus_page_id: 1j53JkVs71jR8Im9y13Y68xZYC31QdhO3E117q2b1HnYSE931Y8BAy1vjfVFEFTU
 ---
 Недавно требовалось по работе обрабатывать большие массивы данных из базы данных. Решил для этого использовать свои новые знания по JavaScript. Сначала всё начиналось как решение моей частной задачи. Но вскоре стало интересно сделать универсальный модуль, которым бы могли пользоваться другие люди. Это мой первый модуль для [npm](https://www.npmjs.com/package/csv-to-js-parser)! Выпустил под лицензией MIT. Под катом приведена установка и описание работы с модулем.
 

@@ -7,6 +7,7 @@ categories: electronika remont roborock
 tags: [Робот-пылесос, ремонт, ошибка 1, Xiaomi]
 excerpt_separator: <a name="cut"></a>
 links_in_new_tab: true
+disqus_page_id: COKwBIHYg63R968368X9MC8XC75V406JXn2391dB872hw6rmsRoxPxC7pSIweRgV
 ---
 Примерно года полтора назад у меня сломался робот-пылесос Xiaomi Roborock Sweep One. Я нашёл причину поломки, и даже написал про это на [4pda](http://4pda.ru/forum/index.php?s=&showtopic=875541&view=findpost&p=84672407) и [Pikabu](https://pikabu.ru/story/remont_robota_pyilesosa_mi_vacuum_besplatno_6962086?cid=150975969). И вот у меня появился мой личный блог. Ну что же, продублирую и здесь. Скажу сразу, пылесос работает, такой ошибки больше не возникало. Возможно это кому-то поможет справиться с этой проблемой.
 

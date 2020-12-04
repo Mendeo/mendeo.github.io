@@ -8,6 +8,7 @@ tags: [OpenScad, squircle, квадрокруг]
 excerpt_separator: <a name="cut"></a>
 links_in_new_tab: true
 has_scalable_images: true
+disqus_page_id: e6K26r214Q84986423Bh1H44rOqjd0009349X75oDv1J21hobc491l68169834w8
 ---
 
 Недавно прочитал интересную [статью](https://habr.com/ru/company/droider/blog/517298/) на хабре. В этой статье рассказывается про дизайн иконок для смартфонов, где вместо квадратных иконок со скруглёнными краями используется так называемый квадрокруг.  
