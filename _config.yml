@@ -72,4 +72,3 @@ feed:
 plugins:
   - jekyll-seo-tag
   #- jekyll-feed
-  - jekyll-minifier
