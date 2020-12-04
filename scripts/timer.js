@@ -1,5 +1,5 @@
 ---
-layout: js_minifier
+layout: ~
 ---
 
 (function()
