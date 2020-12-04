@@ -5,8 +5,8 @@ layout: js_minifier
 //Подключение системы комментариев.
 var disqus_config = function ()
 {
-	this.page.url = '{{ site.url }}{{ page.url }}';
-	this.page.identifier = '{{ page.url }}';
+	this.page.url = location.href;
+	this.page.identifier = location.pathname;
 	//Отправка оставленного комментария ко мне в телеграм.
 	this.callbacks.onNewComment = [function(comment)
 	{
@@ -14,7 +14,7 @@ var disqus_config = function ()
 		const msg = 
 		{
 			text: comment.text,
-			page: '{{ site.url }}{{ page.url }}',
+			page: location.href,
 			id: comment.id
 		};
 		const error = 'Cannot resend message to telegram.';
