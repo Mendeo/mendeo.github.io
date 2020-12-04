@@ -55,7 +55,6 @@ layout: html_minifier
 					</nav>
 				{%- endif -%}
 				<button id="changeThemeButton">Тёмная тема</button>
-				<script type="text/javascript" src="{% link scripts/themeChanger.js %}"></script>
 				<p>
 					<span id='copyright'>&copy;{{ "now" | date: "%Y" }}</span>
 					<a aria-label="RSS-лента" href = "{{ site.url }}{% link feed.xml %}" class="icon-rss" style="text-decoration: none" rel="alternate" type="application/atom+xml"></a>
@@ -66,6 +65,7 @@ layout: html_minifier
 				{{ content }}
 			</section>
 		</main>
+		<script type="text/javascript" src="{% link scripts/themeChanger.js %}"></script>
 		{%- if page.links_in_new_tab -%}
 		<script type="text/javascript" src="{% link scripts/linksInNewTab.js %}"></script>
 		{%- endif -%}

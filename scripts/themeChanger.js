@@ -52,6 +52,14 @@ layout: js_minifier
 	{
 		isDark = !isDark;
 		changeTheme(isDark);
+		if (window.DISQUS)
+		{
+			DISQUS.reset(
+			{
+				reload: true,
+				config: disqus_config
+			});
+		}
 	});
 	
 	function changeTheme(isDark)
