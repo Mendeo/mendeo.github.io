@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Разработал минификаторы HTML и JavaScript для Jekyll"
-date: 2020-12-04 16:04:00 +03
-modified: 2020-12-04 16:04:00 +03
+date: 2020-12-04 16:39:00 +03
+modified: 2020-12-04 16:39:00 +03
 categories: Jekyll Liquid web
 tags: [Jekyll, Liquid, HTML, JavaScript, GitHub Pages, web]
 excerpt_separator: <a name="cut"></a>
