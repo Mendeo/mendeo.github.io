@@ -19,7 +19,7 @@ layout: js_minifier
 	container.appendChild(timer);
 	container.style = 'display: flex; flex-direction: row; justify-content: flex-end;';
 	container.className = 'post';
-	timer.style = 'width: 21rem;';
+	timer.style = 'width: 22rem;';
 	showTime();
 	
 	function showTime()
