@@ -18,6 +18,7 @@ layout: js_minifier
 	document.getElementsByTagName('body')[0].appendChild(container);
 	container.appendChild(timer);
 	container.style = 'display: flex; flex-direction: row; justify-content: flex-end;';
+	container.className = 'post';
 	timer.style = 'width: 21rem;';
 	showTime();
 	
