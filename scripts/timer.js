@@ -35,8 +35,11 @@ layout: js_minifier
 		aux += seconds * 1000;
 		let millis = diff - aux;
 		timer.innerHTML = `${days} ${name(['дней', 'день', 'дня'], days)}, ${hours} ${name(['часов', 'час', 'часа'], hours)}, ${minutes} ${name(['минут', 'минута', 'минуты'], minutes)}, ${seconds} ${name(['секунд', 'секунда', 'секунды'], seconds)}`;
-		millis++;
-		setTimeout(showTime, millis);
+		if (!(seconds === 0 && minutes === 0 && hours === 0 && days === 0))
+		{
+			millis++;
+			setTimeout(showTime, millis);
+		}
 	}
 	
 	function name(words, n)
