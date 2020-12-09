@@ -148,7 +148,7 @@ layout: js_minifier
 				if (!imgCache.has(key))
 				{
 					let auxImg = document.createElement('img');
-					auxImg.src = key
+					auxImg.src = key;
 					imgCache.set(key, auxImg);
 				}
 			}
