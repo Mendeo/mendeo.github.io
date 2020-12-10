@@ -1,5 +1,6 @@
 ---
 layout: js_minifier
+replaceNames: false
 ---
 
 //Подключение системы комментариев.
