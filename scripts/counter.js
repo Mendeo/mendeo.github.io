@@ -2,7 +2,6 @@
 layout: js_minifier
 ---
 
-const MESSAGE_SERVER = 'https://deorathemen.wixsite.com/messages/_functions/mendeo_msg'; //Устанавливаем эту переменную глобально.
 (function()
 {
 	'use strict';
