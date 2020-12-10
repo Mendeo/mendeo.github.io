@@ -72,9 +72,6 @@ layout: html_minifier
 		{%- if page.has_scalable_images -%}
 		<script type="text/javascript" src="{% link scripts/imageEnlager.js %}"></script>
 		{%- endif -%}
-		{%- if page.has_video -%}
-		<script type="text/javascript" src="{% link scripts/setVideoSize.js %}"></script>
-		{%- endif -%}
 		<script type="text/javascript" src="{% link scripts/oldBrowserAlert.js %}"></script>
 	</body>
 </html>

@@ -8,7 +8,6 @@ tags: [Atiny13A, C++, Ростелеком, IP TV, Громкость]
 excerpt_separator: <a name="cut"></a>
 links_in_new_tab: true
 has_scalable_images: true
-has_video: true
 disqus_page_id: ksI6mK621gt45l3w62x3ff1D32hr8RI0294701r3e61ih59a3Nedb4fwUwcu4436
 ---
 
@@ -66,8 +65,8 @@ const unsigned long UP1_DATA[] =   {860, 900, 1750, 900, 860, 900, 860, 900, 860
 #define UP2_DATA      0b00011100
 #define DOWN1_DATA    0b10011100
 #define DOWN2_DATA    0b10011001
-#define MUTE_ON_DATA   0b11100100
-#define MUTE_OFF_DATA   0b11100001
+#define MUTE_ON_DATA  0b11100100
+#define MUTE_OFF_DATA 0b11100001
 ```
 Но теперь нужно восстановить полный набор данных. Напишем функцию, которая будет возвращать ожидаемую длительность импульса (низкого или верхнего уровней) в зависимости от его номера. Полученный результат будем сравнивать с фактической длительностью полученного импульса от приёмника ИК сигналов. Таким образом, сможем определить какая кнопка была нажата.
 
@@ -239,5 +238,8 @@ uint8_t incrementCounter() //Если паттерн получен полнос
 От изготовления корпуса для устройства пока отказался, просто покрыл плату акриловым лаком.
 
 Ну и видео работы:
-<iframe class="video" src="https://www.youtube.com/embed/SDtLFTL7X1c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="video">
+	<iframe src="https://www.youtube.com/embed/SDtLFTL7X1c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 
