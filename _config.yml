@@ -37,7 +37,7 @@ sass:
 plainwhite:
   name: Александр Меняйло
   tagline: Разработчик. Учёный
-  date_format: "%-d %b, %Y"
+  date_format: "%d.%m.%Y"
   sitemap: true # set to true to generate sitemap.xml content
   navigation:
     - title: Обо мне
