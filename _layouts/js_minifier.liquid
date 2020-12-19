@@ -64,11 +64,9 @@ SOFTWARE.
 
 {%- comment -%} Обрабатываем экранированные символы, обозначающие строки в JS {%- endcomment -%}
 {%- assign strMasks = "dWf4Ay83kQ34n8r0 EM9145U330jDswtN G414z30q4068XB00" | split: " " -%}
-{%- for mask in strMasks -%}
-	{%- assign content = content | replace: "\'", mask -%}
-	{%- assign content = content | replace: '\"', mask -%}
-	{%- assign content = content | replace: "\`", mask -%}
-{%- endfor -%}
+{%- assign content = content | replace: "\'", strMasks[0] -%}
+{%- assign content = content | replace: '\"', strMasks[1] -%}
+{%- assign content = content | replace: "\`", strMasks[2] -%}
 {%- comment -%} Маркируем участки, кода со строками {%- endcomment -%}
 {%- assign marker = "2e57la4G82XMQr9K" -%}
 {%- assign aux = marker | append: '"' -%}
@@ -269,6 +267,8 @@ SOFTWARE.
 	{%- assign js_keys = js_keys_sorted | reverse -%}
 	
 	{%- assign alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z" | split: " " -%}
+	{%- assign otherValidJsSimbols = "0 1 2 3 4 5 6 7 8 9 _ $" | split: " " -%}
+	{%- assign fullAlphabet = alphabet | concat: otherValidJsSimbols -%}
 	{%- assign newNamesIndex = 0 -%}
 	{%- assign newNamesIndex1 = -1 -%}
 	{%- assign newNamesIndex2 = -1 -%}
@@ -303,7 +303,7 @@ SOFTWARE.
 						{%- if ls == "." or rs == ":" -%}
 							{%- assign flag = true -%}
 						{%- else -%}
-							{%- for ab in alphabet -%}
+							{%- for ab in fullAlphabet -%}
 								{%- if ls == ab or rs == ab -%}
 									{%- assign flag = true -%}
 									{%- break -%}
@@ -359,7 +359,7 @@ SOFTWARE.
 									{%- if ls == "." or rs == ":" -%}
 										{%- assign flag = true -%}
 									{%- else -%}
-										{%- for ab in alphabet -%}
+										{%- for ab in fullAlphabet -%}
 											{%- if ls == ab or rs == ab -%}
 												{%- assign flag = true -%}
 												{%- break -%}
@@ -422,10 +422,8 @@ SOFTWARE.
 	{%- endfor -%}
 {%- endif -%}
 
-{%- for mask in strMasks -%}
-	{%- assign content = content | replace: mask, "'" -%}
-	{%- assign content = content | replace: mask, '"' -%}
-	{%- assign content = content | replace: mask, "`" -%}
-{%- endfor -%}
+{%- assign content = content | replace: strMasks[0], "'" -%}
+{%- assign content = content | replace: strMasks[1], '"' -%}
+{%- assign content = content | replace: strMasks[2], "`" -%}
 
 {{ content }}
