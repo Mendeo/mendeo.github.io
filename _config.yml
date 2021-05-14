@@ -4,7 +4,6 @@ collections:
   posts:
     permalink: /posts/:title:output_ext
   gallery:
-    output: true
 
 
 #For SEO (jekyll-seo-tag)
