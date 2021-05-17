@@ -65,7 +65,7 @@ $leftWidth: 220px;
   Код css частично заимствован из bootstrap.css
   https://github.com/twbs/bootstrap/releases/download/v4.4.1/bootstrap-4.4.1-dist.zip (на 2020-03-03))
 */
-#changeThemeButton
+.button-default
 {
 	text-align: center;
 	white-space: nowrap;
@@ -86,13 +86,13 @@ $leftWidth: 220px;
 	border-color: $changeThemeButtonBackgroundColor;
 }
 
-#changeThemeButton:focus
+.button-default:focus
 {
 	box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
 	outline: none;
 }
 
-#changeThemeButton:hover
+.button-default:hover
 {
 	color: $changeThemeButtonHoverTextColor;
 	background-color: $changeThemeButtonHoverBackgroundColor;
