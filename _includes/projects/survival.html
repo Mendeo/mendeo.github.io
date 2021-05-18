@@ -1,4 +1,11 @@
 <div>
-	<button id="hello_there" class="button-default">Привет</button>
+	<!--Сколько осталось-->
+	<fieldset>
+		<legend>Число лет дожития</legend>
+		<label for="survival-curent-age-input">Текущий возраст</label>
+		<input type="number" id = "survival-curent-age-input" class="input-default" min="0" max="100" value="0">
+		<br>
+		<span>Осталось </span><span id="remainingAge" style="color: green;"></span><span></span>
+	</fieldset>
 </div>
 <script type="text/javascript" src="{% link scripts/projects/survival.js %}"></script>

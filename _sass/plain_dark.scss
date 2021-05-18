@@ -12,10 +12,12 @@ $postBackgroundColor: #d4d4d4;
 $postsLabelBorderBottomColor: #eee;
 $postsLabelColor: #777;
 $tableBorderColor: #E7E7E7;
-$changeThemeButtonTextColor: #222;
-$changeThemeButtonBackgroundColor: #d4d4d4;
-$changeThemeButtonHoverTextColor: #d4d4d4;
-$changeThemeButtonHoverBackgroundColor: #787878;
+$buttonTextColor: #222;
+$buttonBackgroundColor: #d4d4d4;
+$buttonHoverTextColor: #d4d4d4;
+$buttonHoverBackgroundColor: #787878;
+$inputBackgroundColor: $buttonBackgroundColor;
+$inputTextColor: $buttonTextColor;
 
 @import "plain";
 @import "image-enlager_dark";

@@ -81,9 +81,9 @@ $leftWidth: 220px;
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 	background-image: none;
 
-	color: $changeThemeButtonTextColor;
-	background-color: $changeThemeButtonBackgroundColor;
-	border-color: $changeThemeButtonBackgroundColor;
+	color: $buttonTextColor;
+	background-color: $buttonBackgroundColor;
+	border-color: $buttonBackgroundColor;
 }
 
 .button-default:focus
@@ -94,9 +94,21 @@ $leftWidth: 220px;
 
 .button-default:hover
 {
-	color: $changeThemeButtonHoverTextColor;
-	background-color: $changeThemeButtonHoverBackgroundColor;
-	border-color: $changeThemeButtonHoverBackgroundColor;
+	color: $buttonHoverTextColor;
+	background-color: $buttonHoverBackgroundColor;
+	border-color: $buttonHoverBackgroundColor;
+}
+
+.input-default
+{
+	color: $inputTextColor;
+	background-color: $inputBackgroundColor;
+	border-color: $inputBackgroundColor;
+}
+
+.input-error
+{
+	color: red;
 }
 
 body
