@@ -54,12 +54,12 @@ layout: js_minifier
 			n %= 10;
 			switch(n)
 			{
-				case 0: case 5: case 6: case 7: case 8: case 9:
-					return words[0];
-				case 1:
-					return words[1];
-				case 2: case 3: case 4:
-					return words[2];
+			case 0: case 5: case 6: case 7: case 8: case 9:
+				return words[0];
+			case 1:
+				return words[1];
+			case 2: case 3: case 4:
+				return words[2];
 			}
 		}
 	}
