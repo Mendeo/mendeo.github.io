@@ -48,7 +48,7 @@ layout: js_minifier
 	}
 
 	changeTheme(isDark);
-	button.addEventListener('click', function() 
+	button.addEventListener('click', function()
 	{
 		isDark = !isDark;
 		changeTheme(isDark);
@@ -61,7 +61,7 @@ layout: js_minifier
 				});
 		}
 	});
-	
+
 	function changeTheme(isDark)
 	{
 		if (isDark)

@@ -21,7 +21,7 @@ layout: js_minifier
 	container.className = 'post';
 	timer.style = 'width: 23rem;';
 	showTime();
-	
+
 	function showTime()
 	{
 		let diff = d.getTime() - Date.now();
@@ -41,7 +41,7 @@ layout: js_minifier
 			setTimeout(showTime, millis);
 		}
 	}
-	
+
 	function name(words, n)
 	{
 		n %= 100;

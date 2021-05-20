@@ -13,7 +13,7 @@ var disqus_config = function ()
 	this.callbacks.onNewComment = [function(comment)
 	{
 		//console.log('New comment!');
-		const msg = 
+		const msg =
 		{
 			text: comment.text,
 			page: location.href,
@@ -39,7 +39,7 @@ var disqus_config = function ()
 		});
 	}];
 };
-	
+
 (function() { // DON'T EDIT BELOW THIS LINE
 	var d = document, s = d.createElement('script');
 	s.src = 'https://https-mendeo-ru.disqus.com/embed.js';
