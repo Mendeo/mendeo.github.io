@@ -29,6 +29,11 @@
         "array-bracket-spacing": ["error", "never"],
         "curly": ["error", "multi-line"],
         "brace-style": ["error", "allman", { "allowSingleLine": true }],
-        "no-inner-declarations": "off"
+        "no-inner-declarations": "off",
+        "no-trailing-spaces": "error",
+        "space-unary-ops": "error",
+        "no-spaced-func": "error",
+        "space-in-parens": ["error", "never"],
+        "comma-spacing": ["error", { "before": false, "after": true }]
     }
 }
