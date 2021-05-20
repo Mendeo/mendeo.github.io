@@ -1,8 +1,8 @@
 (function()
 {
 	'use strict';
-	const remainigAgeElement = document.getElementById('remainingAge');
-	const remainigAgeNameElement = document.querySelector('#remainingAge + span');
+	const remainigAgeElement = document.getElementById('survival-remaining-age');
+	const remainigAgeNameElement = document.querySelector('#survival-remaining-age + span');
 	let rAge = remainingAge(0);
 	remainigAgeElement.innerText = rAge;
 	remainigAgeNameElement.innerText = name(rAge);

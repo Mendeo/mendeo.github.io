@@ -55,10 +55,10 @@ layout: js_minifier
 		if (window.DISQUS)
 		{
 			DISQUS.reset(
-			{
-				reload: true,
-				config: disqus_config
-			});
+				{
+					reload: true,
+					config: disqus_config
+				});
 		}
 	});
 	

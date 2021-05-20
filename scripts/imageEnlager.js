@@ -73,7 +73,7 @@ layout: js_minifier
 		{
 			img.addEventListener('load', onFirstLoad);
 		}
-		function onFirstLoad()
+		const onFirstLoad = function()
 		{
 			img.removeEventListener('load', onFirstLoad);
 			img.defaultStyle = `width: ${img.width}px; height: ${img.height}px`; //Устанавливаем фактические размеры маленькой картинки.
