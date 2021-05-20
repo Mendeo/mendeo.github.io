@@ -25,6 +25,20 @@ $leftWidth: 220px;
 		left: 0px;
 	}
 }
+.formView
+{
+	width: 40%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	fieldset
+	{
+		width: 8rem;
+	}
+	input[type="number"]
+	{
+		width: 10rem;
+	}
+}
 
 .gallery
 {
