@@ -13,12 +13,13 @@
 	function lambdaInterp(lambda, age)
 	{
 		if (age < 0 || age > 100) throw new Error('Age range: 0-100');
-		return lambda[Math.floor(age / 5)];
+		let index = Math.floor(age / 5);
+		if (index > lambda.length - 1) index = lambda.length - 1;
+		return lambda[index];
 	}
 	function getSurvival(sex, e, a)
 	{
 		if (a < e) return 1;
-		console.log(sex);
 		return SURVIVAL[sex][a] / SURVIVAL[sex][e];
 	}
 	function calculateSurvival()
@@ -47,16 +48,33 @@
 		const remainigAgeElement = document.getElementById('survival-remaining-age');
 		const remainigAgeNameElement = document.querySelector('#survival-remaining-age + span');
 		const words = [' лет', ' год', ' года'];
-
-		const currentAgeElement = document.getElementById('survival-curent-age-input');
-		const sexElement = document.getElementById('survival-sex-males-input');
-		currentAgeElement.addEventListener('input', invalidate());
-		sexElement.addEventListener('change', invalidate());
-		let rAge = remainingAge(0, 'male');
-		remainigAgeElement.innerText = rAge;
-		remainigAgeNameElement.innerText = name(rAge, words);
-		function invalidate()
+		const remainingAge = function (curentAge, sex)
 		{
+			let out = 0;
+			for (let a = curentAge; a <= 100; a++)
+			{
+				out += getSurvival(sex, curentAge, a);
+			}
+			return out;
+		};
+		const currentAgeElement = document.getElementById('survival-curent-age-input');
+		const maleRadioElement = document.getElementById('survival-sex-males-input');
+		const femaleRadioElement = document.getElementById('survival-sex-females-input');
+		const invalidate = function()
+		{
+			let sex = '';
+			if (maleRadioElement.checked)
+			{
+				sex = 'male';
+			}
+			else if (femaleRadioElement.checked)
+			{
+				sex = 'female';
+			}
+			else
+			{
+				throw new Error('Sex selector error!');
+			}
 			const age = Number(currentAgeElement.value);
 			if (currentAgeElement.value === '' || Number.isNaN(age) || !Number.isInteger(age) || age < 0 || age > 100)
 			{
@@ -67,24 +85,19 @@
 			else
 			{
 				currentAgeElement.classList.remove('input-error');
-				console.log(sexElement.checked ? 'male' : 'female');
-				rAge = remainingAge(age, sexElement.checked ? 'male' : 'female');
+				const rAge = Math.round(remainingAge(age, sex));
 				remainigAgeElement.innerText = rAge;
 				remainigAgeNameElement.innerText = name(rAge, words);
 			}
-		}
-		function remainingAge(curentAge, sex)
-		{
-			let out = 0;
-			for (let a = curentAge; a <= 100; a++)
-			{
-				out += getSurvival(sex, curentAge, a);
-			}
-			return out;
-		}
+		};
+		invalidate();
+		currentAgeElement.addEventListener('input', invalidate);
+		maleRadioElement.addEventListener('change', invalidate);
+		femaleRadioElement.addEventListener('change', invalidate);
 	}
 	function name(n, words)
 	{
+		n = Math.floor(n);
 		n %= 100;
 		if (n >= 10 && n <= 20)
 		{

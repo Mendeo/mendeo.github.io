@@ -2,20 +2,23 @@
 	<!--Сколько осталось-->
 	<fieldset class="formView">
 		<legend>Число лет дожития</legend>
-		<div>
-			<label for="survival-curent-age-input">Текущий возраст</label>
-			<br>
-			<input type="number" id = "survival-curent-age-input" class="input-default" min="0" max="100" value="0">
-			<span>Осталось </span><span id="survival-remaining-age" style="color: green;"></span><span></span>
+		<div class="formView__container">
+			<div>
+				<label for="survival-curent-age-input">Текущий возраст</label>
+				<br>
+				<input type="number" id = "survival-curent-age-input" class="input-default" min="0" max="100" value="0">
+				<br>
+				<span>Осталось </span><span id="survival-remaining-age"></span><span></span>
+			</div>
+			<fieldset>
+				<legend>Пол</legend>
+				<label for="survival-sex-males-input">Мужской</label>
+				<input type="radio" name="survival-sex" id = "survival-sex-males-input" class="input-default" value="male" checked>
+				<br>
+				<label for="survival-sex-females-input">Женский</label>
+				<input type="radio" name="survival-sex" id = "survival-sex-females-input" class="input-default" value="female">
+			</fieldset>
 		</div>
-		<fieldset>
-			<legend>Пол</legend>
-			<label for="survival-sex-males-input">Мужской</label>
-			<input type="radio" name="survival-sex" id = "survival-sex-males-input" class="input-default" value="male" checked>
-			<br>
-			<label for="survival-sex-females-input">Женский</label>
-			<input type="radio" name="survival-sex" id = "survival-sex-females-input" class="input-default" value="female">
-		</fieldset>
 	</fieldset>
 </div>
 <script type="text/javascript" src="{% link scripts/projects/survival.js %}"></script>
