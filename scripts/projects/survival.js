@@ -1,3 +1,6 @@
+---
+layout: js_minifier
+---
 (function()
 {
 	'use strict';

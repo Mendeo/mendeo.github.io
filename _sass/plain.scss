@@ -26,29 +26,6 @@ $leftWidth: 220px;
 	}
 }
 
-/* Блок, отвественный за survival проект */
-.formView
-{
-	width: 40%;
-}
-.formView__container
-{
-	display: grid;
-	grid-template-columns: 2fr 1fr;
-	grid-template-rows: 1fr;
-	grid-auto-columns: 0px;
-	grid-auto-rows: 0px;
-}
-.formView__container input[type="number"]
-{
-	width: 10rem;
-}
-#survival-remaining-age
-{
-	color: green;
-}
-/*******************************************/
-
 .gallery
 {
 	display: grid;
@@ -127,11 +104,6 @@ $leftWidth: 220px;
 	color: $inputTextColor;
 	background-color: $inputBackgroundColor;
 	border-color: $inputBackgroundColor;
-}
-
-.input-error
-{
-	color: red;
 }
 
 body
