@@ -2,24 +2,67 @@
 <div>
 	<!--Сколько осталось-->
 	<fieldset class="formView">
-		<legend>Число лет дожития</legend>
+		<legend>Статистика для размышлений</legend>
 		<div class="formView__container">
 			<div>
 				<label for="survival-curent-age-input">Текущий возраст</label>
 				<br>
-				<input type="number" id = "survival-curent-age-input" class="input-default" min="0" max="100" value="0">
+				<input type="number" id ="survival-curent-age-input" class="input-default" min="0" max="100" value="0">
 				<br>
-				<span>Осталось </span><span id="survival-remaining-age"></span><span></span>
+				<span>В среднем осталось</span>
+				<br>
+				<span id="survival-remaining-age"></span><span></span><span> жизни</span>
 			</div>
-			<fieldset>
-				<legend>Пол</legend>
-				<label for="survival-sex-males-input">Мужской</label><span> </span>
-				<input type="radio" name="survival-sex" id = "survival-sex-males-input" class="input-default" value="male" checked>
-				<br>
-				<label for="survival-sex-females-input">Женский</label><span> </span>
-				<input type="radio" name="survival-sex" id = "survival-sex-females-input" class="input-default" value="female">
-			</fieldset>
+			<div>
+				<fieldset>
+					<legend>Пол</legend>
+					<label for="survival-sex-males-input">Мужской</label><span> </span>
+					<input type="radio" name="survival-sex" id = "survival-sex-males-input" class="input-default" value="male" checked>
+					<br>
+					<label for="survival-sex-females-input">Женский</label><span> </span>
+					<input type="radio" name="survival-sex" id = "survival-sex-females-input" class="input-default" value="female">
+				</fieldset>
+			</div>
+			<div class="formView__longRow">
+				<table>
+					<caption>
+						<span>Вероятность в течение </span>
+						<input type="number" id ="survival-future-years-input" class="input-default" min="0" max="100" value="0">
+						<span> лет</span>
+					</caption>
+					<tr>
+						<td>
+							умереть от любой причины
+						</td>
+						<td>
+							<span id="survival-total-mort">0.52%</span>
+						</td>
+					</tr>
+					<tr>
+						<td>заболеть раком
+						<select id="survival-localization-select" class="input-default">
+							<option>любым</option>
+							<option>пищевода</option>
+							<option>желудка</option>
+							<option>толстого кишечника</option>
+							<option>печени</option>
+							<option>лёгких</option>
+							<option>молочной железы</option>
+							<option>яичника</option>
+							<option>мочевого пузыря</option>
+							<option>щитовидной железы</option>
+							<option>лейкемией</option>
+							<option>кости</option>
+						</select>
+						</td>
+						<td>
+							<span id="survival-cancer-incidence">0.52%</span>
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</fieldset>
+
 </div>
 <script type="text/javascript" src="{% link scripts/projects/survival.js %}"></script>

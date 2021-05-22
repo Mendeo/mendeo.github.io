@@ -1,9 +1,64 @@
----
-layout: js_minifier
----
 (function()
 {
 	'use strict';
+	//Блок, отвечающий за время дожития
+	{
+		const remainigAgeElement = document.getElementById('survival-remaining-age');
+		const remainigAgeNameElement = document.querySelector('#survival-remaining-age + span');
+		const futureYearsElement = document.getElementById('survival-future-years-input');
+		const futureYearsNameElement = document.getElementById('#survival-future-years-input + span');
+		const currentAgeElement = document.getElementById('survival-curent-age-input');
+		const maleRadioElement = document.getElementById('survival-sex-males-input');
+		const femaleRadioElement = document.getElementById('survival-sex-females-input');
+		const words = [' лет', ' год', ' года'];
+		const remainingAge = function (curentAge, sex)
+		{
+			let out = 0;
+			for (let a = curentAge; a <= 100; a++)
+			{
+				out += getSurvival(sex, curentAge, a);
+			}
+			return out;
+		};
+		const invalidate = function()
+		{
+			let sex = '';
+			if (maleRadioElement.checked)
+			{
+				sex = 'male';
+			}
+			else if (femaleRadioElement.checked)
+			{
+				sex = 'female';
+			}
+			else
+			{
+				throw new Error('Sex selector error!');
+			}
+			const age = Number(currentAgeElement.value);
+			if (currentAgeElement.value === '' || Number.isNaN(age) || !Number.isInteger(age) || age < 0 || age > 100)
+			{
+				currentAgeElement.classList.add('input-error');
+				remainigAgeElement.innerText = '__';
+				remainigAgeNameElement.innerText = '';
+				futureYearsNameElement.innerText = '';
+			}
+			else
+			{
+				currentAgeElement.classList.remove('input-error');
+				const rAge = Math.round(remainingAge(age, sex));
+				remainigAgeElement.innerText = rAge;
+				remainigAgeNameElement.innerText = name(rAge, words);
+				futureYearsElement.max = 100 - rAge + 1;
+				
+			}
+		};
+		invalidate();
+		currentAgeElement.addEventListener('input', invalidate);
+		maleRadioElement.addEventListener('change', invalidate);
+		femaleRadioElement.addEventListener('change', invalidate);
+	}
+
 	const RATES =
 	{
 		totalMortality:
@@ -45,58 +100,14 @@ layout: js_minifier
 		}
 		return out;
 	}
-
-	//Блок, отвечающий за время дожития
+	function getLBR(sex, ageStart, ageEnd)
 	{
-		const remainigAgeElement = document.getElementById('survival-remaining-age');
-		const remainigAgeNameElement = document.querySelector('#survival-remaining-age + span');
-		const words = [' лет', ' год', ' года'];
-		const remainingAge = function (curentAge, sex)
+		let out = 0;
+		for (let a = ageStart; a <= ageEnd; a++)
 		{
-			let out = 0;
-			for (let a = curentAge; a <= 100; a++)
-			{
-				out += getSurvival(sex, curentAge, a);
-			}
-			return out;
-		};
-		const currentAgeElement = document.getElementById('survival-curent-age-input');
-		const maleRadioElement = document.getElementById('survival-sex-males-input');
-		const femaleRadioElement = document.getElementById('survival-sex-females-input');
-		const invalidate = function()
-		{
-			let sex = '';
-			if (maleRadioElement.checked)
-			{
-				sex = 'male';
-			}
-			else if (femaleRadioElement.checked)
-			{
-				sex = 'female';
-			}
-			else
-			{
-				throw new Error('Sex selector error!');
-			}
-			const age = Number(currentAgeElement.value);
-			if (currentAgeElement.value === '' || Number.isNaN(age) || !Number.isInteger(age) || age < 0 || age > 100)
-			{
-				currentAgeElement.classList.add('input-error');
-				remainigAgeElement.innerText = '__';
-				remainigAgeNameElement.innerText = '';
-			}
-			else
-			{
-				currentAgeElement.classList.remove('input-error');
-				const rAge = Math.round(remainingAge(age, sex));
-				remainigAgeElement.innerText = rAge;
-				remainigAgeNameElement.innerText = name(rAge, words);
-			}
-		};
-		invalidate();
-		currentAgeElement.addEventListener('input', invalidate);
-		maleRadioElement.addEventListener('change', invalidate);
-		femaleRadioElement.addEventListener('change', invalidate);
+			out += lambdaInterp(RATES.totalMortality[sex], a) * getSurvival(sex, a);
+		}
+		return out;
 	}
 	function name(n, words)
 	{
