@@ -35,6 +35,7 @@
         "space-in-parens": ["error", "never"],
         "comma-spacing": ["error", { "before": false, "after": true }],
         "no-multi-str": "error",
-        "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1, "maxBOF": 0 }]
+        "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1, "maxBOF": 0 }],
+        "space-infix-ops": "error"
     }
 }
