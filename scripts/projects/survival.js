@@ -1,6 +1,7 @@
 (function()
 {
 	'use strict';
+	const MAX_AGE = 90;
 	const RATES =
 	{
 		totalMortality:
@@ -39,6 +40,15 @@
 				aux[a] = Math.exp(-sum);
 			}
 			out[sex] = aux;
+		}
+		return out;
+	}
+	function remainingAge(sex, currentAge)
+	{
+		let out = 0;
+		for (let a = currentAge; a <= 100; a++)
+		{
+			out += getSurvival(sex, currentAge, a);
 		}
 		return out;
 	}
@@ -124,27 +134,18 @@
 		const getSelectedCurrentAge = function()
 		{
 			let currentAge = Number(currentAgeElement.value);
-			if (currentAgeElement.value === '' || Number.isNaN(currentAge) || !Number.isInteger(currentAge) || currentAge < 0 || currentAge > 100) return NaN;
+			if (currentAgeElement.value === '' || Number.isNaN(currentAge) || !Number.isInteger(currentAge) || currentAge < 0 || currentAge > MAX_AGE) return NaN;
 			return currentAge;
 		};
 		let currentAge = getSelectedCurrentAge();
 		let sex = getSelectedSex();
-		const remainingAge = function ()
-		{
-			let out = 0;
-			for (let a = currentAge; a <= 100; a++)
-			{
-				out += getSurvival(sex, currentAge, a);
-			}
-			return out;
-		};
-		const getSelectedFutureYears = function()
+		const getSelectedFutureAge = function()
 		{
 			let futureAge = Number(futureAgeElement.value);
-			if (futureAgeElement.value === '' || Number.isNaN(futureAge) || !Number.isInteger(futureAge) || futureAge < 0 || futureAge > 100) return NaN;
+			if (futureAgeElement.value === '' || Number.isNaN(futureAge) || !Number.isInteger(futureAge) || futureAge < 0 || futureAge > MAX_AGE) return NaN;
 			return futureAge;
 		};
-		let futureAge = getSelectedFutureYears();
+		let futureAge = getSelectedFutureAge();
 		let currentAgeError = false;
 		let sexError = false;
 		let futureAgeError = false;
@@ -159,7 +160,7 @@
 			{
 				if (!probabilityOnly) //Не нужно пересчитывать, если изменены данные, не относящиеся к текущему возрасту и полу.
 				{
-					const aux = Math.round(remainingAge());
+					const aux = Math.round(remainingAge(sex, currentAge));
 					remainigAgeElement.innerText = aux;
 					remainigAgeNameElement.innerText = name_var1(aux);
 				}
@@ -181,11 +182,10 @@
 			}
 			else
 			{
-				const futureAgeMin =  100 - currentAge + 1;
-				futureAgeElement.min = futureAgeMin;
-				if (futureAge < futureAgeMin)
+				futureAgeElement.min = currentAge;
+				if (futureAge < currentAge)
 				{
-					futureAge = futureAgeMin;
+					futureAge = currentAge;
 					futureAgeElement.value = futureAge;
 				}
 				currentAgeElement.classList.remove('input-error');
@@ -210,8 +210,8 @@
 		femaleRadioElement.addEventListener('change', onSexChanged);
 		futureAgeElement.addEventListener('input', () =>
 		{
-			futureAge = getSelectedFutureYears();
-			if (isNaN(futureAge))
+			futureAge = getSelectedFutureAge();
+			if (isNaN(futureAge) || futureAge < currentAge || futureAge > MAX_AGE)
 			{
 				futureAgeElement.classList.add('input-error');
 				futureAgeError = true;
