@@ -3,7 +3,7 @@
 /* Блок, отвественный за survival проект */
 .formView
 {
-	width: 50%;
+	width: 53%;
 }
 .formView__container
 {
@@ -22,6 +22,10 @@
 .formView table caption
 {
 	text-align: left;
+}
+.formView table td
+{
+	border: 0px;
 }
 #survival-curent-age-input
 {

@@ -44,12 +44,12 @@
 	}
 	function getLBR(sex, ageStart, ageEnd)
 	{
-		let out = 0;
+		let out = 1;
 		for (let a = ageStart; a <= ageEnd; a++)
 		{
-			out += lambdaInterp(RATES.totalMortality[sex], a) * getSurvival(sex, ageStart, a);
+			out *= (1 - lambdaInterp(RATES.totalMortality[sex], a) * getSurvival(sex, ageStart, a));
 		}
-		return out;
+		return 1 - out;
 	}
 	function name(n)
 	{
