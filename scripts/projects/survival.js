@@ -51,7 +51,7 @@
 		}
 		return 1 - out;
 	}
-	function name(n)
+	function name_var1(n)
 	{
 		const words = [' лет', ' год', ' года'];
 		n = Math.floor(n);
@@ -74,6 +74,27 @@
 			}
 		}
 	}
+	function name_var2(n)
+	{
+		const words = [' года', ' лет'];
+		n = Math.floor(n);
+		n %= 100;
+		if (n % 10 === 1)
+		{
+			if (n === 11)
+			{
+				return words[1];
+			}
+			else
+			{
+				return words[0];
+			}
+		}
+		else
+		{
+			return words[1];
+		}
+	}
 	//Блок, отвечающий за время дожития
 	{
 		const remainigAgeElement = document.getElementById('survival-remaining-age');
@@ -82,7 +103,8 @@
 		const maleRadioElement = document.getElementById('survival-sex-males-input');
 		const femaleRadioElement = document.getElementById('survival-sex-females-input');
 
-		const futureYearsElement = document.getElementById('survival-future-years-input');
+		const futureAgeElement = document.getElementById('survival-future-age-input');
+		const futureAgeNameElement = document.querySelector('#survival-future-age-input + span');
 		const totalMortProbabilityElement = document.getElementById('survival-total-mort');
 		const getSelectedSex = function()
 		{
@@ -118,14 +140,14 @@
 		};
 		const getSelectedFutureYears = function()
 		{
-			let futureYears = Number(futureYearsElement.value);
-			if (futureYearsElement.value === '' || Number.isNaN(futureYears) || !Number.isInteger(futureYears) || futureYears < 1 || futureYears > 100 - currentAge + 1) return NaN;
-			return futureYears;
+			let futureAge = Number(futureAgeElement.value);
+			if (futureAgeElement.value === '' || Number.isNaN(futureAge) || !Number.isInteger(futureAge) || futureAge < 0 || futureAge > 100) return NaN;
+			return futureAge;
 		};
-		let futureYears = getSelectedFutureYears();
+		let futureAge = getSelectedFutureYears();
 		let currentAgeError = false;
 		let sexError = false;
-		let futureYearsError = false;
+		let futureAgeError = false;
 		const recalc = function(probabilityOnly)
 		{
 			if (currentAgeError || sexError)
@@ -139,11 +161,11 @@
 				{
 					const aux = Math.round(remainingAge());
 					remainigAgeElement.innerText = aux;
-					remainigAgeNameElement.innerText = name(aux);
+					remainigAgeNameElement.innerText = name_var1(aux);
 				}
-				if (!futureYearsError)
+				if (!futureAgeError)
 				{
-					const aux = getLBR(sex, currentAge, currentAge + futureYears - 1);
+					const aux = getLBR(sex, currentAge, futureAge);
 					totalMortProbabilityElement.innerText = Math.round(aux * 100 * 100) / 100 + '%';
 				}
 			}
@@ -159,12 +181,12 @@
 			}
 			else
 			{
-				const futureYearsMax =  100 - currentAge + 1;
-				futureYearsElement.max = futureYearsMax;
-				if (futureYears > futureYearsMax)
+				const futureAgeMin =  100 - currentAge + 1;
+				futureAgeElement.min = futureAgeMin;
+				if (futureAge < futureAgeMin)
 				{
-					futureYears = futureYearsMax;
-					futureYearsElement.value = futureYears;
+					futureAge = futureAgeMin;
+					futureAgeElement.value = futureAge;
 				}
 				currentAgeElement.classList.remove('input-error');
 				currentAgeError = false;
@@ -186,18 +208,20 @@
 		};
 		maleRadioElement.addEventListener('change', onSexChanged);
 		femaleRadioElement.addEventListener('change', onSexChanged);
-		futureYearsElement.addEventListener('input', () =>
+		futureAgeElement.addEventListener('input', () =>
 		{
-			futureYears = getSelectedFutureYears();
-			if (isNaN(futureYears))
+			futureAge = getSelectedFutureYears();
+			if (isNaN(futureAge))
 			{
-				futureYearsElement.classList.add('input-error');
-				futureYearsError = true;
+				futureAgeElement.classList.add('input-error');
+				futureAgeError = true;
+				futureAgeNameElement.innerText = '';
 			}
 			else
 			{
-				futureYearsElement.classList.remove('input-error');
-				futureYearsError = false;
+				futureAgeElement.classList.remove('input-error');
+				futureAgeError = false;
+				futureAgeNameElement.innerText = name_var2(futureAge);
 			}
 			recalc(true);
 		});
