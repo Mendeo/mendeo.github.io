@@ -161,6 +161,7 @@
 	function lambdaInterp(lambda, age)
 	{
 		if (age < 0 || age > 100) throw new Error('Age range: 0-100');
+		if (lambda.length !== 18) throw new Error('Error in data arrays');
 		let index = Math.floor(age / 5);
 		if (index > lambda.length - 1) index = lambda.length - 1;
 		return lambda[index];
