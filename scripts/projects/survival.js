@@ -52,14 +52,9 @@
 		}
 		return out;
 	}
-	function getLBR(sex, ageStart, ageEnd)
+	function getDeathProbability(sex, ageStart, ageEnd)
 	{
-		let out = 1;
-		for (let a = ageStart; a <= ageEnd; a++)
-		{
-			out *= (1 - lambdaInterp(RATES.totalMortality[sex], a) * getSurvival(sex, ageStart, a));
-		}
-		return 1 - out;
+		return 1 - getSurvival(sex, ageStart, ageEnd);
 	}
 	function name_var1(n)
 	{
@@ -142,7 +137,9 @@
 		const getSelectedFutureAge = function()
 		{
 			let futureAge = Number(futureAgeElement.value);
-			if (futureAgeElement.value === '' || Number.isNaN(futureAge) || !Number.isInteger(futureAge) || futureAge < 0 || futureAge > MAX_AGE) return NaN;
+			const futureAgeMin = currentAge + 1;
+			const futureAgeMax = MAX_AGE + 1;
+			if (futureAgeElement.value === '' || Number.isNaN(futureAge) || !Number.isInteger(futureAge) || futureAge < futureAgeMin || futureAge > futureAgeMax) return NaN;
 			return futureAge;
 		};
 		let futureAge = getSelectedFutureAge();
@@ -166,7 +163,7 @@
 				}
 				if (!futureAgeError)
 				{
-					const aux = getLBR(sex, currentAge, futureAge);
+					const aux = getDeathProbability(sex, currentAge, futureAge);
 					totalMortProbabilityElement.innerText = Math.round(aux * 100 * 100) / 100 + '%';
 				}
 			}
@@ -182,11 +179,13 @@
 			}
 			else
 			{
-				futureAgeElement.min = currentAge;
-				if (futureAge < currentAge)
+				const futureAgeMin = currentAge + 1;
+				futureAgeElement.min = futureAgeMin;
+				if (futureAge < futureAgeMin)
 				{
-					futureAge = currentAge;
+					futureAge = futureAgeMin;
 					futureAgeElement.value = futureAge;
+					futureAgeNameElement.innerText = name_var2(futureAge);
 				}
 				currentAgeElement.classList.remove('input-error');
 				currentAgeError = false;
@@ -211,7 +210,8 @@
 		futureAgeElement.addEventListener('input', () =>
 		{
 			futureAge = getSelectedFutureAge();
-			if (isNaN(futureAge) || futureAge < currentAge || futureAge > MAX_AGE)
+
+			if (isNaN(futureAge))
 			{
 				futureAgeElement.classList.add('input-error');
 				futureAgeError = true;
