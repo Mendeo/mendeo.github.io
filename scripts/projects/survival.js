@@ -211,7 +211,7 @@
 		let pNotCancer = 1;
 		for (let k = ageStart; k <= ageEnd - 1; k++)
 		{
-			pNotCancer *= 1 - lambdaInterp(RATES.cancerIncidence[localizationIndex][1][sex], k) * getSurvival(sex, ageStart, k);
+			pNotCancer *= 1 - lambdaInterp(RATES.cancerIncidence[localizationIndex][1][sex], k) * getSurvival(sex, ageStart, k + 1);
 		}
 		return 1 - pNotCancer;
 	}
