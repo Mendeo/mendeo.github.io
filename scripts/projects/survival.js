@@ -205,6 +205,16 @@
 		}
 		return out;
 	}
+	function getCancerProbability(sex, localizationIndex, ageStart, ageEnd)
+	{
+		if (ageStart == ageEnd) return 0;
+		let p = 1;
+		for (let k = ageStart; k <= ageEnd - 1; k++)
+		{
+			p *= 1 - lambdaInterp(RATES.cancerIncidence[localizationIndex][1][sex], k);
+		}
+		return 1 - p * getSurvival(sex, ageStart, ageEnd);
+	}
 	function remainingAge(sex, currentAge)
 	{
 		let out = 0;
@@ -280,6 +290,8 @@
 		const totalMortProbabilityElement = document.getElementById('survival-total-mort');
 
 		const localizationSelectElement = document.getElementById('survival-localization-select');
+		const localizationProbabilityElement = document.getElementById('survival-cancer-incidence');
+
 		for (let loc of RATES.cancerIncidence)
 		{
 			localizationSelectElement.appendChild(new Option(loc[0]));
@@ -332,6 +344,16 @@
 		let currentAgeError = false;
 		let sexError = false;
 		let futureAgeError = false;
+		const getSelectedLocalizationIndex = function()
+		{
+			return localizationSelectElement.selectedIndex;
+		};
+		let localizationIndex = getSelectedLocalizationIndex();
+		localizationSelectElement.addEventListener('change', () =>
+		{
+			localizationIndex = getSelectedLocalizationIndex();
+			recalc(true);
+		});
 		const recalc = function(probabilityOnly)
 		{
 			if (currentAgeError || sexError)
@@ -351,6 +373,10 @@
 				{
 					const aux = getDeathProbability(sex, currentAge, futureAge);
 					totalMortProbabilityElement.innerText = Math.round(aux * 100 * 100) / 100 + '%';
+				}
+				{
+					const aux = getCancerProbability(sex, localizationIndex, currentAge, futureAge);
+					localizationProbabilityElement.innerText = Math.round(aux * 100 * 100) / 100 + '%';
 				}
 			}
 		};
@@ -414,17 +440,5 @@
 			}
 			recalc(true);
 		});
-		//Блок расчёта вероятности заболевания ЗНО
-		const getSelectedLocalization = function()
-		{
-			return RATES.cancerIncidence[localizationSelectElement.selectedIndex][1];
-		};
-		let localization = getSelectedLocalization();
-		localizationSelectElement.addEventListener('change', () =>
-		{
-			let localization = getSelectedLocalization();
-			console.log(localization);
-		});
-		console.log(localization);
 	}
 })();
