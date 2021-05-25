@@ -271,6 +271,7 @@
 		const remainigAgeElement = document.getElementById('survival-remaining-age');
 		const remainigAgeNameElement = document.querySelector('#survival-remaining-age + span');
 		const currentAgeElement = document.getElementById('survival-curent-age-input');
+		const currentAgeNameElement = document.querySelector('#survival-curent-age-input + span');
 		const maleRadioElement = document.getElementById('survival-sex-males-input');
 		const femaleRadioElement = document.getElementById('survival-sex-females-input');
 
@@ -360,10 +361,12 @@
 			if (isNaN(currentAge))
 			{
 				currentAgeElement.classList.add('input-error');
+				currentAgeNameElement.innerText = '';
 				currentAgeError = true;
 			}
 			else
 			{
+				currentAgeNameElement.innerText = name_var1(currentAge);
 				const futureAgeMin = currentAge + 1;
 				futureAgeElement.min = futureAgeMin;
 				if (futureAge < futureAgeMin)

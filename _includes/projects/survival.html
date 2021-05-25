@@ -1,19 +1,14 @@
 <link rel="stylesheet" href="{% link assets/css/projects/survival.scss %}">
-<div>
+<div class="formView">
 	<!--Сколько осталось-->
-	<fieldset class="formView">
+	<fieldset>
 		<legend>Статистика для размышлений</legend>
 		<div class="formView__container">
 			<div>
-				<label for="survival-curent-age-input">Текущий возраст (лет)</label>
-				<br>
+				<span>Текущий возраст</span>
 				<input type="number" id ="survival-curent-age-input" class="input-default" min="0" max="90" value="0">
+				<span> лет</span>
 				<br>
-				<span>В среднем осталось</span>
-				<br>
-				<span id="survival-remaining-age"></span><span></span><span> жизни</span>
-			</div>
-			<div>
 				<fieldset>
 					<legend>Пол</legend>
 					<label for="survival-sex-males-input">Мужской</label><span> </span>
@@ -23,12 +18,17 @@
 					<input type="radio" name="survival-sex" id = "survival-sex-females-input" class="input-default" value="female">
 				</fieldset>
 			</div>
+			<div>
+				<span>В среднем осталось</span>
+				<br>
+				<span id="survival-remaining-age"></span><span></span><span> жизни</span>
+			</div>
 			<div class="formView__longRow">
 				<table>
 					<caption>
 						<span>Вероятность до </span>
 						<input type="number" id ="survival-future-age-input" class="input-default" min="1" max="91" value="1">
-						<span> года</span>
+						<span> года</span><span>:</span>
 					</caption>
 					<tr>
 						<td>
@@ -40,20 +40,7 @@
 					</tr>
 					<tr>
 						<td>заболеть раком
-						<select id="survival-localization-select" class="input-default">
-							<option>любым</option>
-							<option>пищевода</option>
-							<option>желудка</option>
-							<option>толстого кишечника</option>
-							<option>печени</option>
-							<option>лёгких</option>
-							<option>молочной железы</option>
-							<option>яичника</option>
-							<option>мочевого пузыря</option>
-							<option>щитовидной железы</option>
-							<option>лейкемией</option>
-							<option>кости</option>
-						</select>
+						<select id="survival-localization-select" class="input-default"></select>
 						</td>
 						<td>
 							<span id="survival-cancer-incidence">0.52%</span>
