@@ -208,12 +208,12 @@
 	function getCancerProbability(sex, localizationIndex, ageStart, ageEnd)
 	{
 		if (ageStart == ageEnd) return 0;
-		let p = 1;
+		let pNotCancer = 1;
 		for (let k = ageStart; k <= ageEnd - 1; k++)
 		{
-			p *= 1 - lambdaInterp(RATES.cancerIncidence[localizationIndex][1][sex], k);
+			pNotCancer *= 1 - lambdaInterp(RATES.cancerIncidence[localizationIndex][1][sex], k) * getSurvival(sex, ageStart, k);
 		}
-		return 1 - p * getSurvival(sex, ageStart, ageEnd);
+		return 1 - pNotCancer;
 	}
 	function remainingAge(sex, currentAge)
 	{
