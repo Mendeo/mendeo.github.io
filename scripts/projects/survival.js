@@ -9,8 +9,8 @@
 			male: [0.0011584, 0.0001952, 0.0002747, 0.0007688, 0.0013998, 0.0020026, 0.0035347, 0.005544, 0.0078004, 0.009496, 0.0129443, 0.0186514, 0.0282904, 0.0389475, 0.0520627, 0.0761966, 0.1055055, 0.1626455],
 			female: [0.000967333, 0.000128579, 0.000160361, 0.000360802, 0.000463913, 0.000693919, 0.001208848, 0.001998062, 0.002710243, 0.003435062, 0.004592816, 0.006654533, 0.009779683, 0.015147211, 0.024011459, 0.043495949, 0.073966104, 0.167177759]
 		},
-		cancerIncidence: new Map(
-			[['любым',
+		cancerIncidence: [
+			['любым',
 				{
 					male: [0.0001736, 0.0001156, 0.0000994, 0.0001586, 0.0001934, 0.000241, 0.0004133, 0.0006806, 0.0012659, 0.0022026, 0.0041485, 0.0075247, 0.0127452, 0.018747, 0.0240272, 0.0245194, 0.023075, 0.0164009],
 					female: [0.0001618, 0.0000925, 0.0000878, 0.0001621, 0.0002446, 0.0005082, 0.0009816, 0.0016465, 0.0025869, 0.003665, 0.0049241, 0.0065249, 0.0086938, 0.0109344, 0.0133388, 0.0131779, 0.0132149, 0.0106516],
@@ -143,19 +143,33 @@
 					female: [0.000061, 0.0000434, 0.0000361, 0.0000534, 0.0000614, 0.0000791, 0.0000928, 0.0000957, 0.0001041, 0.0001351, 0.0001873, 0.0002671, 0.0003722, 0.0004991, 0.0005906, 0.0005943, 0.0005348, 0.0003617],
 					addition: 'Лимфатическая и кроветворная ткань (С81-96)'
 				}]
-			].sort((a, b) =>
+		].sort((a, b) =>
+		{
+			if (a[0] === 'любым') return -1;
+			if (a[0] > b[0])
 			{
-				if (a[0] > b[0])
-				{
-					return 1;
-				}
-				if (a[0] < b[0])
-				{
-					return -1;
-				}
-				return 0;
-			}))
+				return 1;
+			}
+			if (a[0] < b[0])
+			{
+				return -1;
+			}
+			return 0;
+		})
 	};
+	const malesOnlyLocalisationIndexes = [];
+	const femalesOnlyLocalisationIndexes = [];
+	for (let index = 0; index < RATES.cancerIncidence.length; index++)
+	{
+		if (!RATES.cancerIncidence[index][1].female)
+		{
+			malesOnlyLocalisationIndexes.push(index);
+		}
+		if (!RATES.cancerIncidence[index][1].male)
+		{
+			femalesOnlyLocalisationIndexes.push(index);
+		}
+	}
 
 	const SURVIVAL = calculateSurvival();
 	function lambdaInterp(lambda, age)
@@ -248,6 +262,10 @@
 			return words[1];
 		}
 	}
+	function setVisibility(element, visibility)
+	{
+		element.style = visibility ? 'display: inherit' : 'display: none';
+	}
 	//Блок, отвечающий за время дожития
 	{
 		const remainigAgeElement = document.getElementById('survival-remaining-age');
@@ -259,6 +277,13 @@
 		const futureAgeElement = document.getElementById('survival-future-age-input');
 		const futureAgeNameElement = document.querySelector('#survival-future-age-input + span');
 		const totalMortProbabilityElement = document.getElementById('survival-total-mort');
+
+		const localizationSelectElement = document.getElementById('survival-localization-select');
+		for (let loc of RATES.cancerIncidence)
+		{
+			localizationSelectElement.appendChild(new Option(loc[0]));
+		}
+
 		const getSelectedSex = function()
 		{
 			if (maleRadioElement.checked)
@@ -282,6 +307,18 @@
 		};
 		let currentAge = getSelectedCurrentAge();
 		let sex = getSelectedSex();
+		const disableOnlySexLocalizations = function()
+		{
+			for (let i of femalesOnlyLocalisationIndexes)
+			{
+				setVisibility(localizationSelectElement.options[i], (sex === 'female'));
+			}
+			for (let i of malesOnlyLocalisationIndexes)
+			{
+				setVisibility(localizationSelectElement.options[i], (sex === 'male'));
+			}
+		};
+		disableOnlySexLocalizations();
 		const getSelectedFutureAge = function()
 		{
 			let futureAge = Number(futureAgeElement.value);
@@ -351,6 +388,7 @@
 			{
 				sexError = false;
 			}
+			disableOnlySexLocalizations();
 			recalc();
 		};
 		maleRadioElement.addEventListener('change', onSexChanged);
@@ -373,5 +411,17 @@
 			}
 			recalc(true);
 		});
+		//Блок расчёта вероятности заболевания ЗНО
+		const getSelectedLocalization = function()
+		{
+			return RATES.cancerIncidence[localizationSelectElement.selectedIndex][1];
+		};
+		let localization = getSelectedLocalization();
+		localizationSelectElement.addEventListener('change', () =>
+		{
+			let localization = getSelectedLocalization();
+			console.log(localization);
+		});
+		console.log(localization);
 	}
 })();
