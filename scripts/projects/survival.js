@@ -320,15 +320,37 @@
 		};
 		let currentAge = getSelectedCurrentAge();
 		let sex = getSelectedSex();
+		const getSelectedLocalizationIndex = function()
+		{
+			return localizationSelectElement.selectedIndex;
+		};
+		let localizationIndex = getSelectedLocalizationIndex();
+		localizationSelectElement.addEventListener('change', () =>
+		{
+			localizationIndex = getSelectedLocalizationIndex();
+			recalc(true);
+		});
 		const disableOnlySexLocalizations = function()
 		{
 			for (let i of femalesOnlyLocalisationIndexes)
 			{
-				setVisibility(localizationSelectElement.options[i], (sex === 'female'));
+				const flag = (sex === 'female');
+				setVisibility(localizationSelectElement.options[i], flag);
+				if (!flag && localizationIndex === i)
+				{
+					localizationSelectElement.selectedIndex = 0;
+					localizationIndex = 0;
+				}
 			}
 			for (let i of malesOnlyLocalisationIndexes)
 			{
-				setVisibility(localizationSelectElement.options[i], (sex === 'male'));
+				const flag = (sex === 'male');
+				setVisibility(localizationSelectElement.options[i], flag);
+				if (!flag && localizationIndex === i)
+				{
+					localizationSelectElement.selectedIndex = 0;
+					localizationIndex = 0;
+				}
 			}
 		};
 		disableOnlySexLocalizations();
@@ -344,16 +366,6 @@
 		let currentAgeError = false;
 		let sexError = false;
 		let futureAgeError = false;
-		const getSelectedLocalizationIndex = function()
-		{
-			return localizationSelectElement.selectedIndex;
-		};
-		let localizationIndex = getSelectedLocalizationIndex();
-		localizationSelectElement.addEventListener('change', () =>
-		{
-			localizationIndex = getSelectedLocalizationIndex();
-			recalc(true);
-		});
 		const recalc = function(probabilityOnly)
 		{
 			if (currentAgeError || sexError)
