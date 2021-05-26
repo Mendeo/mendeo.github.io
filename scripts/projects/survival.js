@@ -331,6 +331,7 @@
 	}
 
 	const SURVIVAL = calculateSurvival();
+	const HEALTY_SURVIVAL = calculateHealthySurvival();
 	function lambdaInterp(lambda, age)
 	{
 		if (age < 0 || age > 100) throw new Error('Age range: 0-100');
@@ -344,7 +345,12 @@
 		if (a < e) return 1;
 		return SURVIVAL[sex][a] / SURVIVAL[sex][e];
 	}
-	function calculateSurvival()
+	function getHealthySurvival(sex, e, a, localizationIndex)
+	{
+		if (a < e) return 1;
+		return HEALTY_SURVIVAL[localizationIndex][sex][a] / HEALTY_SURVIVAL[localizationIndex][sex][e];
+	}
+	function calculateSurvival_common(lambda)
 	{
 		const out = {};
 		for (let sex of ['male', 'female'])
@@ -356,7 +362,7 @@
 				let sum = 0;
 				for (let k = 0; k <= a - 1; k++)
 				{
-					sum += lambdaInterp(RATES.totalMortality[sex], k);
+					sum += lambda(sex, k);
 				}
 				aux[a] = Math.exp(-sum);
 			}
@@ -364,18 +370,32 @@
 		}
 		return out;
 	}
-	/*
+	function calculateSurvival()
+	{
+		function lambda(sex, k)
+		{
+			return lambdaInterp(RATES.totalMortality[sex], k);
+		}
+		return calculateSurvival_common(lambda);
+	}
+	function calculateHealthySurvival()
+	{
+		const out = [];
+		for (let localizationIndex = 0; localizationIndex < RATES.cancerRates.length; localizationIndex++)
+		{
+			const lambda = function(sex, k)
+			{
+				if (!RATES.cancerRates[localizationIndex][sex]) return lambdaInterp(RATES.totalMortality[sex], k);
+				return lambdaInterp(RATES.totalMortality[sex], k) - lambdaInterp(RATES.cancerRates[localizationIndex][sex].mortality, k) + lambdaInterp(RATES.cancerRates[localizationIndex][sex].incidence, k);
+			};
+			out.push(calculateSurvival_common(lambda));
+		}
+		return out;
+	}
 	function getCancerProbability(sex, localizationIndex, ageStart, ageEnd)
 	{
-		if (ageStart == ageEnd) return 0;
-		let pNotCancer = 1;
-		for (let k = ageStart; k <= ageEnd - 1; k++)
-		{
-			pNotCancer *= 1 - lambdaInterp(RATES.cancerIncidence[localizationIndex][1][sex], k) * getSurvival(sex, ageStart, k + 1);
-		}
-		return 1 - pNotCancer;
+		return 1 - getHealthySurvival(sex, ageStart, ageEnd, localizationIndex) / getSurvival(sex, ageStart, ageEnd);
 	}
-	*/
 	function remainingAge(sex, currentAge)
 	{
 		let out = 0;
@@ -548,7 +568,7 @@
 					totalMortProbabilityElement.innerText = Math.round(aux * 100 * 100) / 100 + '%';
 				}
 				{
-					const aux = 0.356;//getCancerProbability(sex, localizationIndex, currentAge, futureAge);
+					const aux = getCancerProbability(sex, localizationIndex, currentAge, futureAge);
 					localizationProbabilityElement.innerText = Math.round(aux * 100 * 100) / 100 + '%';
 				}
 			}
