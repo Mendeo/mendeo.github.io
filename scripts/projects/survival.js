@@ -1,3 +1,6 @@
+---
+layout: js_minifier
+---
 (function()
 {
 	'use strict';
@@ -11,7 +14,7 @@
 		},
 		cancerRates: [
 			{
-				name: 'любым раком',
+				name: 'любым',
 				first: true,
 				male:
 				{
@@ -453,9 +456,13 @@
 			return words[1];
 		}
 	}
-	function setVisibility(element, visibility)
+	function setDisplayNone(element, visibility)
 	{
 		element.style = visibility ? 'display: inherit' : 'display: none';
+	}
+	function setVisibilityHidden(element, visibility)
+	{
+		element.style = visibility ? 'visibility: inherit' : 'visibility: hidden';
 	}
 	//Блок, отвечающий за время дожития
 	{
@@ -472,6 +479,8 @@
 
 		const localizationSelectElement = document.getElementById('survival-localization-select');
 		const localizationProbabilityElement = document.getElementById('survival-cancer-incidence');
+		const tableFooterElement = document.querySelector('.formView table + span');
+		const asterixElement = document.querySelector('#survival-localization-select + span');
 
 		for (let loc of RATES.cancerRates)
 		{
@@ -509,6 +518,18 @@
 		localizationSelectElement.addEventListener('change', () =>
 		{
 			localizationIndex = getSelectedLocalizationIndex();
+			const addition = RATES.cancerRates[localizationIndex].addition;
+			if (addition)
+			{
+				setVisibilityHidden(tableFooterElement, true);
+				tableFooterElement.innerText = '*' + addition;
+				setVisibilityHidden(asterixElement, true);
+			}
+			else
+			{
+				setVisibilityHidden(tableFooterElement, false);
+				setVisibilityHidden(asterixElement, false);
+			}
 			recalc(true);
 		});
 		const disableOnlySexLocalizations = function()
@@ -516,7 +537,7 @@
 			for (let i of femalesOnlyLocalisationIndexes)
 			{
 				const flag = (sex === 'female');
-				setVisibility(localizationSelectElement.options[i], flag);
+				setDisplayNone(localizationSelectElement.options[i], flag);
 				if (!flag && localizationIndex === i)
 				{
 					localizationSelectElement.selectedIndex = 0;
@@ -526,7 +547,7 @@
 			for (let i of malesOnlyLocalisationIndexes)
 			{
 				const flag = (sex === 'male');
-				setVisibility(localizationSelectElement.options[i], flag);
+				setDisplayNone(localizationSelectElement.options[i], flag);
 				if (!flag && localizationIndex === i)
 				{
 					localizationSelectElement.selectedIndex = 0;
@@ -562,13 +583,16 @@
 					remainigAgeElement.innerText = aux;
 					remainigAgeNameElement.innerText = name_var1(aux);
 				}
-				if (!futureAgeError)
+				if (futureAgeError)
 				{
-					const aux = getDeathProbability(sex, currentAge, futureAge);
-					totalMortProbabilityElement.innerText = Math.round(aux * 100 * 100) / 100 + '%';
+					totalMortProbabilityElement.innerText = '__';
+					localizationProbabilityElement.innerText = '__';
 				}
+				else
 				{
-					const aux = getCancerProbability(sex, localizationIndex, currentAge, futureAge);
+					let aux = getDeathProbability(sex, currentAge, futureAge);
+					totalMortProbabilityElement.innerText = Math.round(aux * 100 * 100) / 100 + '%';
+					aux = getCancerProbability(sex, localizationIndex, currentAge, futureAge);
 					localizationProbabilityElement.innerText = Math.round(aux * 100 * 100) / 100 + '%';
 				}
 			}

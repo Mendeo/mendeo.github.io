@@ -43,6 +43,14 @@
 {
 	border: 0px;
 }
+/*Футер таблицы*/
+.formView table + span
+{
+	font-size: xx-small;
+	padding: 0px;
+	margin: 0px;
+	visibility: hidden;
+}
 #survival-curent-age-input
 {
 	width: 3rem;
@@ -54,6 +62,10 @@
 #survival-localization-select
 {
 	width: 15rem;
+}
+#survival-localization-select + span /*asterix*/
+{
+	visibility: hidden;
 }
 #survival-remaining-age
 {
