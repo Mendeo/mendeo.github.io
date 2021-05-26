@@ -574,6 +574,8 @@ layout: js_minifier
 			{
 				remainigAgeElement.innerText = '__';
 				remainigAgeNameElement.innerText = '';
+				totalMortProbabilityElement.innerText = '__';
+				localizationProbabilityElement.innerText = '__';
 			}
 			else
 			{
