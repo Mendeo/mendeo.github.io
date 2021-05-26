@@ -1,6 +1,3 @@
----
-layout: js_minifier
----
 (function()
 {
 	'use strict';
@@ -464,7 +461,15 @@ layout: js_minifier
 	{
 		element.style = visibility ? 'visibility: inherit' : 'visibility: hidden';
 	}
-	//Блок, отвечающий за время дожития
+	function round(n, val, isPercent) //n - число разрядов
+	{
+		const aux1 = 10 ** -n;
+		const aux2 = 10 ** n;
+		if (isPercent) val *= 100;
+		let out = val < aux1 ? '<' + aux1 : Math.round(val * aux2) / aux2;
+		if (isPercent) out += '%';
+		return out;
+	}
 	{
 		const remainigAgeElement = document.getElementById('survival-remaining-age');
 		const remainigAgeNameElement = document.querySelector('#survival-remaining-age + span');
@@ -593,9 +598,9 @@ layout: js_minifier
 				else
 				{
 					let aux = getDeathProbability(sex, currentAge, futureAge);
-					totalMortProbabilityElement.innerText = Math.round(aux * 100 * 100) / 100 + '%';
+					totalMortProbabilityElement.innerText = round(2, aux, true);
 					aux = getCancerProbability(sex, localizationIndex, currentAge, futureAge);
-					localizationProbabilityElement.innerText = Math.round(aux * 100 * 100) / 100 + '%';
+					localizationProbabilityElement.innerText = round(2, aux, true);
 				}
 			}
 		};
