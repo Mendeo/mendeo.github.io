@@ -4,6 +4,7 @@
 .formView
 {
 	width: 45%;
+	min-width: 360px;
 	@media screen and (max-width: 1155px)
 	{
 		width: 70%;
