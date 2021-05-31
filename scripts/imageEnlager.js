@@ -1,7 +1,6 @@
 ---
 layout: js_minifier
 ---
-
 //Мой скрипт для увеличения картинок (у img должен быть атрибут src-big с путём к большому изображению)
 (function()
 {
@@ -65,14 +64,6 @@ layout: js_minifier
 		img.smallSrc = img.src;
 		img.index = i;
 
-		if (img.complete)
-		{
-			onFirstLoad();
-		}
-		else
-		{
-			img.addEventListener('load', onFirstLoad);
-		}
 		const onFirstLoad = function()
 		{
 			img.removeEventListener('load', onFirstLoad);
@@ -128,6 +119,14 @@ layout: js_minifier
 				}
 			});
 		};
+		if (img.complete)
+		{
+			onFirstLoad();
+		}
+		else
+		{
+			img.addEventListener('load', onFirstLoad);
+		}
 	}
 
 	//Эта функция уменьшает увеличенное изображение.
