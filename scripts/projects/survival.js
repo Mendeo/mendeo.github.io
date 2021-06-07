@@ -395,9 +395,41 @@ layout: js_minifier
 		}
 		return out;
 	}
-	function getCancerProbability(sex, localizationIndex, ageStart, ageEnd)
+	function getCancerIncidenceProbability(sex, localizationIndex, ageStart, ageEnd)
 	{
-		return 1 - getHealthySurvival(sex, ageStart, ageEnd, localizationIndex) / getSurvival(sex, ageStart, ageEnd);
+		let out = 1;
+		for (let k = ageStart; k < ageEnd; k++)
+		{
+			out *= 1 - lambdaInterp(RATES.cancerRates[localizationIndex][sex].incidence, k) * getHealthySurvival(sex, ageStart, k, localizationIndex);
+		}
+		return 1 - out;
+	}
+	function getCancerIncidenceProbability_test(sex, localizationIndex, ageStart, ageEnd)
+	{
+		let out = 0;
+		for (let k = ageStart; k <= ageEnd; k++)
+		{
+			out += lambdaInterp(RATES.cancerRates[localizationIndex][sex].incidence, k) * getHealthySurvival(sex, ageStart, k, localizationIndex);
+		}
+		return out;
+	}
+	function getCancerDeathProbability(sex, localizationIndex, ageStart, ageEnd)
+	{
+		let out = 1;
+		for (let k = ageStart; k < ageEnd; k++)
+		{
+			out *= 1 - lambdaInterp(RATES.cancerRates[localizationIndex][sex].mortality, k) * getSurvival(sex, ageStart, k);
+		}
+		return 1 - out;
+	}
+	function getCancerDeathProbability_test(sex, localizationIndex, ageStart, ageEnd)
+	{
+		let out = 0;
+		for (let k = ageStart; k <= ageEnd; k++)
+		{
+			out += lambdaInterp(RATES.cancerRates[localizationIndex][sex].mortality, k) * getSurvival(sex, ageStart, k);
+		}
+		return out;
 	}
 	function remainingAge(sex, currentAge)
 	{
@@ -482,6 +514,7 @@ layout: js_minifier
 		const femaleRadioElement = document.getElementById('survival-sex-females-input');
 
 		const futureAgeElement = document.getElementById('survival-future-age-input');
+		futureAgeElement.max = MAX_AGE + 1;
 		const futureAgeNameElement = document.querySelector('#survival-future-age-input + span');
 		const totalMortProbabilityElement = document.getElementById('survival-total-mort');
 
@@ -602,8 +635,12 @@ layout: js_minifier
 				{
 					let aux = getDeathProbability(sex, currentAge, futureAge);
 					totalMortProbabilityElement.innerText = round(2, aux, true);
-					aux = getCancerProbability(sex, localizationIndex, currentAge, futureAge);
-					localizationProbabilityElement.innerText = round(2, aux, true);
+
+					let inc = getCancerIncidenceProbability(sex, localizationIndex, currentAge, futureAge);
+					let inc_test = getCancerIncidenceProbability_test(sex, localizationIndex, currentAge, futureAge);
+					let mort = getCancerDeathProbability(sex, localizationIndex, currentAge, futureAge);
+					let mort_test = getCancerDeathProbability_test(sex, localizationIndex, currentAge, futureAge);
+					localizationProbabilityElement.innerText = round(2, inc, true)  + ' ' + round(2, inc_test, true) + ' ' + round(2, mort, true) + ' ' + round(2, mort_test, true);
 				}
 			}
 		};
