@@ -405,15 +405,15 @@ layout: js_minifier
 		}
 		return 1 - out;
 	}
-	// function getCancerIncidenceProbability_test(sex, localizationIndex, ageStart, ageEnd)
-	// {
-	// 	let out = 0;
-	// 	for (let k = ageStart; k <= ageEnd; k++)
-	// 	{
-	// 		out += lambdaInterp(RATES.cancerRates[localizationIndex][sex].incidence, k) * getHealthySurvival(sex, ageStart, k, localizationIndex);
-	// 	}
-	// 	return out;
-	// }
+	function getCancerIncidenceProbability_test(sex, localizationIndex, ageStart, ageEnd)
+	{
+		let out = 0;
+		for (let k = ageStart; k <= ageEnd; k++)
+		{
+			out += lambdaInterp(RATES.cancerRates[localizationIndex][sex].incidence, k) * getHealthySurvival(sex, ageStart, k, localizationIndex);
+		}
+		return out;
+	}
 	function getCancerMortalityProbability(sex, localizationIndex, ageStart, ageEnd)
 	{
 		let out = 1;
@@ -423,15 +423,15 @@ layout: js_minifier
 		}
 		return 1 - out;
 	}
-	// function getCancerDeathProbability_test(sex, localizationIndex, ageStart, ageEnd)
-	// {
-	// 	let out = 0;
-	// 	for (let k = ageStart; k <= ageEnd; k++)
-	// 	{
-	// 		out += lambdaInterp(RATES.cancerRates[localizationIndex][sex].mortality, k) * getSurvival(sex, ageStart, k);
-	// 	}
-	// 	return out;
-	// }
+	function getCancerMortalityProbability_test(sex, localizationIndex, ageStart, ageEnd)
+	{
+		let out = 0;
+		for (let k = ageStart; k <= ageEnd; k++)
+		{
+			out += lambdaInterp(RATES.cancerRates[localizationIndex][sex].mortality, k) * getSurvival(sex, ageStart, k);
+		}
+		return out;
+	}
 	function remainingAge(sex, currentAge)
 	{
 		let out = 0;
@@ -641,11 +641,13 @@ layout: js_minifier
 					aux = getDeathProbability(sex, currentAge, futureAge);
 					totalMortProbabilityElement.innerText = round(2, aux, true);
 
+					let test = getCancerIncidenceProbability_test(sex, localizationIndex, currentAge, futureAge);
 					aux = getCancerIncidenceProbability(sex, localizationIndex, currentAge, futureAge);
-					cancerIncidenceProbabilityElement.innerText = round(2, aux, true);
+					cancerIncidenceProbabilityElement.innerText = round(2, aux, true) + ' ' + round(2, test, true);
 
+					test = getCancerMortalityProbability_test(sex, localizationIndex, currentAge, futureAge);
 					aux = getCancerMortalityProbability(sex, localizationIndex, currentAge, futureAge);
-					cancerMortalityProbabilityElement.innerText = round(2, aux, true);
+					cancerMortalityProbabilityElement.innerText = round(2, aux, true) + ' ' + round(2, test, true);
 				}
 			}
 		};
