@@ -1,3 +1,6 @@
+---
+layout: js_minifier
+---
 (function()
 {
 	'use strict';
@@ -11,7 +14,7 @@
 		},
 		cancerRates: [
 			{
-				name: 'любым',
+				name: 'все раки',
 				first: true,
 				male:
 				{
@@ -25,7 +28,7 @@
 				}
 			},
 			{
-				name: 'губы, полости рта, глотки',
+				name: 'губа, полость рта, глотка',
 				addition: 'C00-14',
 				male:
 				{
@@ -39,7 +42,7 @@
 				}
 			},
 			{
-				name: 'пищевода',
+				name: 'пищевод',
 				male:
 				{
 					incidence: [0.0000002, 0, 0.0000002, 0.0000006, 0.0000011, 0.0000002, 0.0000016, 0.0000083, 0.0000259, 0.0000626, 0.0001267, 0.0002158, 0.0003235, 0.0004324, 0.0004468, 0.0004181, 0.0003199, 0.0002366],
@@ -52,7 +55,7 @@
 				}
 			},
 			{
-				name: 'желудка',
+				name: 'желудок',
 				male:
 				{
 					incidence: [0, 0, 0, 0.0000011, 0.0000031, 0.0000064, 0.0000177, 0.0000352, 0.000085, 0.0001516, 0.0002941, 0.0005288, 0.0008883, 0.0014, 0.0017063, 0.0018313, 0.0018931, 0.0013693],
@@ -65,7 +68,7 @@
 				}
 			},
 			{
-				name: 'кишечника',
+				name: 'кишечник',
 				addition: 'Тонкий кишечник, ободочная кишка, прямая кишка, ректосиг. соединение, анус (C17-21)',
 				male:
 				{
@@ -79,7 +82,7 @@
 				}
 			},
 			{
-				name: 'печени',
+				name: 'печень',
 				addition: 'Включая внутрепечёночные желчные протоки',
 				male:
 				{
@@ -93,7 +96,7 @@
 				}
 			},
 			{
-				name: 'поджелудочной железы',
+				name: 'поджелудочная железа',
 				male:
 				{
 					incidence: [0, 0.0000004, 0.0000002, 0, 0.0000006, 0.000003, 0.0000074, 0.0000173, 0.000042, 0.0000906, 0.0001671, 0.0002797, 0.0004337, 0.0006152, 0.0007181, 0.0007207, 0.0006994, 0.0005805],
@@ -106,7 +109,7 @@
 				}
 			},
 			{
-				name: 'гортани',
+				name: 'гортань',
 				male:
 				{
 					incidence: [0, 0, 0, 0.0000003, 0, 0.0000006, 0.0000016, 0.0000092, 0.0000284, 0.0000558, 0.000145, 0.0002413, 0.0003528, 0.000427, 0.0003875, 0.0003017, 0.0002251, 0.0001375],
@@ -119,7 +122,7 @@
 				}
 			},
 			{
-				name: 'лёгких',
+				name: 'лёгкие',
 				addition: 'Включая трахею и бронхи',
 				male:
 				{
@@ -147,7 +150,7 @@
 				}
 			},
 			{
-				name: 'меланомы кожи',
+				name: 'меланома кожи',
 				male:
 				{
 					incidence: [0.0000002, 0, 0.0000005, 0.0000033, 0.0000064, 0.0000121, 0.0000251, 0.0000347, 0.0000502, 0.0000703, 0.0000866, 0.0001268, 0.0001534, 0.0002436, 0.0003405, 0.000323, 0.0003508, 0.0002528],
@@ -160,7 +163,7 @@
 				}
 			},
 			{
-				name: 'кожи (кроме меланомы)',
+				name: 'кожа (кроме меланомы)',
 				male:
 				{
 					incidence: [0.0000002, 0.0000002, 0.0000005, 0.0000036, 0.0000053, 0.0000137, 0.0000298, 0.000056, 0.0001219, 0.0002026, 0.0003523, 0.0006126, 0.0010608, 0.0017527, 0.0027565, 0.0035715, 0.0041724, 0.0036851],
@@ -173,7 +176,7 @@
 				}
 			},
 			{
-				name: 'молочной железы',
+				name: 'молочная железа',
 				male:
 				{
 					incidence: [0, 0, 0, 0, 0, 0.0000002, 0.0000008, 0.0000012, 0.0000054, 0.0000073, 0.0000094, 0.0000135, 0.0000266, 0.0000296, 0.0000432, 0.000033, 0.000053, 0.0000566],
@@ -186,7 +189,7 @@
 				}
 			},
 			{
-				name: 'предстательной железы',
+				name: 'предстательная железа',
 				male:
 				{
 					incidence: [0, 0, 0, 0, 0.0000008, 0.0000004, 0.0000013, 0.0000022, 0.0000089, 0.0000524, 0.0002558, 0.0007947, 0.0019986, 0.0035806, 0.0054134, 0.0054678, 0.0045111, 0.0026779],
@@ -207,7 +210,7 @@
 				}
 			},
 			{
-				name: 'мочевого пузыря',
+				name: 'мочевой пузырь',
 				male:
 				{
 					incidence: [0.0000004, 0.0000002, 0, 0.0000003, 0.0000031, 0.0000058, 0.000013, 0.0000194, 0.0000389, 0.000081, 0.0001681, 0.0003275, 0.0005745, 0.0008719, 0.0011687, 0.0012969, 0.0012864, 0.0008899],
@@ -220,7 +223,7 @@
 				}
 			},
 			{
-				name: 'головного мозга',
+				name: 'головной мозг',
 				addition: 'Включая дргуие отделы ЦНС',
 				male:
 				{
@@ -234,7 +237,7 @@
 				}
 			},
 			{
-				name: 'щитовидной железы',
+				name: 'щитовидная железа',
 				male:
 				{
 					incidence: [0, 0.0000004, 0.0000032, 0.0000152, 0.0000143, 0.0000125, 0.0000224, 0.000033, 0.0000391, 0.000049, 0.0000567, 0.0000619, 0.0000752, 0.0000758, 0.000083, 0.0000601, 0.0000419, 0.0000303],
@@ -247,7 +250,7 @@
 				}
 			},
 			{
-				name: 'шейки матки',
+				name: 'шейка матки',
 				female:
 				{
 					incidence: [0, 0.0000002, 0.0000003, 0.0000009, 0.0000119, 0.0000924, 0.0002124, 0.0003431, 0.0004138, 0.0004032, 0.0003686, 0.0003569, 0.00032, 0.0002846, 0.0002524, 0.0002121, 0.0001974, 0.0001615],
@@ -255,7 +258,7 @@
 				}
 			},
 			{
-				name: 'яичника',
+				name: 'яичник',
 				female:
 				{
 					incidence: [0.0000007, 0.0000013, 0.0000049, 0.0000139, 0.0000192, 0.0000381, 0.0000617, 0.000098, 0.0001569, 0.0002575, 0.0003161, 0.0003372, 0.0003681, 0.0003838, 0.0004127, 0.0003196, 0.0002806, 0.0001799],
@@ -263,7 +266,7 @@
 				}
 			},
 			{
-				name: 'болезнью Ходжкина',
+				name: 'болезнь Ходжкина',
 				male:
 				{
 					incidence: [0.0000022, 0.0000059, 0.0000098, 0.0000288, 0.000028, 0.0000271, 0.0000306, 0.0000279, 0.0000212, 0.0000197, 0.0000226, 0.0000221, 0.0000233, 0.0000289, 0.0000304, 0.0000262, 0.0000243, 0.0000101],
@@ -276,7 +279,7 @@
 				}
 			},
 			{
-				name: 'неходжкинской лимфомой',
+				name: 'неходжкинская лимфома',
 				male:
 				{
 					incidence: [0.0000119, 0.0000155, 0.0000126, 0.0000133, 0.0000154, 0.0000177, 0.0000278, 0.0000459, 0.0000651, 0.0000701, 0.0001, 0.0001226, 0.0001763, 0.0002178, 0.0002674, 0.0002609, 0.000235, 0.0001274],
@@ -289,7 +292,7 @@
 				}
 			},
 			{
-				name: 'лейкемией',
+				name: 'лейкемия',
 				addition: 'С91-95',
 				male:
 				{
@@ -305,6 +308,7 @@
 		].sort((a, b) =>
 		{
 			if (a.first) return -1;
+			if (b.first) return 1;
 			if (a.name > b.name)
 			{
 				return 1;
@@ -401,16 +405,16 @@
 		}
 		return 1 - out;
 	}
-	function getCancerIncidenceProbability_test(sex, localizationIndex, ageStart, ageEnd)
-	{
-		let out = 0;
-		for (let k = ageStart; k <= ageEnd; k++)
-		{
-			out += lambdaInterp(RATES.cancerRates[localizationIndex][sex].incidence, k) * getHealthySurvival(sex, ageStart, k, localizationIndex);
-		}
-		return out;
-	}
-	function getCancerDeathProbability(sex, localizationIndex, ageStart, ageEnd)
+	// function getCancerIncidenceProbability_test(sex, localizationIndex, ageStart, ageEnd)
+	// {
+	// 	let out = 0;
+	// 	for (let k = ageStart; k <= ageEnd; k++)
+	// 	{
+	// 		out += lambdaInterp(RATES.cancerRates[localizationIndex][sex].incidence, k) * getHealthySurvival(sex, ageStart, k, localizationIndex);
+	// 	}
+	// 	return out;
+	// }
+	function getCancerMortalityProbability(sex, localizationIndex, ageStart, ageEnd)
 	{
 		let out = 1;
 		for (let k = ageStart; k <= ageEnd; k++)
@@ -419,15 +423,15 @@
 		}
 		return 1 - out;
 	}
-	function getCancerDeathProbability_test(sex, localizationIndex, ageStart, ageEnd)
-	{
-		let out = 0;
-		for (let k = ageStart; k <= ageEnd; k++)
-		{
-			out += lambdaInterp(RATES.cancerRates[localizationIndex][sex].mortality, k) * getSurvival(sex, ageStart, k);
-		}
-		return out;
-	}
+	// function getCancerDeathProbability_test(sex, localizationIndex, ageStart, ageEnd)
+	// {
+	// 	let out = 0;
+	// 	for (let k = ageStart; k <= ageEnd; k++)
+	// 	{
+	// 		out += lambdaInterp(RATES.cancerRates[localizationIndex][sex].mortality, k) * getSurvival(sex, ageStart, k);
+	// 	}
+	// 	return out;
+	// }
 	function remainingAge(sex, currentAge)
 	{
 		let out = 0;
@@ -516,7 +520,8 @@
 		const totalMortProbabilityElement = document.getElementById('survival-total-mort');
 
 		const localizationSelectElement = document.getElementById('survival-localization-select');
-		const localizationProbabilityElement = document.getElementById('survival-cancer-incidence');
+		const cancerIncidenceProbabilityElement = document.getElementById('survival-cancer-incidence');
+		const cancerMortalityProbabilityElement = document.getElementById('survival-cancer-mortality');
 		const tableFooterElement = document.querySelector('.formView table + span');
 		const asterixElement = document.querySelector('#survival-localization-select + span');
 
@@ -613,7 +618,8 @@
 				remainigAgeElement.innerText = '__';
 				remainigAgeNameElement.innerText = '';
 				totalMortProbabilityElement.innerText = '__';
-				localizationProbabilityElement.innerText = '__';
+				cancerIncidenceProbabilityElement.innerText = '__';
+				cancerMortalityProbabilityElement.innerText = '__';
 			}
 			else
 			{
@@ -626,18 +632,20 @@
 				if (futureAgeError)
 				{
 					totalMortProbabilityElement.innerText = '__';
-					localizationProbabilityElement.innerText = '__';
+					cancerIncidenceProbabilityElement.innerText = '__';
+					cancerMortalityProbabilityElement.innerText = '__';
 				}
 				else
 				{
-					let aux = getDeathProbability(sex, currentAge, futureAge);
+					let aux = 0;
+					aux = getDeathProbability(sex, currentAge, futureAge);
 					totalMortProbabilityElement.innerText = round(2, aux, true);
 
-					let inc = getCancerIncidenceProbability(sex, localizationIndex, currentAge, futureAge);
-					let inc_test = getCancerIncidenceProbability_test(sex, localizationIndex, currentAge, futureAge);
-					let mort = getCancerDeathProbability(sex, localizationIndex, currentAge, futureAge);
-					let mort_test = getCancerDeathProbability_test(sex, localizationIndex, currentAge, futureAge);
-					localizationProbabilityElement.innerText = round(2, inc, true)  + ' ' + round(2, inc_test, true) + ' ' + round(2, mort, true) + ' ' + round(2, mort_test, true);
+					aux = getCancerIncidenceProbability(sex, localizationIndex, currentAge, futureAge);
+					cancerIncidenceProbabilityElement.innerText = round(2, aux, true);
+
+					aux = getCancerMortalityProbability(sex, localizationIndex, currentAge, futureAge);
+					cancerMortalityProbabilityElement.innerText = round(2, aux, true);
 				}
 			}
 		};

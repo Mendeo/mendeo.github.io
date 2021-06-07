@@ -103,7 +103,8 @@ $leftWidth: 220px;
 {
 	color: $inputTextColor;
 	background-color: $inputBackgroundColor;
-	border-color: $inputBackgroundColor;
+	border-color: $inputBorderColor;
+	border-width: 1px;
 }
 
 body
