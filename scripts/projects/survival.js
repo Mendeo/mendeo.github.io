@@ -1,6 +1,3 @@
----
-layout: js_minifier
----
 (function()
 {
 	'use strict';
@@ -398,7 +395,7 @@ layout: js_minifier
 	function getCancerIncidenceProbability(sex, localizationIndex, ageStart, ageEnd)
 	{
 		let out = 1;
-		for (let k = ageStart; k < ageEnd; k++)
+		for (let k = ageStart; k <= ageEnd; k++)
 		{
 			out *= 1 - lambdaInterp(RATES.cancerRates[localizationIndex][sex].incidence, k) * getHealthySurvival(sex, ageStart, k, localizationIndex);
 		}
@@ -416,7 +413,7 @@ layout: js_minifier
 	function getCancerDeathProbability(sex, localizationIndex, ageStart, ageEnd)
 	{
 		let out = 1;
-		for (let k = ageStart; k < ageEnd; k++)
+		for (let k = ageStart; k <= ageEnd; k++)
 		{
 			out *= 1 - lambdaInterp(RATES.cancerRates[localizationIndex][sex].mortality, k) * getSurvival(sex, ageStart, k);
 		}
