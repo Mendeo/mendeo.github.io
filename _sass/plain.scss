@@ -253,6 +253,14 @@ main
 		{
 			display: none;
 		}
+		.video
+		{
+			page-break-inside: avoid;
+		}
+		table
+		{
+			page-break-inside: avoid;
+		}
 	}
 	.content
 	{
