@@ -195,6 +195,10 @@ main
 			widows: 4;
 			margin-top: 1.5cm;
 		}
+		section
+		{
+			page-break-after: always;
+		}
 		.post
 		{
 			page-break-before: avoid;
@@ -224,11 +228,6 @@ main
 		.post a[href]::after
 		{
 			content: ' (' attr(href) ')';
-		}
-		.social
-		{
-			text-align: center;
-			display: inline-block;
 		}
 		.social a[href]::after
 		{
