@@ -11,6 +11,13 @@ $leftWidth: 220px;
 	fill: $postBackgroundColor;
 }
 
+#timer-to-event
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
 .video
 {
 	width: 100%;
@@ -106,6 +113,10 @@ $leftWidth: 220px;
 	border-color: $inputBorderColor;
 	border-width: 1px;
 }
+.feed a
+{
+	text-decoration: none;
+}
 
 body
 {
@@ -174,7 +185,72 @@ main
 	{
 		margin: 0;
 	}
-
+	@media print
+	{
+		margin: 0px;
+		flex-direction: column;
+		@page
+		{
+			size: A4 portrait;
+			widows: 4;
+			margin-top: 1.5cm;
+		}
+		.post
+		{
+			page-break-before: avoid;
+		}
+		.post-header
+		{
+			page-break-inside: avoid;
+			margin-top: 1.3cm;
+		}
+		*,
+		*::before,
+		*::after
+		{
+			color: #000000 !important;
+			text-shadow: none !important;
+			background: #ffffff !important;
+			box-shadow: none !important;
+		}
+		#timer-to-event
+		{
+			display: none;
+		}
+		.navigation
+		{
+			display: none;
+		}
+		.post a[href]::after
+		{
+			content: ' (' attr(href) ')';
+		}
+		.social
+		{
+			text-align: center;
+			display: inline-block;
+		}
+		.social a[href]::after
+		{
+			content: ' ' attr(href)
+		}
+		.feed a[href]::after
+		{
+			content: ' ' attr(href);
+		}
+		.social li
+		{
+			padding: 3mm;
+		}
+		button
+		{
+			display: none;
+		}
+		#posts-label
+		{
+			display: none;
+		}
+	}
 	.content
 	{
 		@media screen and (min-width: $mobileW + 1)

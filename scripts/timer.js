@@ -13,11 +13,9 @@ layout: js_minifier
 	d.setUTCMinutes(34);
 	d.setUTCSeconds(38);
 	d.setUTCMilliseconds(0);
-	const container = document.createElement('div');
+	const container = document.getElementById('timer-to-event');
 	const timer = document.createElement('span');
-	document.getElementsByTagName('body')[0].appendChild(container);
 	container.appendChild(timer);
-	container.style = 'display: flex; flex-direction: row; justify-content: flex-end;';
 	container.className = 'post';
 	timer.style = 'width: 23rem;';
 	showTime();

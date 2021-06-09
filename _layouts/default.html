@@ -60,8 +60,10 @@ layout: html_minifier
 				<button id="changeThemeButton" class="button-default">Тёмная тема</button>
 				<p>
 					<span id='copyright'>&copy;{{ "now" | date: "%Y" }}</span>
-					<a aria-label="RSS-лента" href = "{{ site.url }}{% link feed.xml %}" class="icon-rss" style="text-decoration: none" rel="alternate" type="application/atom+xml"></a>
-					<a aria-label="Канал в телеграм" href = "https://t.me/mendeo_blog" target="_blank" class="icon-telegram" rel="noopener" style="text-decoration: none"></a>
+					<div class="feed">
+						<a aria-label="RSS-лента" href = "{{ site.url }}{% link feed.xml %}" class="icon-rss" rel="alternate" type="application/atom+xml"></a>
+						<a aria-label="Канал в телеграм" href = "https://t.me/mendeo_blog" target="_blank" class="icon-telegram" rel="noopener"></a>
+					</div>
 				</p>
 			</section>
 			<section class="content">
