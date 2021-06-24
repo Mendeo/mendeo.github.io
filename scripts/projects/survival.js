@@ -643,14 +643,10 @@ layout: js_minifier
 					let aux = 0;
 					aux = getDeathProbability(sex, currentAge, futureAge);
 					totalMortProbabilityElement.innerText = round(2, aux, true);
-
-					//let test = getCancerIncidenceProbability_test(sex, localizationIndex, currentAge, futureAge);
 					aux = getCancerIncidenceProbability(sex, localizationIndex, currentAge, futureAge);
-					cancerIncidenceProbabilityElement.innerText = round(2, aux, true);// + ' ' + round(2, test, true);
-
-					//test = getCancerMortalityProbability_test(sex, localizationIndex, currentAge, futureAge);
+					cancerIncidenceProbabilityElement.innerText = round(2, aux, true);
 					aux = getCancerMortalityProbability(sex, localizationIndex, currentAge, futureAge);
-					cancerMortalityProbabilityElement.innerText = round(2, aux, true);// + ' ' + round(2, test, true);
+					cancerMortalityProbabilityElement.innerText = round(2, aux, true);
 				}
 			}
 		};
@@ -660,7 +656,6 @@ layout: js_minifier
 			currentAge = getSelectedCurrentAge();
 			if (isNaN(currentAge))
 			{
-				currentAgeElement.classList.add('input-error');
 				currentAgeNameElement.innerText = '';
 				currentAgeError = true;
 			}
@@ -675,7 +670,6 @@ layout: js_minifier
 					futureAgeElement.value = futureAge;
 					futureAgeNameElement.innerText = name_var2(futureAge);
 				}
-				currentAgeElement.classList.remove('input-error');
 				currentAgeError = false;
 			}
 			recalc();
@@ -702,13 +696,11 @@ layout: js_minifier
 
 			if (isNaN(futureAge))
 			{
-				futureAgeElement.classList.add('input-error');
 				futureAgeError = true;
 				futureAgeNameElement.innerText = '';
 			}
 			else
 			{
-				futureAgeElement.classList.remove('input-error');
 				futureAgeError = false;
 				futureAgeNameElement.innerText = name_var2(futureAge);
 			}
