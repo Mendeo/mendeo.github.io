@@ -1,57 +1,77 @@
 ---
 layout: js_minifier
 ---
-
 (function()
 {
 	'use strict';
-	const styleTag = document.getElementById('mainStyle');
-	const button = document.getElementById('changeThemeButton');
+	const styleLight = document.getElementById('main-style-light');
+	const styleDark = document.getElementById('main-style-dark');
+	const radioLight = document.getElementById('theme-light-input-radio');
+	const radioDark = document.getElementById('theme-dark-input-radio');
+	const radioSystem = document.getElementById('theme-system-input-radio');
 
-	let isDark = false;
 	const THEME_STORAGE_NAME = 'themeSelected';
 	const STORAGE_LIGHT_THEME = 'light';
 	const STORAGE_DARK_THEME = 'dark';
-	let selectedTheme = localStorage.getItem(THEME_STORAGE_NAME);
-	if (selectedTheme)
+	const STORAGE_SYSTEM_THEME = 'system';
+
+	const selectedTheme = localStorage.getItem(THEME_STORAGE_NAME);
+	setTheme(selectedTheme, true);
+
+	radioDark.addEventListener('change', onThemeChange);
+	radioLight.addEventListener('change', onThemeChange);
+	radioSystem.addEventListener('change', onThemeChange);
+
+	function setTheme(selectedTheme, setRadio)
 	{
+		if (!selectedTheme)
+		{
+			selectedTheme = STORAGE_SYSTEM_THEME;
+			setThemeToLocalStorage(selectedTheme);
+		}
+
 		if (selectedTheme === STORAGE_LIGHT_THEME)
 		{
-			isDark = false;
+			styleLight.media = 'all';
+			styleDark.media = 'not all';
+			if (setRadio) radioLight.checked = true;
 		}
 		else if (selectedTheme === STORAGE_DARK_THEME)
 		{
-			isDark = true;
+			styleLight.media = 'not all';
+			styleDark.media = 'all';
+			if (setRadio) radioDark.checked = true;
 		}
 		else
 		{
-			setThemeToLocalStorage(false);
-		}
-	}
-	else
-	{
-		setThemeToLocalStorage(false);
-	}
-
-	function setThemeToLocalStorage(isDark)
-	{
-		if (isDark)
-		{
-			localStorage.setItem(THEME_STORAGE_NAME, STORAGE_DARK_THEME);
-			isDark = true;
-		}
-		else
-		{
-			localStorage.setItem(THEME_STORAGE_NAME, STORAGE_LIGHT_THEME);
-			isDark = false;
+			styleLight.media = '(prefers-color-scheme: light)';
+			styleDark.media = '(prefers-color-scheme: dark)';
+			if (setRadio) radioSystem.checked = true;
+			if (selectedTheme !== STORAGE_SYSTEM_THEME)
+			{
+				setThemeToLocalStorage(STORAGE_SYSTEM_THEME);
+			}
 		}
 	}
 
-	changeTheme(isDark);
-	button.addEventListener('click', function()
+	function onThemeChange()
 	{
-		isDark = !isDark;
-		changeTheme(isDark);
+		let selectedTheme = '';
+		if (radioLight.checked)
+		{
+			selectedTheme = STORAGE_LIGHT_THEME;
+		}
+		else if (radioDark.checked)
+		{
+			selectedTheme = STORAGE_DARK_THEME;
+		}
+		else if (radioSystem.checked)
+		{
+			selectedTheme = STORAGE_SYSTEM_THEME;
+		}
+		setThemeToLocalStorage(selectedTheme);
+		setTheme(selectedTheme);
+
 		if (window.DISQUS)
 		{
 			DISQUS.reset(
@@ -60,20 +80,10 @@ layout: js_minifier
 					config: disqus_config
 				});
 		}
-	});
+	}
 
-	function changeTheme(isDark)
+	function setThemeToLocalStorage(value)
 	{
-		if (isDark)
-		{
-			styleTag.href = '{% link assets/css/style_dark.scss %}';
-			button.innerHTML = 'Светлая тема';
-		}
-		else
-		{
-			styleTag.href = '{% link assets/css/style_light.scss %}';
-			button.innerHTML = 'Тёмная тема';
-		}
-		setThemeToLocalStorage(isDark);
+		localStorage.setItem(THEME_STORAGE_NAME, value);
 	}
 })();

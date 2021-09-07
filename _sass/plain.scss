@@ -104,12 +104,32 @@ $leftWidth: 220px;
 	background-color: $buttonHoverBackgroundColor;
 	border-color: $buttonHoverBackgroundColor;
 }
+.radioFieldset
+{
+	font-family: 'Merriweather';
+	color: $postBackgroundColor;
+}
+
+.radioFieldset div
+{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	row-gap: 0.5rem;
+	label
+	{
+		justify-self: start;
+	}
+	input
+	{
+		justify-self: end;
+	}
+}
 
 .input-default
 {
 	color: $inputTextColor;
 	background-color: $inputBackgroundColor;
-	border-color: $inputBorderColor;
+	border-color:$inputBorderColor;
 	border-width: 1px;
 }
 .feed a

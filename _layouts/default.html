@@ -58,7 +58,6 @@ layout: html_minifier
 						</ul>
 					</nav>
 				{%- endif -%}
-				<button id="changeThemeButton" class="button-default">Тёмная тема</button>
 				<p>
 					<span id='copyright'>&copy;{{ "now" | date: "%Y" }}</span>
 					<div class="feed">
@@ -66,6 +65,17 @@ layout: html_minifier
 						<a aria-label="Канал в телеграм" href = "https://t.me/mendeo_blog" target="_blank" class="icon-telegram" rel="noopener"></a>
 					</div>
 				</p>
+				<fieldset class="radioFieldset">
+					<legend>Тема</legend>
+					<div>
+						<label for="theme-light-input-radio">Светлая</label>
+						<input type="radio" id = "theme-light-input-radio" name="select-theme-radio">
+						<label for="theme-dark-input-radio">Тёмная</label>
+						<input type="radio" id = "theme-dark-input-radio" name="select-theme-radio">
+						<label for="theme-system-input-radio">Системная</label>
+						<input type="radio" id = "theme-system-input-radio" name="select-theme-radio" checked>
+					</div>
+				</fieldset>
 			</section>
 			<section class="content">
 				{{ content }}
