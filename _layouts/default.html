@@ -73,7 +73,7 @@ layout: html_minifier
 						<label for="theme-dark-input-radio">Тёмная</label>
 						<input type="radio" id = "theme-dark-input-radio" name="select-theme-radio">
 						<label for="theme-system-input-radio">Системная</label>
-						<input type="radio" id = "theme-system-input-radio" name="select-theme-radio" checked>
+						<input type="radio" id = "theme-system-input-radio" name="select-theme-radio">
 					</div>
 				</fieldset>
 			</section>
@@ -81,6 +81,7 @@ layout: html_minifier
 				{{ content }}
 			</section>
 		</main>
+		<script type="text/javascript" src="{% link scripts/themeChanger.js %}"></script>
 		{%- if page.links_in_new_tab -%}
 		<script type="text/javascript" src="{% link scripts/linksInNewTab.js %}"></script>
 		{%- endif -%}

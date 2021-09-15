@@ -20,13 +20,20 @@ layout: js_minifier
 
 	radioDark.addEventListener('change', onThemeChange);
 	radioLight.addEventListener('change', onThemeChange);
-	radioSystem.addEventListener('change', onThemeChange);
+	if (IS_OLD_BROWSER)
+	{
+		radioSystem.disabled = true;
+	}
+	else
+	{
+		radioSystem.addEventListener('change', onThemeChange);
+	}
 
 	function setTheme(selectedTheme, setRadio)
 	{
 		if (!selectedTheme)
 		{
-			selectedTheme = STORAGE_SYSTEM_THEME;
+			selectedTheme = IS_OLD_BROWSER ? STORAGE_LIGHT_THEME : STORAGE_SYSTEM_THEME;
 			setThemeToLocalStorage(selectedTheme);
 		}
 

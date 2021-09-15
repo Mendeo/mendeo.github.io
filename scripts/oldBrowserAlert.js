@@ -1,11 +1,10 @@
 ---
 layout: js_minifier
 ---
-
 (function()
 {
 	'use strict';
-	if (!''.includes)
+	if (IS_OLD_BROWSER)
 	{
 		//console.log('This is IE');
 		var OLD_BROWSER_ALERT_STORAGE = 'oldBrowserAlertShown';
