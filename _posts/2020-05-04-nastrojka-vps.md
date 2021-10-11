@@ -2,7 +2,7 @@
 layout: post
 title: Настройка VPS для проброса портов на домашний веб сервер
 date: 2020-05-04 18:43:00 +03
-modified: 2020-11-06 16:34:00 +03
+modified: 2021-10-11 12:16:00 +03
 categories: linux vps
 tags: [vps, iptables, проброс портов, linux]
 excerpt_separator: <a name="cut"></a>
@@ -94,12 +94,7 @@ sysctl net.ipv4.ip_forward=1 #Разрешаем перенаправление 
 
 #Очищаем все таблицы iptables
 iptables -F
-iptables -t nat -F
-iptables -t mangle -F
-iptables -F FORWARD
-iptables -t nat -F PREROUTING
-iptables -t nat -F POSTROUTING
-   
+
 #Настройка входящих соединений.
 PORT=443 #Перенаправление HTTPS
 iptables -t nat -A PREROUTING -i $IF_EXT -p tcp -d $IP_EXT --dport $PORT -j DNAT --to-destination $IP_INT:$PORT #Изменяем адрес назначения у пришедших пакетов на локальный адрес PPTP клиента.
@@ -116,10 +111,8 @@ iptables -A FORWARD -i $IF_EXT -o $IF_INT -p tcp --dport $PORT -m conntrack --ct
 iptables -A FORWARD -i $IF_EXT -o $IF_INT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT # Разрешаем перенаправление входящих пакетов для уже созданных соединений на локальный адрес PPTP клиента.
 
 #Исходящие соединения
-iptables -A FORWARD -m conntrack --ctstate NEW -i $IF_INT -o $IF_EXT -j ACCEPT #Allow initiate output connections #Разрешаем перенаправление нового исходящего соединения с внутреннего интерфейса PPTP клиента в интернет.
-
-iptables -A FORWARD -i $IF_INT -o $IF_EXT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-iptables -t nat -A POSTROUTING -o $IF_EXT -j SNAT --to-source $IP_EXT #Разрешаем перенаправление уже созданных исходящих соединений с внутреннего интерфейса PPTP клиента в интернет.
+iptables -A FORWARD -m conntrack --ctstate NEW,ESTABLISHED,RELATED -i $IF_INT -o $IF_EXT -j ACCEPT #Разрешаем перенаправление исходящих соединений с внутреннего интерфейса PPTP клиента в интернет.
+iptables -t nat -A POSTROUTING -o $IF_EXT -j SNAT --to-source $IP_EXT #Меняем в перенаправленных пакетах адрес источника на адрес внешнего интерфейса
 
 iptables -P FORWARD DROP #Запрещаем любое другое перенаправление трафика.
 ```
