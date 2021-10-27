@@ -81,6 +81,12 @@ layout: html_minifier
 				{{ content }}
 			</section>
 		</main>
+		<!-- Окно информирования о куках -->
+		<div id="cookiesNotification">
+			<p class="">На сайте используются cookie для аналитики</p>
+			<button type="button" class="button-default">Хорошо</button>
+		</div>
+		<script type="text/javascript" src="{% link scripts/cookiesNotification.js %}"></script>
 		<script type="text/javascript" src="{% link scripts/themeChanger.js %}"></script>
 		{%- if page.links_in_new_tab -%}
 		<script type="text/javascript" src="{% link scripts/linksInNewTab.js %}"></script>

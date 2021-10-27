@@ -6,6 +6,32 @@ $smallMobileW: 480px;
 $bigScreenW: 1600px;
 $leftWidth: 220px;
 
+#cookiesNotification
+{
+	height: 70px;
+	width: 100vw;
+	bottom: 0px;
+	left: 0px;
+	background-color: gray;
+	position: fixed;
+	display: none; /* change to flex in js */
+	flex-direction: row;
+	align-items: center;
+}
+#cookiesNotification p
+{
+	color: $postBackgroundColor;
+	margin-left: 1.5vw;
+	font-size: xx-large;
+}
+#cookiesNotification button
+{
+	height: 70%;
+	margin-left: auto;
+	margin-right: 1.5vw;
+	font-size: x-large;
+}
+
 .svg-text //Код для изменения цвета svg изображений в соответствии с цветом текста.
 {
 	fill: $postBackgroundColor;
