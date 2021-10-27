@@ -2,7 +2,7 @@
 layout: post
 title: Чистая установка nextcloud на raspberry pi
 date: 2020-04-24 14:20:00 +03
-modified: 2020-10-26 12:51:00 +03
+modified: 2021-10-14 23:25:00 +03
 categories: linux nextcloud
 tags: [nextcloud, nginx, php, raspberry pi, linux]
 excerpt_separator: <a name="cut"></a>
@@ -79,6 +79,7 @@ sudo apt install libldap2-dev
 sudo apt install libonig-dev
 sudo apt install libpng-dev
 sudo apt install libjpeg-dev
+sudo apt install libsodium-dev
 ```
 
 Выдержка из документации:
@@ -94,7 +95,7 @@ sudo apt install libjpeg-dev
 Конфигурирование
 
 ```bash
-./configure --enable-bcmath --enable-fpm --with-fpm-systemd --with-openssl --with-zlib --with-curl --with-bz2 --enable-exif --enable-ftp --with-openssl-dir --with-gmp --with-mhash --with-imap --with-imap-ssl --enable-intl --with-ldap --enable-mbstring --enable-pcntl --with-pdo-pgsql=/usr/local/pgsql --with-pgsql=/usr/local/pgsql --with-kerberos --with-zip --with-xsl --enable-soap --with-pear --enable-gd --with-webp --with-jpeg --with-xpm --with-freetype --enable-gd-jis-conv
+./configure --enable-bcmath --enable-fpm --with-fpm-systemd --with-openssl --with-zlib --with-curl --with-bz2 --enable-exif --enable-ftp --with-openssl-dir --with-gmp --with-mhash --with-imap --with-imap-ssl --enable-intl --with-ldap --enable-mbstring --enable-pcntl --with-pdo-pgsql=/usr/local/pgsql --with-pgsql=/usr/local/pgsql --with-kerberos --with-zip --with-xsl --enable-soap --with-pear --enable-gd --with-webp --with-jpeg --with-xpm --with-freetype --enable-gd-jis-conv --with-sodium
 ```
 
 **При выполнении checkinstall на установке PEAR вылетала ошибка пришлось установить вручную. Чтобы с этим не заморачиваться можно PEAR не ставить, НО тогда будет нельзя поставить сторониие модули PHP, такие как apcu и redis, которые используются для кэширования в nextcloud.**
