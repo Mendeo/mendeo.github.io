@@ -24,6 +24,13 @@ $leftWidth: 220px;
 	margin-left: 1.5vw;
 	font-size: xx-large;
 }
+@media screen and (max-width: $mobileW)
+{
+	#cookiesNotification p
+	{
+		font-size: x-large;
+	}
+}
 #cookiesNotification button
 {
 	height: 70%;
