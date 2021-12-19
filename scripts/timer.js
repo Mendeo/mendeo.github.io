@@ -42,6 +42,7 @@ layout: js_minifier
 
 	function name(words, n)
 	{
+		n = Math.abs(n);
 		n %= 100;
 		if (n >= 10 && n <= 20)
 		{
