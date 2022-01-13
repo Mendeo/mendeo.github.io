@@ -10,4 +10,3 @@ vendor
 *.swo
 *.*~
 /.vscode
-/_not-to-publish
