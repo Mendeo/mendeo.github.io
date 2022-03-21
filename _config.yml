@@ -14,8 +14,6 @@ social:
   links:
     - https://github.com/Mendeo
     - https://vk.com/thesolve
-    - https://facebook.com/themen1987
-    - https://www.instagram.com/mendeo/
       #Наука
     - https://orcid.org/0000-0002-8960-792X
     - https://www.scopus.com/authid/detail.uri?authorId=55490167300
@@ -57,9 +55,7 @@ plainwhite:
   social_links:
     github:  Mendeo
     vk: thesolve
-    instagram: Mendeo
     email: blog@mendeo.ru
-    #facebook: themen1987
 
 # Build settings
 #theme: plainwhite
