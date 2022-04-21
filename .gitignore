@@ -1,5 +1,5 @@
 *.gem
-/_not-to-publish
+/_not-for-publish
 .bundle
 .sass-cache
 /_site
