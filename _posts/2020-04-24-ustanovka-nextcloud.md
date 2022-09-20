@@ -2,7 +2,7 @@
 layout: post
 title: Чистая установка nextcloud на raspberry pi
 date: 2020-04-24 14:20:00 +03
-modified: 2022-04-22 10:15:00 +03
+modified: 2022-09-20 09:53:00 +03
 categories: linux nextcloud
 tags: [nextcloud, nginx, php, raspberry pi, linux]
 excerpt_separator: <a name="cut"></a>
@@ -47,8 +47,8 @@ disqus_page_id: 29zr5552r08s91G972UgDO9811x99OE5724Nk78Aays08h7Y57kIL91C0C6ANyU7
 Скачать и распаковать pcre
 
 ```bash
-wget https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.gz
-tar -xf pcre-8.44.tar.gz
+wget https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.gz
+tar -xf pcre-8.45.tar.gz
 ```
 
 Установить libxslt
@@ -60,7 +60,7 @@ sudo apt install libxslt1-dev
 Конфигурирование
 
 ```bash
-./configure --with-threads --with-http_stub_status_module --with-http_ssl_module --sbin-path=/usr/local/bin --with-http_v2_module --with-http_xslt_module --with-http_gunzip_module --with-http_gzip_static_module --with-pcre=../pcre-8.44 --with-pcre-jit --error-log-path=/usr/local/var/log/nginx-error.log --http-log-path=/usr/local/var/log/nginx-access.log --pid-path=/usr/local/var/nginx.pid --lock-path=/usr/local/var/nginx.lock
+./configure --with-threads --with-http_stub_status_module --with-http_ssl_module --sbin-path=/usr/local/bin --with-http_v2_module --with-http_xslt_module --with-http_gunzip_module --with-http_gzip_static_module --with-pcre=../pcre-8.45 --with-pcre-jit --error-log-path=/usr/local/var/log/nginx-error.log --http-log-path=/usr/local/var/log/nginx-access.log --pid-path=/usr/local/var/nginx.pid --lock-path=/usr/local/var/nginx.lock
 ```
 
 ## Сборка php
