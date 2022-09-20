@@ -2,7 +2,7 @@
 layout: post
 title: Чистая установка nextcloud на raspberry pi
 date: 2020-04-24 14:20:00 +03
-modified: 2022-09-20 10:55:00 +03
+modified: 2022-09-20 10:58:00 +03
 categories: linux nextcloud
 tags: [nextcloud, nginx, php, raspberry pi, linux]
 excerpt_separator: <a name="cut"></a>
@@ -69,6 +69,7 @@ sudo apt install libxslt1-dev
 
 ```bash
 sudo apt install libwebp-dev
+sudo apt install libavif-dev
 sudo apt install libxpm-dev
 sudo apt install libzip-dev
 sudo apt install libsystemd-dev
