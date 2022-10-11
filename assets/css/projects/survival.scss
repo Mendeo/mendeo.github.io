@@ -1,74 +1,77 @@
 ---
 ---
 /* Блок, отвественный за survival проект */
-.formView
+.survival-post
 {
-	min-width: 360px;
-}
-.formView__container
-{
-	display: grid;
-	grid-template-columns: 1.5fr 1fr;
-	grid-template-rows: repeat(2, max-content);
-	grid-auto-columns: 0px;
-	grid-auto-rows: 0px;
-	justify-items: left;
-	align-items: center;
-	grid-column-gap: 1.2rem;
-	grid-row-gap: 1rem;
-}
-.formView fieldset
-{
-	display: inline-block;
-}
-.formView__longRow
-{
-	grid-column-start: 1;
-	grid-column-end: 3;
-}
-.formView table caption
-{
-	text-align: left;
-	padding-left: 0.3rem;
-}
-.formView table td
-{
-	border: 0px;
-}
-/*Футер таблицы*/
-.formView table + span
-{
-	font-size: xx-small;
-	padding: 0px;
-	margin: 0px;
-	visibility: hidden;
-}
-#survival-curent-age-input
-{
-	width: 3rem;
-}
-#survival-future-age-input
-{
-	width: 3rem;
-}
-#survival-localization-select
-{
-	width: 15.5rem;
-}
-#survival-localization-select + span /*asterix*/
-{
-	visibility: hidden;
-}
-#survival-remaining-age
-{
-	color: green;
-}
-.formView input:out-of-range
-{
-	color: red;
-}
-.formView input:invalid
-{
-	color: red;
+	.formView
+	{
+		min-width: 360px;
+	}
+	.formView__container
+	{
+		display: grid;
+		grid-template-columns: 1.5fr 1fr;
+		grid-template-rows: repeat(2, max-content);
+		grid-auto-columns: 0px;
+		grid-auto-rows: 0px;
+		justify-items: left;
+		align-items: center;
+		grid-column-gap: 1.2rem;
+		grid-row-gap: 1rem;
+	}
+	.formView fieldset
+	{
+		display: inline-block;
+	}
+	.formView__longRow
+	{
+		grid-column-start: 1;
+		grid-column-end: 3;
+	}
+	.formView table caption
+	{
+		text-align: left;
+		padding-left: 0.3rem;
+	}
+	.formView table td
+	{
+		border: 0px;
+	}
+	/*Футер таблицы*/
+	.formView table + span
+	{
+		font-size: xx-small;
+		padding: 0px;
+		margin: 0px;
+		visibility: hidden;
+	}
+	#survival-curent-age-input
+	{
+		width: 3rem;
+	}
+	#survival-future-age-input
+	{
+		width: 3rem;
+	}
+	#survival-localization-select
+	{
+		width: 15.5rem;
+	}
+	#survival-localization-select + span /*asterix*/
+	{
+		visibility: hidden;
+	}
+	#survival-remaining-age
+	{
+		color: green;
+	}
+	.formView input:out-of-range
+	{
+		color: red;
+	}
+	.formView input:invalid
+	{
+		color: red;
+	}
 }
 /*******************************************/
