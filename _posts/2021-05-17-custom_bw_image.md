@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Web страница для подготовки изображений к гравировки"
+title: "Web страница для подготовки изображений к гравировке"
 date: 2022-10-11 20:20:00 +03
-modified: 2022-10-11 20:25:00 +03
+modified: 2022-10-11 20:28:00 +03
 categories: js web
 tags: [гравировка, javascript, web, фотография, чёрное-белое]
 excerpt_separator: <a name="cut"></a>
