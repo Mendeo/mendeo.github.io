@@ -1,71 +1,72 @@
 <link rel="stylesheet" href="{% link assets/css/projects/survival.scss %}">
-<div class="formView">
-	<!--Сколько осталось-->
-	<fieldset>
-		<legend>Статистика для размышлений</legend>
-		<div class="formView__container">
-			<div>
-				<span>Текущий возраст </span>
-				<input type="number" id ="survival-curent-age-input" class="input-default" min="0" max="90" value="0">
-				<span> лет</span>
-				<br>
-				<fieldset>
-					<legend>Пол</legend>
-					<label for="survival-sex-males-input">Мужской</label><span> </span>
-					<input type="radio" name="survival-sex" id = "survival-sex-males-input" class="input-default" value="male" checked>
+<div class="survival-post">
+	<div class="formView">
+		<!--Сколько осталось-->
+		<fieldset>
+			<legend>Статистика для размышлений</legend>
+			<div class="formView__container">
+				<div>
+					<span>Текущий возраст </span>
+					<input type="number" id ="survival-curent-age-input" class="input-default" min="0" max="90" value="0">
+					<span> лет</span>
 					<br>
-					<label for="survival-sex-females-input">Женский</label><span> </span>
-					<input type="radio" name="survival-sex" id = "survival-sex-females-input" class="input-default" value="female">
-				</fieldset>
+					<fieldset>
+						<legend>Пол</legend>
+						<label for="survival-sex-males-input">Мужской</label><span> </span>
+						<input type="radio" name="survival-sex" id = "survival-sex-males-input" class="input-default" value="male" checked>
+						<br>
+						<label for="survival-sex-females-input">Женский</label><span> </span>
+						<input type="radio" name="survival-sex" id = "survival-sex-females-input" class="input-default" value="female">
+					</fieldset>
+				</div>
+				<div>
+					<span>В среднем осталось</span>
+					<br>
+					<span id="survival-remaining-age"></span><span></span><span> жизни</span>
+				</div>
+				<div class="formView__longRow">
+					<table>
+						<caption>
+							<span>Вероятность до </span>
+							<input type="number" id ="survival-future-age-input" class="input-default" min="1" value="1">
+							<span> года</span><span>:</span>
+						</caption>
+						<tr>
+							<td>
+								умереть от любой причины
+							</td>
+							<td>
+								<span id="survival-total-mort"></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<span>Для локализации </span>
+								<select id="survival-localization-select" class="input-default"></select>
+								<span>*</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span>заболеть раком</span>
+							</td>
+							<td>
+								<span id="survival-cancer-incidence"></span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span>умереть от рака</span>
+							</td>
+							<td>
+								<span id="survival-cancer-mortality"></span>
+							</td>
+						</tr>
+					</table>
+					<span>Пояснения к выбрнной локализации</span>
+				</div>
 			</div>
-			<div>
-				<span>В среднем осталось</span>
-				<br>
-				<span id="survival-remaining-age"></span><span></span><span> жизни</span>
-			</div>
-			<div class="formView__longRow">
-				<table>
-					<caption>
-						<span>Вероятность до </span>
-						<input type="number" id ="survival-future-age-input" class="input-default" min="1" value="1">
-						<span> года</span><span>:</span>
-					</caption>
-					<tr>
-						<td>
-							умереть от любой причины
-						</td>
-						<td>
-							<span id="survival-total-mort"></span>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							<span>Для локализации </span>
-							<select id="survival-localization-select" class="input-default"></select>
-							<span>*</span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span>заболеть раком</span>
-						</td>
-						<td>
-							<span id="survival-cancer-incidence"></span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span>умереть от рака</span>
-						</td>
-						<td>
-							<span id="survival-cancer-mortality"></span>
-						</td>
-					</tr>
-				</table>
-				<span>Пояснения к выбрнной локализации</span>
-			</div>
-		</div>
-	</fieldset>
-
+		</fieldset>
+	</div>
 </div>
 <script type="text/javascript" src="{% link scripts/projects/survival.js %}"></script>
