@@ -1,0 +1,59 @@
+---
+---
+/* Блок, отвественный за custom_bw_image проект */
+.custom-bw-image
+{
+	#inputImage
+	{
+		max-width: 49%;
+		max-height: 93vh;
+		margin-left: 1rem;
+	}
+	#outputImage
+	{
+		max-width: 49%;
+		max-height: 93vh;
+	}
+	#inputFile + span
+	{
+		color: red;
+	}
+	@media screen and (max-width: 1080px)
+	{
+		#inputImage
+		{
+			max-width: 95%;
+			max-height: 45vh;
+			margin-top: 2rem;
+			margin-left: 0px;
+		}
+		#outputImage
+		{
+			max-width: 95%;
+			max-height: 45vh;
+		}
+	}
+	#blackPowerContainer
+	{
+		display: flex;
+		align-items: center;
+	}
+	#blackPowerContainer span
+	{
+		margin-left: 0.3rem;
+	}
+	#progressBarContainer
+	{
+		position: fixed;
+		z-index: 2;
+	}
+	.progress-bar-background
+	{
+		background-color: rgba(48, 48, 48, 0.6);
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		z-index: 1;
+	}
+}

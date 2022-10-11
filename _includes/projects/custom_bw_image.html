@@ -1,0 +1,19 @@
+<link rel="stylesheet" id="main-style-light" href="{% link assets/css/projects/custom_bw_image.scss %}">
+<div class="custom-bw-image">
+	<input type="file" id="inputFile">
+	<span hidden>Выбранный файл не является файлом изображения!</span>
+	<br>
+	<div id="blackPowerContainer">
+		<input type="range" title="Точка перехода к чёрному" id="blackPower" name="blackPower" min="0" max="255">
+		<span></span>
+	</div>
+	<br>
+	<img id="outputImage" alt="Выходное изображение">
+	<img id="inputImage" alt="Входное изображение">
+	<div id="progressBarContainer">
+		<label for="progressBar">Идёт обработка, подождите...</label>
+		<progress id="progressBar" max="100"></progress>
+	</div>
+</div>
+<script type="text/javascript" src="{% link scripts/projects/custom_bw_image.js %}"></script>
+
