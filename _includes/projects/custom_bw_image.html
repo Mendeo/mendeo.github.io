@@ -1,11 +1,17 @@
 <link rel="stylesheet" id="main-style-light" href="{% link assets/css/projects/custom_bw_image.scss %}">
 <div class="custom-bw-image">
-	<input type="file" id="inputFile">
-	<span hidden>Выбранный файл не является файлом изображения!</span>
-	<br>
-	<div id="blackPowerContainer">
-		<input type="range" title="Точка перехода к чёрному" id="blackPower" name="blackPower" min="0" max="255">
-		<span></span>
+	<div id="leftZoneContainer">
+		<div id="buttonsContainer">
+			<div>
+				<input type="file" id="inputFile" accept="image/*">
+				<span hidden>Выбранный файл не является файлом изображения!</span>
+			</div>
+			<a id="saveResultHref" download>Сохранить результат</a>
+		</div>
+		<div id="blackPowerContainer">
+			<input type="range" title="Точка перехода к чёрному" id="blackPower" name="blackPower" min="0" max="255">
+			<span></span>
+		</div>
 	</div>
 	<br>
 	<img id="outputImage" alt="Выходное изображение">

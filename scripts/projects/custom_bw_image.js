@@ -1,3 +1,6 @@
+---
+layout: js_minifier
+---
 (function()
 {
 	'use strict';
@@ -11,6 +14,8 @@
 	const progressBar = document.getElementById('progressBarContainer');
 	const progressBar_bar = document.querySelector('#progressBarContainer progress');
 	const errorFileSpan = document.querySelector('#inputFile + span');
+	const saveHref = document.getElementById('saveResultHref');
+	const leftZoneContainer = document.getElementById('leftZoneContainer');
 
 	let hasNoInputFileYet = true;
 	startShowHide(true);
@@ -21,18 +26,19 @@
 		outputImg.hidden = isHide;
 		blackPower.hidden = isHide;
 		powerSpan.hidden = isHide;
+		saveHref.hidden = isHide;
 	}
 
-	blackPowerWidth();
-	window.addEventListener('resize', blackPowerWidth);
-	function blackPowerWidth()
+	leftZoneContainerWidth();
+	window.addEventListener('resize', leftZoneContainerWidth);
+	function leftZoneContainerWidth()
 	{
-		blackPower.style = `width: ${inputImg.width}px;`;
+		leftZoneContainer.style = `width: ${inputImg.width}px;`;
 	}
 	powerSpan.innerText = blackPower.value;
 	blackPower.addEventListener('input', () => powerSpan.innerText = blackPower.value);
 
-	imgBg.className = 'custom-bw-image-progress-bar-background';
+	imgBg.className = 'progress-bar-background';
 	body.appendChild(imgBg);
 	removeProgressBar();
 
@@ -73,11 +79,36 @@
 	const refImg = new Image();
 	inputFileEl.addEventListener('change', () =>
 	{
+		const imgFile = inputFileEl.files[0];
+		onNewImageFile(imgFile);
+	});
+	body.addEventListener('dragenter', (e) =>
+	{
+		e.preventDefault();
+		e.stopPropagation();
+	});
+	body.addEventListener('dragover', (e) =>
+	{
+		e.preventDefault();
+		e.stopPropagation();
+		//body.style = 'background-color: var(--body-file-over);';
+	});
+	body.addEventListener('drop', (e)=>
+	{
+		e.preventDefault();
+		e.stopPropagation();
+		const dt = e.dataTransfer;
+		const imgFile = dt.files[0];
+		//body.style = 'background-color: var(--body-color);';
+		onNewImageFile(imgFile);
+	});
+
+	function onNewImageFile(imgFile)
+	{
 		refCanvasCtx.clearRect(0, 0, refCanvas.width, refCanvas.height);
 		//Даём время на очистку канваса.
 		setTimeout(()=>
 		{
-			const imgFile = inputFileEl.files[0];
 			if (imgFile.type.startsWith('image/'))
 			{
 				errorFileSpan.hidden = true;
@@ -110,13 +141,13 @@
 				errorFileSpan.hidden = false;
 			}
 		}, 0);
-	});
+	}
 
 	function doImageProcess()
 	{
 		refCanvas.width = refImg.width;
 		refCanvas.height = refImg.height;
-		blackPowerWidth();
+		leftZoneContainerWidth();
 		refCanvasCtx.drawImage(inputImg, 0, 0);
 		imageDataInitial = refCanvasCtx.getImageData(0, 0, refCanvas.width, refCanvas.height);
 		blackPower.removeEventListener('change', makeBlackWhite);
@@ -146,15 +177,17 @@
 				imageData.data[i] = pointValue; // red
 				imageData.data[i + 1] = pointValue; // green
 				imageData.data[i + 2] = pointValue; // blue
-				i += 4
+				i += 4;
 				if (i === imageData.data.length)
 				{
 					refCanvasCtx.clearRect(0, 0, refCanvas.width, refCanvas.height); //Так работает лучше.
 					refCanvasCtx.putImageData(imageData, 0, 0);
-					outputImg.src = refCanvas.toDataURL();
+					const ref = refCanvas.toDataURL();
+					outputImg.src = ref;
+					saveHref.href = ref;
 					removeProgressBar();
 					return;
-				};
+				}
 				percent = Math.floor(i * 100 / (imageData.data.length - 1));
 			}
 			currentPercent = percent;
