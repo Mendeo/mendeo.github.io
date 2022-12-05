@@ -2,7 +2,7 @@
 layout: post
 title: "Сделал web-сервер для расшаривания папки по сети"
 date: 2022-12-04 20:56:00 +03
-modified: 2022-12-04 20:56:00 +03
+modified: 2022-12-05 16:46:00 +03
 categories: js web
 tags: [nodejs, web, share, folder, directory, http, https, server]
 excerpt_separator: <a name="cut"></a>
@@ -120,10 +120,11 @@ https://example.com
 ```dockerfile
 FROM node:latest
 WORKDIR /app
-RUN useradd -M -s /bin/false nodeserv && mkdir /var/www && npm i web-shared-folder
+RUN useradd -M -s /bin/false nodeserv && mkdir /var/www && npm install --global-style web-shared-folder@<current_verson>
 USER nodeserv
 ENTRYPOINT ["node", "node_modules/web-shared-folder/server.js"]
 ```
+Где \<current_verson\> - текущая версия npm-пакета web-shared-folder.
 
 Дальше нужно собрать образ из этого докер файла.
 
