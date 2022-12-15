@@ -2,7 +2,7 @@
 layout: post
 title: "Сделал web-сервер для расшаривания папки по сети"
 date: 2022-12-04 20:56:00 +03
-modified: 2022-12-13 14:38:00 +03
+modified: 2022-12-15 14:37:00 +03
 categories: js web
 tags: [nodejs, web, share, folder, directory, http, https, server]
 excerpt_separator: <a name="cut"></a>
