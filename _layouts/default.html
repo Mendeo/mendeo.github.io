@@ -85,5 +85,8 @@ layout: html_minifier
 		<script type="text/javascript" src="{% link scripts/imageEnlager.js %}"></script>
 		{%- endif -%}
 		<script type="text/javascript" src="{% link scripts/oldBrowserAlert.js %}"></script>
+		{%- if page.my_age -%}
+		<script type="text/javascript" src="{% link scripts/myAge.js %}"></script>
+		{%- endif -%}
 	</body>
 </html>
