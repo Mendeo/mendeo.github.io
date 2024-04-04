@@ -38,7 +38,7 @@ img[data-src-big]
 {
   cursor: pointer;
   transition-property: width, height, left, top;
-  background: url('<путь к иконке загрузка>') no-repeat center;
+  background: url('<путь к иконке "загрузка">') no-repeat center;
 }
 
 .image-enlager-animation-normal
@@ -67,12 +67,12 @@ img[data-src-big]
 
 .image-enlager-left-arrow:hover
 {
-  background: url('<путь к стрелки влево>') no-repeat left;
+  background: url('<путь к стрелке влево>') no-repeat left;
 }
 
 .image-enlager-right-arrow:hover
 {
-  background: url('<путь к стрелки вправо>') no-repeat right;
+  background: url('<путь к стрелке вправо>') no-repeat right;
 }
 
 .image-enlager-no-arrows:hover
