@@ -3,7 +3,7 @@ img[src-big]
 {
 	cursor: pointer;
 	transition-property: width, height, left, top;
-	background: $load no-repeat center;
+	background: $imageEnlager_load no-repeat center;
 }
 
 .image-enlager-animation-normal
@@ -32,12 +32,12 @@ img[src-big]
 
 .image-enlager-left-arrow:hover
 {
-	background: $leftArrow no-repeat left;
+	background: $imageEnlager_leftArrow no-repeat left;
 }
 
 .image-enlager-right-arrow:hover
 {
-	background: $rightArrow no-repeat right;
+	background: $imageEnlager_rightArrow no-repeat right;
 }
 
 .image-enlager-no-arrows:hover
