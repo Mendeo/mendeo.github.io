@@ -4,7 +4,7 @@
 	<style>
 		g
 		{
-			transform-origin: 50% 50%;			
+			transform-origin: 50% 50%;
 			animation: rotation 0.72s linear infinite;
 		}
 		@keyframes rotation

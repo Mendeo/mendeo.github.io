@@ -2,7 +2,7 @@
 layout: post
 title: Сделал скрипт для увеличения картинок при клике на них
 date: 2020-05-05 11:52:00 +03
-modified: 2024-04-09 11:35:00 +03
+modified: 2024-04-09 12:04:00 +03
 categories: web javascript
 tags: [web, javascript, css]
 excerpt_separator: <a name="cut"></a>
@@ -114,6 +114,22 @@ img[data-src-big]
   {
     width: 20%;
   }
+}
+```
+
+Для ночной темы можно инвертировать цвет стрелок:  
+```css
+.image-enlager-right-arrow
+{
+	filter: invert(100%);
+}
+.image-enlager-left-arrow
+{
+	filter: invert(100%);
+}
+.image-enlager-right-arrow
+{
+	filter: invert(100%);
 }
 ```
 
