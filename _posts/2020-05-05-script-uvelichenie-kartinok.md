@@ -2,7 +2,7 @@
 layout: post
 title: Сделал скрипт для увеличения картинок при клике на них
 date: 2020-05-05 11:52:00 +03
-modified: 2024-04-04 10:00:00 +03
+modified: 2024-04-09 11:35:00 +03
 categories: web javascript
 tags: [web, javascript, css]
 excerpt_separator: <a name="cut"></a>
@@ -15,8 +15,8 @@ disqus_page_id: 769780B7f26Lr492jCOdPQZLIMdf3dK7O7574Ckg2q219vF644j4483319B759T6
 
 <a name="cut"></a>
 **Посмотреть как это работает**  
-<img alt="Фото тюльпанов" data-src-big="{% link assets/posts/script-uvelichenie-kartinok/big/tulpan.jpg %}" src="{% link assets/posts/script-uvelichenie-kartinok/small/tulpan.jpg %}">
-<img alt="Фото цветов айвы" data-src-big="{% link assets/posts/script-uvelichenie-kartinok/big/ajva.jpg %}" src="{% link assets/posts/script-uvelichenie-kartinok/small/ajva.jpg %}">
+<img alt="Фото тюльпанов" data-src-big_local="{% link assets/posts/script-uvelichenie-kartinok/big/tulpan.jpg %}" src="{% link assets/posts/script-uvelichenie-kartinok/small/tulpan.jpg %}">
+<img alt="Фото цветов айвы" data-src-big_local="{% link assets/posts/script-uvelichenie-kartinok/big/ajva.jpg %}" src="{% link assets/posts/script-uvelichenie-kartinok/small/ajva.jpg %}">
 
 ## Подготавливаем HTML
 Для того, чтобы картинка могла увеличиваться требуется, чтобы у тега "img" был атрибут "data-src-big". В значение этого атрибута нужно прописать путь к изображению высокого разрешения. А в атрибут "src" нужно установить путь к изображению низкого разрешения.  
@@ -28,7 +28,7 @@ disqus_page_id: 769780B7f26Lr492jCOdPQZLIMdf3dK7O7574Ckg2q219vF644j4483319B759T6
 Не забудтьте подключить CSS и JavaScript. Можно просто CSS прописать внутри ```<style></style>```, а JavaScript - внутри ```<script></script>```.
 
 ## Подготавливаем CSS  
-Для этого требуется в ```img[data-src-big]``` в свойство ```background``` поместить ссылку на иконку загрузки. <a href="{%- link assets/posts/script-uvelichenie-kartinok/load.png -%}" download>Скачать.</a>  
+Для этого требуется в ```img[data-src-big]``` в свойство ```background``` поместить ссылку на иконку загрузки. <a href="{%- link assets/posts/script-uvelichenie-kartinok/load.svg -%}" download>Скачать.</a>  
 Далее, в ```.image-enlager-left-arrow:hover``` в свойство ```background``` поместить ссылку на левую стрелку. <a href="{%- link assets/posts/script-uvelichenie-kartinok/left-arrow.svg -%}" download>Скачать.</a>  
 Наконец, в ```.image-enlager-right-arrow:hover``` в свойство ```background``` поместить ссылку на правую стрелку. <a href="{%- link assets/posts/script-uvelichenie-kartinok/right-arrow.svg -%}" download>Скачать.</a>  
 
@@ -387,11 +387,11 @@ img[data-src-big]
 })();
 ```
 <style>
-img[data-src-big]
+img[data-src-big_local]
 {
 	cursor: pointer;
 	transition-property: width, height, left, top;
-	background: url('{%- link assets/posts/script-uvelichenie-kartinok/load.png -%}') no-repeat center;
+	background: url('{%- link assets/posts/script-uvelichenie-kartinok/load.svg -%}') no-repeat center;
 }
 
 .image-enlager-animation-normal
@@ -524,7 +524,7 @@ img[data-src-big]
 	let placeholder = document.createElement('img');
 	placeholder.className = 'image-enlager-placeholder';
 	let imgCache = new Map();
-	const imgs = document.querySelectorAll('img[data-src-big]');
+	const imgs = document.querySelectorAll('img[data-src-big_local]');
 	let isGoingToSmall = false; //Переменная для отслеживания анимации уменьшения.
 	for (let i = 0; i < imgs.length; i++)
 	{
@@ -611,7 +611,7 @@ img[data-src-big]
 				currentBigImg.removeEventListener('load', bigImageLoaded);
 				currentBigImg.src = currentBigImg.smallSrc;
 				//Для всех браузеров, кроме Firefox, продолжаем загрузку картинки в фоне (когда она маленькая). Если пользователь кликает по разным изображениям, то все эти изображения будут кэшироваться в Map'е imgCache.
-				let key = currentBigImg.getAttribute('data-src-big');
+				let key = currentBigImg.getAttribute('data-src-big_local');
 				if (!imgCache.has(key))
 				{
 					let auxImg = document.createElement('img');
@@ -638,7 +638,7 @@ img[data-src-big]
 	{
 		let img = e.target;
 		img.bigSrcStatus = 'loaded';
-		imgCache.delete(img.getAttribute('data-src-big'));
+		imgCache.delete(img.getAttribute('data-src-big_local'));
 		img.removeEventListener('load', bigImageLoaded);
 	}
 	//Эта функция отрисовывает все сопутствующие элементы при увеличении картинки. Само увеличение производится вызовом функции makeImageBig.
@@ -656,7 +656,7 @@ img[data-src-big]
 		if (currentBigImg.bigSrcStatus !== 'loaded') //Проверяем, загружена ли уже полноразмерная картинка.
 		{
 			//В Firefox не нужно менять источник снова, если он уже был раньше изменён на большую картинку, иначе Firefox начнёт перезагружать картинку.
-			if (!(navigator.userAgent.includes('Firefox') && currentBigImg.bigSrcStatus === 'needReload')) currentBigImg.src = currentBigImg.getAttribute('data-src-big'); //Загружаем большое изображение.
+			if (!(navigator.userAgent.includes('Firefox') && currentBigImg.bigSrcStatus === 'needReload')) currentBigImg.src = currentBigImg.getAttribute('data-src-big_local'); //Загружаем большое изображение.
 			currentBigImg.bigSrcStatus = 'loading';
 			currentBigImg.addEventListener('load', bigImageLoaded);
 		}

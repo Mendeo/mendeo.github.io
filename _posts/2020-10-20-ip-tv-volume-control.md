@@ -220,18 +220,18 @@ uint8_t incrementCounter() //Если паттерн получен полнос
 
 Физическая реализация устройства была выполнена на печатной плате (см рисунок), изготовленной при помощи ЛУТ на однослойном текстолите. 
 
-<img alt="Печатная плата" src-big="{% link assets/posts/ip-tv-volume-control/big/pcb.jpg %}" src="{% link assets/posts/ip-tv-volume-control/small/pcb.jpg %}">
+<img alt="Печатная плата" data-src-big="{% link assets/posts/ip-tv-volume-control/big/pcb.jpg %}" src="{% link assets/posts/ip-tv-volume-control/small/pcb.jpg %}">
 
 Внутри колонок производится питание 9 вольт, что много для нашего микроконтроллера, поэтому снизим напряжение при помощи линейного преобразователя 78L05.
 
 Всего к устройству подводится от колонок 8 проводов: 3 на один потенциометр, 3 на другой и два для питания. Очень удобно для этих целей использовать сетевой UTP кабель, в котором как раз 8 проводников. Теперь, вместо ручки громкости из колонок будет выходить сетевой кабель с нашим устройством на конце.
 
-<img alt="Плата колонки" src-big="{% link assets/posts/ip-tv-volume-control/big/speaker.jpg %}" src="{% link assets/posts/ip-tv-volume-control/small/speaker.jpg %}">
+<img alt="Плата колонки" data-src-big="{% link assets/posts/ip-tv-volume-control/big/speaker.jpg %}" src="{% link assets/posts/ip-tv-volume-control/small/speaker.jpg %}">
 
 Фото готового устройства:
 
-<img alt="Вид сверху" src-big="{% link assets/posts/ip-tv-volume-control/big/up.jpg %}" src="{% link assets/posts/ip-tv-volume-control/small/up.jpg %}">
-<img alt="Вид снизу" src-big="{% link assets/posts/ip-tv-volume-control/big/down.jpg %}" src="{% link assets/posts/ip-tv-volume-control/small/down.jpg %}">
+<img alt="Вид сверху" data-src-big="{% link assets/posts/ip-tv-volume-control/big/up.jpg %}" src="{% link assets/posts/ip-tv-volume-control/small/up.jpg %}">
+<img alt="Вид снизу" data-src-big="{% link assets/posts/ip-tv-volume-control/big/down.jpg %}" src="{% link assets/posts/ip-tv-volume-control/small/down.jpg %}">
 
 Опыта разводки и изготовления печатных плат у меня очень мало, поэтому, конечно, я накосячил и перепутал контакты ИК-приёмника. Хорошо, что GND посередине, получилось просто развернуть сам приёмник. Исходник уже поправил. И да, smd резистора на 100 Ом я у себя не нашёл, решил временно поставить обычный.
 

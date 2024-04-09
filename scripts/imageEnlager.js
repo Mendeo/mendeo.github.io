@@ -1,7 +1,30 @@
 ---
 layout: js_minifier
 ---
-//Мой скрипт для увеличения картинок (у img должен быть атрибут src-big с путём к большому изображению)
+/*
+The MIT License (MIT)
+
+Copyright (c) Aleksandr Meniailo (deorathemen@gmail.com), Mendeo 2020
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
 (function()
 {
 	'use strict';
@@ -56,7 +79,7 @@ layout: js_minifier
 	let placeholder = document.createElement('img');
 	placeholder.className = 'image-enlager-placeholder';
 	let imgCache = new Map();
-	const imgs = document.querySelectorAll('img[src-big]');
+	const imgs = document.querySelectorAll('img[data-src-big]');
 	let isGoingToSmall = false; //Переменная для отслеживания анимации уменьшения.
 	for (let i = 0; i < imgs.length; i++)
 	{
@@ -143,7 +166,7 @@ layout: js_minifier
 				currentBigImg.removeEventListener('load', bigImageLoaded);
 				currentBigImg.src = currentBigImg.smallSrc;
 				//Для всех браузеров, кроме Firefox, продолжаем загрузку картинки в фоне (когда она маленькая). Если пользователь кликает по разным изображениям, то все эти изображения будут кэшироваться в Map'е imgCache.
-				let key = currentBigImg.getAttribute('src-big');
+				let key = currentBigImg.getAttribute('data-src-big');
 				if (!imgCache.has(key))
 				{
 					let auxImg = document.createElement('img');
@@ -170,7 +193,7 @@ layout: js_minifier
 	{
 		let img = e.target;
 		img.bigSrcStatus = 'loaded';
-		imgCache.delete(img.getAttribute('src-big'));
+		imgCache.delete(img.getAttribute('data-src-big'));
 		img.removeEventListener('load', bigImageLoaded);
 	}
 	//Эта функция отрисовывает все сопутствующие элементы при увеличении картинки. Само увеличение производится вызовом функции makeImageBig.
@@ -188,7 +211,7 @@ layout: js_minifier
 		if (currentBigImg.bigSrcStatus !== 'loaded') //Проверяем, загружена ли уже полноразмерная картинка.
 		{
 			//В Firefox не нужно менять источник снова, если он уже был раньше изменён на большую картинку, иначе Firefox начнёт перезагружать картинку.
-			if (!(navigator.userAgent.includes('Firefox') && currentBigImg.bigSrcStatus === 'needReload')) currentBigImg.src = currentBigImg.getAttribute('src-big'); //Загружаем большое изображение.
+			if (!(navigator.userAgent.includes('Firefox') && currentBigImg.bigSrcStatus === 'needReload')) currentBigImg.src = currentBigImg.getAttribute('data-src-big'); //Загружаем большое изображение.
 			currentBigImg.bigSrcStatus = 'loading';
 			currentBigImg.addEventListener('load', bigImageLoaded);
 		}

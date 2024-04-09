@@ -48,11 +48,11 @@ disqus_page_id: GVVVWMhEi5E3413o57a2A7DJ74pBr6A657n3rbfsjdvHxuHDEN3JORC0gs8SjkYc
 <div class="custom-bw-image-post-picture-container">
 	<div class="custom-bw-image-post-picture-container-item">
 		<span>Исходное фото, снятое на телефон</span>
-		<img alt="Исходное фото, снятое на телефон" src-big="{% link assets/posts/custom_bw_image/big/cat.jpg %}" src="{% link assets/posts/custom_bw_image/small/cat.jpg %}">
+		<img alt="Исходное фото, снятое на телефон" data-src-big="{% link assets/posts/custom_bw_image/big/cat.jpg %}" src="{% link assets/posts/custom_bw_image/small/cat.jpg %}">
 	</div>
 	<div class="custom-bw-image-post-picture-container-item">
 		<span>Изображение, готовое для гравировки</span>
-		<img alt="Изображение, готовое для гравировки" src-big="{% link assets/posts/custom_bw_image/big/cat_bw.jpg %}" src="{% link assets/posts/custom_bw_image/small/cat_bw.jpg %}">
+		<img alt="Изображение, готовое для гравировки" data-src-big="{% link assets/posts/custom_bw_image/big/cat_bw.jpg %}" src="{% link assets/posts/custom_bw_image/small/cat_bw.jpg %}">
 	</div>
 </div>
 

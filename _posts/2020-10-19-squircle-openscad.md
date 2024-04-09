@@ -28,4 +28,4 @@ disqus_page_id: e6K26r214Q84986423Bh1H44rOqjd0009349X75oDv1J21hobc491l68169834w8
 Исходный код можно скачать с [GitHub](https://github.com/Mendeo/rounded_cube).  
 На рисунке ниже можно увидеть отличие квадрата со скруглением от квадрокруга (кликабельно). Я постарался подобрать параметры так, чтобы обе фигуры были как можно близки друг к другу. Здесь, зелёным цветом показаны края скруглённого квадрата, а коричневый - это квадрокруг.  
 Параметры квадрокруга: размер 100, а степень n в уравнении равна 5. Параметры скруглённого квадрата: размер 100, а радиус скругления 22.  
-<img alt="Изображение квадрокруга" src-big="{% link assets/posts/squircle-openscad/big/model.png %}" src="{% link assets/posts/squircle-openscad/small/model.png %}">
+<img alt="Изображение квадрокруга" data-src-big="{% link assets/posts/squircle-openscad/big/model.png %}" src="{% link assets/posts/squircle-openscad/small/model.png %}">
