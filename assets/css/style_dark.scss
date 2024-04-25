@@ -1,4 +1,11 @@
 ---
 ---
+$imageEnlager_load: url("{% link assets/images/image-enlager/dark/load.svg %}");
+$imageEnlager_leftArrow: url("{% link assets/images/image-enlager/left-arrow.svg %}");
+$imageEnlager_rightArrow: url("{% link assets/images/image-enlager/right-arrow.svg %}");
 
+$themeChanger_circle: url("{% link assets/images/theme-changer/circle.svg %}");
+$themeChanger_sun: url("{% link assets/images/theme-changer/sun.svg %}");
+$themeChanger_moon: url("{% link assets/images/theme-changer/moon.svg %}");
+$themeChanger_auto: url("{% link assets/images/theme-changer/auto.svg %}");
 @import "plain_dark";

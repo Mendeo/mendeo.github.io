@@ -6,6 +6,30 @@ $smallMobileW: 480px;
 $bigScreenW: 1600px;
 $leftWidth: 220px;
 
+/*Настройки радиокнопок*/
+/*
+.radioFieldset
+{
+	font-family: 'Merriweather';
+	color: $postBackgroundColor;
+}
+
+.radioFieldset div
+{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	row-gap: 0.5rem;
+	label
+	{
+		justify-self: start;
+	}
+	input
+	{
+		justify-self: end;
+	}
+}
+*/
+
 #cookiesNotification
 {
 	height: 70px;
@@ -129,26 +153,6 @@ $leftWidth: 220px;
 	color: $buttonHoverTextColor;
 	background-color: $buttonHoverBackgroundColor;
 	border-color: $buttonHoverBackgroundColor;
-}
-.radioFieldset
-{
-	font-family: 'Merriweather';
-	color: $postBackgroundColor;
-}
-
-.radioFieldset div
-{
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	row-gap: 0.5rem;
-	label
-	{
-		justify-self: start;
-	}
-	input
-	{
-		justify-self: end;
-	}
 }
 
 .input-default

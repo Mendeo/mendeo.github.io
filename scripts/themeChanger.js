@@ -4,88 +4,84 @@ layout: js_minifier
 (function()
 {
 	'use strict';
-	const styleLight = document.getElementById('main-style-light');
-	const styleDark = document.getElementById('main-style-dark');
-	const radioLight = document.getElementById('theme-light-input-radio');
-	const radioDark = document.getElementById('theme-dark-input-radio');
-	const radioSystem = document.getElementById('theme-system-input-radio');
+	const radioLight = document.getElementById('radio-light-theme');
+	const radioDark = document.getElementById('radio-dark-theme');
+	const radioAuto = document.getElementById('radio-auto-theme');
 
-	const THEME_STORAGE_NAME = 'themeSelected';
+	const styleLight = document.getElementById('light-theme-css');
+	const styleDark = document.getElementById('dark-theme-css');
+
+	const THEME_STORAGE_NAME = 'selected-theme';
 	const STORAGE_LIGHT_THEME = 'light';
 	const STORAGE_DARK_THEME = 'dark';
-	const STORAGE_SYSTEM_THEME = 'system';
+	const STORAGE_AUTO_THEME = 'auto';
 
 	const selectedTheme = localStorage.getItem(THEME_STORAGE_NAME);
-	setTheme(selectedTheme, true);
+	setTheme(selectedTheme);
 
 	radioDark.addEventListener('change', onThemeChange);
 	radioLight.addEventListener('change', onThemeChange);
-	if (IS_OLD_BROWSER)
-	{
-		radioSystem.disabled = true;
-	}
-	else
-	{
-		radioSystem.addEventListener('change', onThemeChange);
-	}
+	radioAuto.addEventListener('change', onThemeChange);
 
-	function setTheme(selectedTheme, setRadio)
+	function setTheme(selectedTheme)
 	{
-		if (!selectedTheme)
+		if (selectedTheme !== STORAGE_LIGHT_THEME && selectedTheme !== STORAGE_DARK_THEME && selectedTheme !== STORAGE_AUTO_THEME)
 		{
-			selectedTheme = IS_OLD_BROWSER ? STORAGE_LIGHT_THEME : STORAGE_SYSTEM_THEME;
-			setThemeToLocalStorage(selectedTheme);
+			selectedTheme = STORAGE_AUTO_THEME;
+			setThemeToLocalStorage(STORAGE_AUTO_THEME);
 		}
 
 		if (selectedTheme === STORAGE_LIGHT_THEME)
 		{
 			styleLight.media = 'all';
 			styleDark.media = 'not all';
-			if (setRadio) radioLight.checked = true;
+			radioLight.checked = true;
 		}
 		else if (selectedTheme === STORAGE_DARK_THEME)
 		{
 			styleLight.media = 'not all';
 			styleDark.media = 'all';
-			if (setRadio) radioDark.checked = true;
+			radioDark.checked = true;
 		}
 		else
 		{
 			styleLight.media = '(prefers-color-scheme: light)';
 			styleDark.media = '(prefers-color-scheme: dark)';
-			if (setRadio) radioSystem.checked = true;
-			if (selectedTheme !== STORAGE_SYSTEM_THEME)
-			{
-				setThemeToLocalStorage(STORAGE_SYSTEM_THEME);
-			}
+			radioAuto.checked = true;
 		}
 	}
 
 	function onThemeChange()
 	{
 		let selectedTheme = '';
+		let ifSet = false;
 		if (radioLight.checked)
 		{
 			selectedTheme = STORAGE_LIGHT_THEME;
+			ifSet = true;
 		}
 		else if (radioDark.checked)
 		{
 			selectedTheme = STORAGE_DARK_THEME;
+			ifSet = true;
 		}
-		else if (radioSystem.checked)
+		else if (radioAuto.checked)
 		{
-			selectedTheme = STORAGE_SYSTEM_THEME;
+			selectedTheme = STORAGE_AUTO_THEME;
+			ifSet = true;
 		}
-		setThemeToLocalStorage(selectedTheme);
-		setTheme(selectedTheme);
-
-		if (window.DISQUS)
+		if (ifSet)
 		{
-			DISQUS.reset(
-				{
-					reload: true,
-					config: disqus_config
-				});
+			setThemeToLocalStorage(selectedTheme);
+			setTheme(selectedTheme);
+			if (window.DISQUS)
+			{
+				DISQUS.reset(
+					{
+						reload: true,
+						config: disqus_config
+					});
+			}
 		}
 	}
 

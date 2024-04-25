@@ -1,0 +1,84 @@
+/*Блок, отвечающий за переключение темы (светлая, авто, тёмная)*/
+.theme_selector
+{
+	position: relative;
+	padding: 0.125rem;
+	margin: 0px;
+	border: none;
+	display: flex;
+	width: 5rem;
+	z-index: 1;
+}
+.theme_selector > label
+{
+	pointer-events: none;
+	padding: 0px;
+	margin: 0px;
+	opacity: 0;
+}
+.theme_selector > input
+{
+	appearance: none;
+	-webkit-appearance:none;
+	width: 100%;
+	height: 1rem;
+	padding: 0px;
+	margin: 0px;
+	border: none;
+	cursor: pointer;
+}
+.theme_selector > input:focus
+{
+	outline: none;
+}
+.theme_selector > div
+{
+	background-color: #d4d4d4;
+	background-image: $themeChanger_circle;
+	background-size: 1rem;
+	background-repeat: no-repeat;
+	background-position: center;
+	border-radius: 0.5rem;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: -1;
+	transition: background-position 0.1s linear;
+}
+.theme_selector > input:checked
+{
+	filter: invert(100%);
+	transition: filter 0.1s linear;
+}
+#radio-light-theme:checked ~ div
+{
+	background-position: 0.125rem;
+}
+#radio-dark-theme:checked ~ div
+{
+	background-position: calc(100% - 0.125rem);
+}
+#radio-light-theme
+{
+	background-image: $themeChanger_sun;
+	background-repeat: no-repeat;
+	background-position: 11%;
+	background-size: 0.85rem;
+}
+#radio-dark-theme
+{
+	background-image: $themeChanger_moon;
+	background-repeat: no-repeat;
+	background-position: 75%;
+	background-size: 0.4rem;
+} 
+#radio-auto-theme
+{
+	background-image: $themeChanger_auto;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 0.5rem;
+}
+/*Конец блока, отвечающего за переключение темы*/
