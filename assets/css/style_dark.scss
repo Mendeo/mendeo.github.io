@@ -8,4 +8,14 @@ $themeChanger_circle: url("{% link assets/images/theme-changer/circle.svg %}");
 $themeChanger_sun: url("{% link assets/images/theme-changer/sun.svg %}");
 $themeChanger_moon: url("{% link assets/images/theme-changer/moon.svg %}");
 $themeChanger_auto: url("{% link assets/images/theme-changer/auto.svg %}");
+
+$PTSerif-Regular: url("{% link assets/fonts/PTSerif-Regular.ttf %}") format('truetype');
+$PTSerif-Bold: url("{% link assets/fonts/PTSerif-Bold.ttf %}") format('truetype');
+$PTSerif-BoldItalic: url("{% link assets/fonts/PTSerif-BoldItalic.ttf %}") format('truetype');
+$PTSerif-Italic: url("{% link assets/fonts/PTSerif-Italic.ttf %}") format('truetype');
+
+$PTSans-Regular: url("{% link assets/fonts/PTSans-Regular.ttf %}") format('truetype');
+$PTSans-Bold: url("{% link assets/fonts/PTSans-Bold.ttf %}") format('truetype');
+$PTSans-BoldItalic: url("{% link assets/fonts/PTSans-BoldItalic.ttf %}") format('truetype');
+$PTSans-Italic: url("{% link assets/fonts/PTSans-Italic.ttf %}") format('truetype');
 @import "plain_dark";

@@ -6,6 +6,57 @@ $smallMobileW: 480px;
 $bigScreenW: 1600px;
 $leftWidth: 220px;
 
+@font-face
+{
+	font-family: "PT Serif";
+	src: local("PT Serif"), local("PTSerif-Regular") $PTSerif-Regular;
+	font-weight: normal;
+}
+@font-face
+{
+	font-family: "PT Serif";
+	src: local("PT Serif"), local("PTSerif-Bold") $PTSerif-Bold;
+	font-weight: bold;
+}
+@font-face
+{
+	font-family: "PT Serif";
+	src: local("PT Serif"), local("PTSerif-BoldItalic") $PTSerif-BoldItalic;
+	font-weight: bold;
+	font-style: italic;
+}
+@font-face
+{
+	font-family: "PT Serif";
+	src: local("PT Serif"), local("PTSerif-Italic") $PTSerif-Italic;
+	font-style: italic;
+}
+@font-face
+{
+	font-family: "PT Sans";
+	src: local("PT Sans"), local("PTSans-Regular") $PTSans-Regular;
+	font-weight: normal;
+}
+@font-face
+{
+	font-family: "PT Sans";
+	src: local("PT Sans"), local("PTSans-Bold") $PTSans-Bold;
+	font-weight: bold;
+}
+@font-face
+{
+	font-family: "PT Sans";
+	src: local("PT Sans"), local("PTSans-BoldItalic") $PTSans-BoldItalic;
+	font-weight: bold;
+	font-style: italic;
+}
+@font-face
+{
+	font-family: "PT Sans";
+	src: local("PT Sans"), local("PTSans-Italic") $PTSans-Italic;
+	font-style: italic;
+}
+
 #cookiesNotification
 {
 	height: 70px;
@@ -145,8 +196,8 @@ $leftWidth: 220px;
 
 body
 {
-	font-family: "Raleway", sans-serif;
-	font-size: 16px;
+	font-family: "PT Serif", "serif";
+	font-size: 1.1rem;
 	line-height: 1.2em;
 	margin: 0;
 	-webkit-font-smoothing: antialiased;
@@ -289,7 +340,7 @@ main
 	}
 	.content
 	{
-		@media screen and (min-width: $mobileW + 1)
+		@media screen and (min-width: $mobileW)
 		{
 			max-width: calc(100% - #{$leftWidth});
 			margin-left: $leftWidth;
@@ -308,7 +359,7 @@ main
 			height: auto;
 			padding: 10vh 0;
 		}
-		@media screen and (min-width: $mobileW + 1)
+		@media screen and (min-width: $mobileW)
 		{
 			position: fixed;
 		}
@@ -382,7 +433,7 @@ main
 		a
 		{
 			display: block;
-			font-family: 'Merriweather';
+			font-family: "PT Sans", "sans-serif";
 			text-align: center;
 			padding: 0.6rem 0;
 			text-decoration: none;
@@ -496,7 +547,7 @@ main
 }
 .post
 {
-	font-family: "Merriweather", sans-serif;
+	font-family: "PT Serif", "sans-serif";
 	font-weight: 300;
 	color: $postBackgroundColor;
 	line-height: 1.9em;
@@ -517,7 +568,7 @@ main
 	h5,
 	h6
 	{
-		font-family: Raleway, sans-serif;
+		font-family: "PT Serif", "sans-serif";
 	}
 	/*Моя вставка*/
 	th
