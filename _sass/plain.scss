@@ -6,57 +6,6 @@ $smallMobileW: 480px;
 $bigScreenW: 1600px;
 $leftWidth: 220px;
 
-@font-face
-{
-	font-family: "PT Serif";
-	src: local("PT Serif"), local("PTSerif-Regular") $PTSerif-Regular;
-	font-weight: normal;
-}
-@font-face
-{
-	font-family: "PT Serif";
-	src: local("PT Serif"), local("PTSerif-Bold") $PTSerif-Bold;
-	font-weight: bold;
-}
-@font-face
-{
-	font-family: "PT Serif";
-	src: local("PT Serif"), local("PTSerif-BoldItalic") $PTSerif-BoldItalic;
-	font-weight: bold;
-	font-style: italic;
-}
-@font-face
-{
-	font-family: "PT Serif";
-	src: local("PT Serif"), local("PTSerif-Italic") $PTSerif-Italic;
-	font-style: italic;
-}
-@font-face
-{
-	font-family: "PT Sans";
-	src: local("PT Sans"), local("PTSans-Regular") $PTSans-Regular;
-	font-weight: normal;
-}
-@font-face
-{
-	font-family: "PT Sans";
-	src: local("PT Sans"), local("PTSans-Bold") $PTSans-Bold;
-	font-weight: bold;
-}
-@font-face
-{
-	font-family: "PT Sans";
-	src: local("PT Sans"), local("PTSans-BoldItalic") $PTSans-BoldItalic;
-	font-weight: bold;
-	font-style: italic;
-}
-@font-face
-{
-	font-family: "PT Sans";
-	src: local("PT Sans"), local("PTSans-Italic") $PTSans-Italic;
-	font-style: italic;
-}
-
 #cookiesNotification
 {
 	height: 70px;

@@ -2,13 +2,14 @@
 layout: post
 title:  "Wix.com как бесплатный backend для вашего приложения"
 date:   2020-04-05 16:44:00 +03
-modified: 2020-04-05 16:44:00 +03
+modified: 2024-09-26 13:23:00 +03
 categories: web wix
 tags: [wix.com, backend, web, telegram bot, github pages]
 excerpt_separator: <a name="cut"></a>
 links_in_new_tab: true
 disqus_page_id: 0t3wXL6w10JLQc72l6Z0427dA4W3931LaL68p58jf6DO22jJh99NtKc9gSpd464c
 ---
+<p style="color: red; font-weight: bold;">Wix больше не доступен на территории РФ</p>  
 Однажды мне захотелось сделать небольшое, но, как мне кажется, полезное веб приложение [Ethereum events](https://ethereum-events.com/).  Я его сделал, но встал вопрос о том, как поделиться им с другими людьми да и самому удобно пользоваться, т.е. нужен был хостинг веб сайта. Конечно, когда ты создаёшь большой проект, то вопрос где размещать свой сайт не стоит: вы скорей всего купите какой-нибудь VPS. Но для относительно простого сайта тратить деньги на хостинг обычно нет никакого желания.
 
 <a name="cut"></a>

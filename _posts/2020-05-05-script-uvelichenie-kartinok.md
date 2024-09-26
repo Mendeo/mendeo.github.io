@@ -2,7 +2,7 @@
 layout: post
 title: Сделал скрипт для увеличения картинок при клике на них
 date: 2020-05-05 11:52:00 +03
-modified: 2024-04-09 12:12:00 +03
+modified: 2024-09-26 13:08:00 +03
 categories: web javascript
 tags: [web, javascript, css]
 excerpt_separator: <a name="cut"></a>
@@ -26,7 +26,7 @@ disqus_page_id: 769780B7f26Lr492jCOdPQZLIMdf3dK7O7574Ckg2q219vF644j4483319B759T6
 <img alt="Фото тюльпанов" data-src-big="<путь к картинке с высоким разрешением, например 1920X1080>" src="<путь к картинке с низким разрешением, например 266X150>">
 <img alt="Фото цветов айвы" data-src-big="<путь к картинке с высоким разрешением, например 1920X1080>" src="<путь к картинке с низким разрешением, например 266X150>">
 ```
-Не забудтьте подключить CSS и JavaScript. Можно просто CSS прописать внутри ```<style></style>```, а JavaScript - внутри ```<script></script>```.
+Не забудьте подключить CSS и JavaScript. Можно просто CSS прописать внутри ```<style></style>```, а JavaScript - внутри ```<script></script>```.
 
 ## Подготавливаем CSS  
 Для этого требуется в ```img[data-src-big]``` в свойство ```background``` поместить ссылку на иконку загрузки. <a href="{% link assets/images/image-enlager/light/load.svg %}" download>Скачать.</a>  

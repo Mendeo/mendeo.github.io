@@ -2,7 +2,7 @@
 layout: post
 title: Чистая установка nextcloud на raspberry pi
 date: 2020-04-24 14:20:00 +03
-modified: 2023-04-08 23:39:00 +03
+modified: 2024-09-26 13:12:00 +03
 categories: linux nextcloud
 tags: [nextcloud, nginx, php, raspberry pi, linux]
 excerpt_separator: <a name="cut"></a>
@@ -10,7 +10,7 @@ links_in_new_tab: true
 disqus_page_id: 29zr5552r08s91G972UgDO9811x99OE5724Nk78Aays08h7Y57kIL91C0C6ANyU7
 ---
 ### Обновление от 22.04.2022
-За время работы моего сервера возникали разные сбои. Например, Nextcloud обновлялся и новые версии уже плохо работали со старой конфигурацией nginx. Поэтому переодически в файлах конфигурации делались разные улучшения. Пришло время обновить [nginx.conf]({% link assets/posts/ustanovka-nextcloud/nginx.conf %}) и [php.ini]({% link assets/posts/ustanovka-nextcloud/php.ini %}) и в этом посте.
+За время работы моего сервера возникали разные сбои. Например, Nextcloud обновлялся и новые версии уже плохо работали со старой конфигурацией nginx. Поэтому периодически в файлах конфигурации делались разные улучшения. Пришло время обновить [nginx.conf]({% link assets/posts/ustanovka-nextcloud/nginx.conf %}) и [php.ini]({% link assets/posts/ustanovka-nextcloud/php.ini %}) и в этом посте.
 <br><br>
 
 Наконец то установил [Nextcloud](https://nextcloud.com/) на свой домашний сервер на raspberry pi. Я конечно лёгких путей не искал, решил собрать всё из исходников, вместо того, чтобы просто установить snap пакет. Зачем? Ну во-первых, у меня не было опыта работы с nginx, хотелось чему-то научиться, я думаю это пригодится для будущих проектов. Во-вторых, у меня не было опыта работы с postgresql. А это точно пригодится. К тому же у меня уже стоял на сервере postgresql - на нём крутится gogs. Доставить на существующую СУБД ещё один продукт мне кажется более целостным решением. Ну и ещё, я никогда не работал с php, на котором написан nextcloud. Но правда не знаю, где могут мне могут пригодиться полученные знания об устройстве php &#x1f600;. Попутно узнал что есть такая штука redis. Запомню, может это тоже в будущем понадобится.
@@ -103,7 +103,7 @@ sudo apt install libsodium-dev
 ./configure --enable-bcmath --enable-fpm --with-fpm-systemd --with-openssl --with-zlib --with-curl --with-bz2 --enable-exif --enable-ftp --with-openssl-dir --with-gmp --with-mhash --with-imap --with-imap-ssl --enable-intl --with-ldap --enable-mbstring --enable-pcntl --with-pdo-pgsql=/usr/local/pgsql --with-pgsql=/usr/local/pgsql --with-kerberos --with-zip --with-xsl --enable-soap --with-pear --enable-gd --with-webp --with-jpeg --with-avif --with-xpm --with-freetype --enable-gd-jis-conv --with-sodium --enable-sysvsem
 ```
 
-**При выполнении checkinstall на установке PEAR вылетала ошибка пришлось установить вручную. Чтобы с этим не заморачиваться можно PEAR не ставить, НО тогда будет нельзя поставить сторониие модули PHP, такие как apcu и redis, которые используются для кэширования в nextcloud.**
+**При выполнении checkinstall на установке PEAR вылетала ошибка пришлось установить вручную. Чтобы с этим не заморачиваться можно PEAR не ставить, НО тогда будет нельзя поставить сторонние модули PHP, такие как apcu и redis, которые используются для кэширования в nextcloud.**
 
 Установка PEAR вручную после сборки php
 
@@ -163,7 +163,7 @@ sudo pecl install redis
 
 Собраем Redis (просто выполнить "make", а потом "checkinstall").
 
-Созадём пользователя Redis
+Создаём пользователя Redis
 
 ```bash
  sudo useradd -c "Пользователь redis" -m -p <пароль> -s /bin/false redis
@@ -174,7 +174,7 @@ sudo pecl install redis
 sudo usermod -a -G redis nextcloud
 ```
 
-Добавиляем Redis в Config.php
+Добавляем Redis в Config.php
 ```php
 'memcache.distributed' => '\OC\Memcache\Redis',
   'redis' => [
