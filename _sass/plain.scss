@@ -303,15 +303,6 @@ main
 		padding-bottom: 1rem; /*Добавил Mendeo */
 		padding-top: 1rem; /*Добавил Mendeo */
 		overflow-y: auto; /*Добавил Mendeo */
-		@media screen and (max-width: $mobileW)
-		{
-			height: auto;
-			padding: 10vh 0;
-		}
-		@media screen and (min-width: $mobileW)
-		{
-			position: fixed;
-		}
 		min-width: $leftWidth;
 		justify-content: left; /*Исправил Mendeo */
 		flex-direction: column;
@@ -335,6 +326,15 @@ main
 		img
 		{
 			max-width: 150px;
+		}
+		@media screen and (max-width: $mobileW)
+		{
+			height: auto;
+			padding: 10vh 0;
+		}
+		@media screen and (min-width: $mobileW)
+		{
+			position: fixed;
 		}
 	}
 }
@@ -427,12 +427,12 @@ main
 		background-color: $postCategoriesBackgroundColor;
 		padding: 5px 20px;
 		border-radius: 2px;
+		margin-right: 10px;
+		margin-bottom: 10px;
 		@media screen and (max-width: $mobileW)
 		{
 			margin-top: 5px;
 		}
-		margin-right: 10px;
-		margin-bottom: 10px;
 	}
 }
 .post-date
