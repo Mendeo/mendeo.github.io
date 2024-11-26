@@ -2,7 +2,7 @@
 layout: post
 title: Сделал скрипт для увеличения картинок при клике на них
 date: 2020-05-05 11:52:00 +03
-modified: 2024-09-26 13:08:00 +03
+modified: 2024-11-26 12:23:00 +03
 categories: web javascript
 tags: [web, javascript, css]
 excerpt_separator: <a name="cut"></a>
@@ -178,13 +178,13 @@ img[data-src-big]
   window.addEventListener('resize', setImageScreenFraction);
   function setImageScreenFraction()
   {
-    if (window.matchMedia('(max-width: 768px)').matches) //Зашли с мобильного.
+    if (window.matchMedia('(max-width: 1024px)').matches) //Зашли с мобильного.
     {
       bigImgageScreenFraction = 1.0;
     }
     else //Зашли с компьютера.
     {
-      bigImgageScreenFraction = 0.7;
+      bigImgageScreenFraction = 0.95;
     }
   }
   //Заглушка для картинки. Появляется вместо неё на том месте откуда она увеличилась.
@@ -212,27 +212,15 @@ img[data-src-big]
         {
           doImageSmall();
           //Восстанавливаем стрелки перелистывания, если картинка уменьшилась.
-          if (img.index === 0)
-          {
-            showLeftArrow();
-          }
-          else if (img.index === imgs.length - 1)
-          {
-            showRightArrow();
-          }
+          if (img.index === 0) showLeftArrow();
+          if (img.index === imgs.length - 1) showRightArrow();
         }
         else //Картинка маленькая - увеличиваем.
         {
           doImageBig();
           //Убираем соответствующие стрелки перелистывания, если кликнули по первой или последней картинке.
-          if (img.index === 0)
-          {
-            hideLeftArrow();
-          }
-          else if (img.index === imgs.length - 1)
-          {
-            hideRightArrow();
-          }
+          if (img.index === 0) hideLeftArrow();
+          if (img.index === imgs.length - 1) hideRightArrow();
         }
       });
       img.addEventListener('transitionend', () =>
