@@ -93,3 +93,6 @@ sudo apt install gpiod
 
 ![Расщепление питания]({% link assets/posts/UPS-switcher/device.jpg %})
 
+* Сообщения об ошибках
+* Как включать
+* 
