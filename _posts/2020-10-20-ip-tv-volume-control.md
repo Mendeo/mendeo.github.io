@@ -4,7 +4,7 @@ title: Дистанционное управление громкостью IP T
 date: 2020-10-20 22:44:00 +03
 modified: 2020-11-11 22:34:00 +03
 categories: Atiny13A
-tags: [Atiny13A, C++, Ростелеком, IP TV, Громкость]
+tags: [Attiny13A, C++, Ростелеком, IP TV, Громкость]
 excerpt_separator: <a name="cut"></a>
 links_in_new_tab: true
 has_scalable_images: true
