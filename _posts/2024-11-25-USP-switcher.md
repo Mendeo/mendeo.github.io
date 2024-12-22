@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Автоматическое выключение и включение домашнего сервера при перебоях с электричеством"
-date: 2024-11-25 17:00:00 +03
-modified: 2024-11-25 17:00:00 +03
-categories: arduino tcl
+date: 2024-12-22 20:06:00 +03
+modified: 2024-12-22 20:06:00 +03
+categories: arduino tcl gpio
 tags: [Arduino, server, UPS, Tcl, Raspberry Pi, GPIO]
 excerpt_separator: <a name="cut"></a>
 links_in_new_tab: true
