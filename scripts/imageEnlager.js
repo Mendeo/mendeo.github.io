@@ -194,6 +194,8 @@ SOFTWARE.
 		placeholder.style = `width: ${currentBigImg.width}px; height: ${currentBigImg.height}px;`;
 		currentBigImg.before(placeholder);
 		//document.getElementsByTagName('body')[0].style = 'overflow: hidden;';
+		let coords = placeholder.getBoundingClientRect();
+		currentBigImg.style = `${currentBigImg.defaultStyle}; position: fixed; left: ${coords.left}px; top: ${coords.top}px`; //Это нужно, чтобы анимация начиналась от самой картинки, а не из верхнего угла.
 		makeImageBig();
 		window.addEventListener('resize', makeImageBig);
 		if (currentBigImg.bigSrcStatus !== 'loaded') //Проверяем, загружена ли уже полноразмерная картинка.

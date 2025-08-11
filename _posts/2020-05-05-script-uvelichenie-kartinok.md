@@ -2,7 +2,7 @@
 layout: post
 title: Сделал скрипт для увеличения картинок при клике на них
 date: 2020-05-05 11:52:00 +03
-modified: 2024-11-26 12:23:00 +03
+modified: 2025-08-11 16:44:00 +03
 categories: web javascript
 tags: [web, javascript, css]
 excerpt_separator: <a name="cut"></a>
@@ -10,7 +10,6 @@ links_in_new_tab: false
 has_scalable_images: true
 disqus_page_id: 769780B7f26Lr492jCOdPQZLIMdf3dK7O7574Ckg2q219vF644j4483319B759T6
 ---
-Обновление от 04.04.2024.  
 Итак, что это такое? Пусть есть веб-страница с одной или несколькими изображениями и требуется увеличивать изображение, при клике на него. Что-то вроде галереи. При загрузке страницы сначала на ней будут отображаться маленькие картинки с низким разрешением, но если на какую-либо картинку кликнуть, то начнёт загружаться изображение с высоким разрешением и произойдёт анимация увеличения. Во время загрузки большой картинки будет отображаться иконка загрузки (вращающиеся стрелки). Это будет происходить только при первом клике. Если на странице картинок несколько, слева и справа от увеличенной картинки появятся стрелки для листания.  
 Исходный код можно скачать с [Github](https://github.com/Mendeo/image_enlarger), подробное описание как всё сделать под катом.  
 
@@ -49,7 +48,7 @@ img[data-src-big]
 
 .image-enlager-animation-fast
 {
-  transition-duration: 0.001s;
+  transition-duration: 0.07s;
 }
 
 .image-enlager-arrow
@@ -57,7 +56,7 @@ img[data-src-big]
   background-color: rgba(0, 0, 0, 0);
   position: fixed;
   top: 0px;
-  width: 30%;
+  width: 10%;
   z-index: 3;
 }
 
@@ -112,7 +111,7 @@ img[data-src-big]
   
   .image-enlager-arrow
   {
-    width: 20%;
+    width: 10%;
   }
 }
 ```
@@ -306,6 +305,8 @@ img[data-src-big]
     placeholder.style = `width: ${currentBigImg.width}px; height: ${currentBigImg.height}px;`;
     currentBigImg.before(placeholder);
     //document.getElementsByTagName('body')[0].style = 'overflow: hidden;';
+    let coords = placeholder.getBoundingClientRect();
+    currentBigImg.style = `${currentBigImg.defaultStyle}; position: fixed; left: ${coords.left}px; top: ${coords.top}px`; //Это нужно, чтобы анимация начиналась от самой картинки, а не из верхнего угла.
     makeImageBig();
     window.addEventListener('resize', makeImageBig);
     if (currentBigImg.bigSrcStatus !== 'loaded') //Проверяем, загружена ли уже полноразмерная картинка.
