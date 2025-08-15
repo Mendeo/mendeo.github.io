@@ -2,7 +2,7 @@
 layout: post
 title: Сделал скрипт для увеличения картинок при клике на них
 date: 2020-05-05 11:52:00 +03
-modified: 2025-08-11 16:44:00 +03
+modified: 2025-08-15 22:26:00 +03
 categories: web javascript
 tags: [web, javascript, css]
 excerpt_separator: <a name="cut"></a>
@@ -133,12 +133,28 @@ img[data-src-big]
 ```
 
 ## JavaScript  
-Код JavaScript обернём в function, чтобы не портить глобальную область видимости.
+Код JavaScript обернём в function, чтобы не портить глобальную область видимости.  
+Чтобы отследить во внешнем коде события уменьшения или увеличения картинки можно воспользоваться событиями "on-img-going-to-big" и "on-img-going-to-small" Пример:
+
+```javascript
+window.addEventListener('on-img-going-to-big', () =>
+{
+    console.log('Картинка начала увеличиваться');
+});
+window.addEventListener('on-img-going-to-small', () =>
+{
+    console.log('Картинка начала уменьшаться');
+});
+```
+
+Основной код:
 
 ```javascript
 (function()
 {
   'use strict';
+  const onImageBigEvent = new Event('on-img-going-to-big');
+  const onImageSmallEvent = new Event('on-img-going-to-small');
   let currentBigImg;
   let isArrowClicked = false;
   //Создаём полупрозрачный серый фон на заднем плане под увеличенным изображением.
@@ -286,6 +302,7 @@ img[data-src-big]
     //Эта переменная опять станет false, когда завершится анимация уменьшения.
     isGoingToSmall = true;
     //document.getElementsByTagName('body')[0].style = 'overflow: auto;';
+    window.dispatchEvent(onImageSmallEvent);
   }
 
   function bigImageLoaded(e)
@@ -340,6 +357,7 @@ img[data-src-big]
     let left = Math.round(0.5 * (screenWidth - bigImgWidth));
     let top = Math.round(0.5 * (screenHeight - bigImgHeight));
     currentBigImg.style = `width: ${bigImgWidth}px; height: ${bigImgHeight}px; left: ${left}px; top: ${top}px; position: fixed; z-index: 2;`;
+    window.dispatchEvent(onImageBigEvent);
   }
 
   //Обрабатываем клики на стрелочки - листалки.
