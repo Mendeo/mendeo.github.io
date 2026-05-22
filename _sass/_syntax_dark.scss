@@ -1,5 +1,4 @@
-@use 'ext/solarized-dark';
+@import 'ext/solarized-dark';
 
-@use 'syntax' with (
-	$backgroundColor: #272727
-);
+$backgroundColor: #272727;
+@import 'syntax';

@@ -1,5 +1,1 @@
-@use "image-enlager" with (
-	$imageEnlager_load: url("image-enlager/light/load.svg"),
-	$imageEnlager_leftArrow: url("image-enlager/left-arrow.svg"),
-	$imageEnlager_rightArrow: url("image-enlager/right-arrow.svg")
-);
+@import "image-enlager";

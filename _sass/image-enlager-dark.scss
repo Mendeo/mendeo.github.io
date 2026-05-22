@@ -1,8 +1,3 @@
-@use "image-enlager" with (
-	$imageEnlager_load: url("image-enlager/dark/load.svg"),
-	$imageEnlager_leftArrow: url("image-enlager/left-arrow.svg"),
-	$imageEnlager_rightArrow: url("image-enlager/right-arrow.svg")
-);
 .image-enlager-right-arrow
 {
 	filter: invert(100%);
@@ -15,3 +10,4 @@
 {
 	filter: invert(100%);
 }
+@import "image-enlager";
