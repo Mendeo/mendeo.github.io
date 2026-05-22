@@ -1,25 +1,24 @@
-@import "syntax_light";
-
-$linkColor: #0a59b0;
-$headerColor: #000;
-$backgroundColor: #fff;
-$h2Color:#222222;
-$whoAmIcolor: #aaa;
-$borderBottomColor: #ececec;
-$postCategoriesBackgroundColor:  #e3e3e3;
-$postDateBackgroundColor: #555;
-$postBackgroundColor:  #222;
-$postsLabelBorderBottomColor: #eee;
-$postsLabelColor: #777;
-$tableBorderColor: #000;
-$buttonTextColor: #d4d4d4;
-$buttonBackgroundColor: #1e1e1e;
-$buttonHoverTextColor:#000;
-$buttonHoverBackgroundColor: #787878;
-$inputBackgroundColor:#FFF;
-$inputTextColor: $postBackgroundColor;
-$inputBorderColor: #c0c0c0;
-
-@import "plain";
-@import "theme-changer-light";
-@import "image-enlager-light";
+@use "syntax_light";
+@use "plain" with (
+	$linkColor: #0a59b0,
+	$headerColor: #000,
+	$backgroundColor: #fff,
+	$h2Color:#222222,
+	$whoAmIcolor: #aaa,
+	$borderBottomColor: #ececec,
+	$postCategoriesBackgroundColor:  #e3e3e3,
+	$postDateBackgroundColor: #555,
+	$postBackgroundColor:  #222,
+	$postsLabelBorderBottomColor: #eee,
+	$postsLabelColor: #777,
+	$tableBorderColor: #000,
+	$buttonTextColor: #d4d4d4,
+	$buttonBackgroundColor: #1e1e1e,
+	$buttonHoverTextColor:#000,
+	$buttonHoverBackgroundColor: #787878,
+	$inputBackgroundColor:#FFF,
+	$inputTextColor: #222,
+	$inputBorderColor: #c0c0c0
+);
+@use "theme-changer-light";
+@use "image-enlager-light";

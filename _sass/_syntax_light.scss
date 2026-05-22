@@ -1,4 +1,5 @@
-@import 'ext/solarized-light';
+@use 'ext/solarized-light';
 
-$backgroundColor: #f4f4f4;
-@import 'syntax';
+@use 'syntax' with (
+	$backgroundColor: #f4f4f4
+);

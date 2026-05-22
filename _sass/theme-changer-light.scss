@@ -1,7 +1,12 @@
 /*Блок, отвечающий за переключение темы (светлая, авто, тёмная)*/
+@use "theme-changer" with (
+	$themeChanger_circle: url("theme-changer/circle.svg"),
+	$themeChanger_sun: url("theme-changer/sun.svg"),
+	$themeChanger_moon: url("theme-changer/moon.svg"),
+	$themeChanger_auto: url("theme-changer/auto.svg")
+);
 .theme_selector > input:focus-visible ~ div
 {
 	box-shadow: 0 0 0 0.125rem black;
 }
-@import "theme-changer";
 /*Конец блока, отвечающего за переключение темы*/
