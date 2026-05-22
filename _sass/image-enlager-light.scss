@@ -1,5 +1,5 @@
 @use "image-enlager" with (
-	$imageEnlager_load: url("assets/images/image-enlager/light/load.svg"),
-	$imageEnlager_leftArrow: url("assets/images/image-enlager/left-arrow.svg"),
-	$imageEnlager_rightArrow: url("assets/images/image-enlager/right-arrow.svg")
+	$imageEnlager_load: url("image-enlager/light/load.svg"),
+	$imageEnlager_leftArrow: url("image-enlager/left-arrow.svg"),
+	$imageEnlager_rightArrow: url("image-enlager/right-arrow.svg")
 );
