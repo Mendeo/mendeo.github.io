@@ -15,6 +15,11 @@
 <link rel="icon" type="image/x-icon" href="{% link assets/icons/favicon.ico %}">
 {% seo %}
 
+{%- if page.layout == "post" -%}
+<!--remark42 комментарии-->
+<script type="text/javascript" src="{% link scripts/remark42.js %}"></script>
+{%- endif -%}
+
 <!-- Yandex.Metrika counter -->
 <!-- <script type="text/javascript" >
 	(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -29,6 +34,3 @@
 </script> -->
 <!-- /Yandex.Metrika counter -->
 
-<!-- Мой скрипт для подсчёта посетителей -->
-<!-- <script type="text/javascript"> const MESSAGE_SERVER = 'https://deorathemen.wixsite.com/messages/_functions/mendeo_msg';</script>
-<script type="text/javascript" src="{% link scripts/counter.js %}"></script> -->

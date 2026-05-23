@@ -49,6 +49,7 @@ layout: js_minifier
 			styleDark.media = '(prefers-color-scheme: dark)';
 			radioAuto.checked = true;
 		}
+		setThemeOnCommentSystem(selectedTheme);
 	}
 
 	function onThemeChange()
@@ -74,19 +75,45 @@ layout: js_minifier
 		{
 			setThemeToLocalStorage(selectedTheme);
 			setTheme(selectedTheme);
-			if (window.DISQUS)
-			{
-				DISQUS.reset(
-					{
-						reload: true,
-						config: disqus_config
-					});
-			}
 		}
 	}
 
 	function setThemeToLocalStorage(value)
 	{
 		localStorage.setItem(THEME_STORAGE_NAME, value);
+	}
+
+	function setThemeOnCommentSystem(selectedTheme)
+	{
+		if (window.REMARK42)
+		{
+			if (selectedTheme === STORAGE_LIGHT_THEME)
+			{
+				setLight();
+			}
+			else if (selectedTheme === STORAGE_DARK_THEME)
+			{
+				setDark();
+			}
+			else
+			{
+				if (window.matchMedia('(prefers-color-scheme: light)').matches)
+				{
+					setLight();
+				}
+				else
+				{
+					setDark();
+				}
+			}
+			function setLight()
+			{
+				window.REMARK42.changeTheme('light');
+			}
+			function setDark()
+			{
+				window.REMARK42.changeTheme('dark');
+			}
+		}
 	}
 })();
