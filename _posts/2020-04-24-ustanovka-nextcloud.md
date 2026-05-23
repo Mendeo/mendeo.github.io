@@ -7,7 +7,7 @@ categories: linux nextcloud
 tags: [nextcloud, nginx, php, raspberry pi, linux]
 excerpt_separator: <a name="cut"></a>
 links_in_new_tab: true
-disqus_page_id: 29zr5552r08s91G972UgDO9811x99OE5724Nk78Aays08h7Y57kIL91C0C6ANyU7
+post_id: 29zr5552r08s91G972UgDO9811x99OE5724Nk78Aays08h7Y57kIL91C0C6ANyU7
 ---
 ### Обновление от 22.04.2022
 За время работы моего сервера возникали разные сбои. Например, Nextcloud обновлялся и новые версии уже плохо работали со старой конфигурацией nginx. Поэтому периодически в файлах конфигурации делались разные улучшения. Пришло время обновить [nginx.conf]({% link assets/posts/ustanovka-nextcloud/nginx.conf %}) и [php.ini]({% link assets/posts/ustanovka-nextcloud/php.ini %}) и в этом посте.

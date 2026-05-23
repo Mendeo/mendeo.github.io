@@ -8,7 +8,7 @@ tags: [Attiny13A, C++, Ростелеком, IP TV, Громкость]
 excerpt_separator: <a name="cut"></a>
 links_in_new_tab: true
 has_scalable_images: true
-disqus_page_id: ksI6mK621gt45l3w62x3ff1D32hr8RI0294701r3e61ih59a3Nedb4fwUwcu4436
+post_id: ksI6mK621gt45l3w62x3ff1D32hr8RI0294701r3e61ih59a3Nedb4fwUwcu4436
 ---
 
 

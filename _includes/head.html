@@ -15,9 +15,49 @@
 <link rel="icon" type="image/x-icon" href="{% link assets/icons/favicon.ico %}">
 {% seo %}
 
-{%- if page.layout == "post" -%}
+{%- if page.post_id -%}
 <!--remark42 комментарии-->
-<script type="text/javascript" src="{% link scripts/remark42.js %}"></script>
+<script type="text/javascript">
+var remark_config = {
+	host: 'https://remark42.mendeo.ru/',
+	site_id: 'mendeo.ru',
+	locale: 'ru',
+	url: '{{ page.post_id }}',
+	theme: getCurrentTheme()
+}
+
+function getCurrentTheme()
+{
+	const THEME_STORAGE_NAME = 'selected-theme';
+	const STORAGE_LIGHT_THEME = 'light';
+	const STORAGE_DARK_THEME = 'dark';
+	const STORAGE_AUTO_THEME = 'auto';
+	const REMARK42_LIGHT = 'light';
+	const REMARK42_DARK = 'dark';
+	const selectedTheme = localStorage.getItem(THEME_STORAGE_NAME);
+
+	if (selectedTheme === STORAGE_LIGHT_THEME)
+	{
+		return REMARK42_LIGHT;
+	}
+	else if (selectedTheme === STORAGE_DARK_THEME)
+	{
+		return REMARK42_DARK;
+	}
+	else
+	{
+		if (window.matchMedia('(prefers-color-scheme: light)').matches)
+		{
+			return REMARK42_LIGHT;
+		}
+		else
+		{
+			return REMARK42_DARK;
+		}
+	}
+}
+</script>
+<script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
 {%- endif -%}
 
 <!-- Yandex.Metrika counter -->
