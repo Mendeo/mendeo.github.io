@@ -6,37 +6,46 @@ $smallMobileW: 480px;
 $bigScreenW: 1600px;
 $leftWidth: 220px;
 
-#cookiesNotification
+// #cookiesNotification
+// {
+// 	height: 70px;
+// 	width: 100vw;
+// 	bottom: 0px;
+// 	left: 0px;
+// 	background-color: gray;
+// 	position: fixed;
+// 	display: none; /* change to flex in js */
+// 	flex-direction: row;
+// 	align-items: center;
+// }
+// #cookiesNotification p
+// {
+// 	color: $postBackgroundColor;
+// 	margin-left: 1.5vw;
+// 	font-size: xx-large;
+// }
+// @media screen and (max-width: $mobileW)
+// {
+// 	#cookiesNotification p
+// 	{
+// 		font-size: x-large;
+// 	}
+// }
+// #cookiesNotification button
+// {
+// 	height: 70%;
+// 	margin-left: auto;
+// 	margin-right: 1.5vw;
+// 	font-size: x-large;
+// }
+
+#remark42
 {
-	height: 70px;
-	width: 100vw;
-	bottom: 0px;
-	left: 0px;
-	background-color: gray;
-	position: fixed;
-	display: none; /* change to flex in js */
-	flex-direction: row;
-	align-items: center;
-}
-#cookiesNotification p
-{
+	font-family: "PT Serif", "sans-serif";
+	font-weight: bold;
+	font-style: italic;
 	color: $postBackgroundColor;
-	margin-left: 1.5vw;
-	font-size: xx-large;
-}
-@media screen and (max-width: $mobileW)
-{
-	#cookiesNotification p
-	{
-		font-size: x-large;
-	}
-}
-#cookiesNotification button
-{
-	height: 70%;
-	margin-left: auto;
-	margin-right: 1.5vw;
-	font-size: x-large;
+	line-height: 1.9em;
 }
 
 .svg-text //Код для изменения цвета svg изображений в соответствии с цветом текста.
